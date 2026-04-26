@@ -166,7 +166,7 @@ function App() {
                 Let's <span className="text-orange-500 italic">Create.</span>
                 </h2>
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-6 md:gap-10">
-                    <a href="mailto:hello@sahilcodelab.com" className="w-full sm:w-auto bg-orange-500 text-white px-12 md:px-16 py-6 md:py-8 rounded-[1.5rem] md:rounded-[2rem] font-black uppercase tracking-[0.2em] md:tracking-[0.3em] text-xs md:text-sm shadow-xl hover:bg-white hover:text-orange-500 transition-all">
+                    <a href="mailto:contact.sahilraza@gmail.com" className="w-full sm:w-auto bg-orange-500 text-white px-12 md:px-16 py-6 md:py-8 rounded-[1.5rem] md:rounded-[2rem] font-black uppercase tracking-[0.2em] md:tracking-[0.3em] text-xs md:text-sm shadow-xl hover:bg-white hover:text-orange-500 transition-all">
                         Get in Touch
                     </a>
                 </div>
