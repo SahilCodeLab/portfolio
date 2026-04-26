@@ -74,55 +74,52 @@ const certifications = [
 const Certifications = () => {
   return (
     <section id="certifications" className="py-24 bg-white relative overflow-hidden">
-      <div className="container-tight">
+      <div className="container-tight px-4 md:px-6">
         <motion.div 
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8"
+            className="flex flex-col md:flex-row justify-between items-center md:items-end mb-16 gap-8 text-center md:text-left"
         >
-           <div className="max-w-xl text-center md:text-left">
-              <span className="text-orange-500 font-black uppercase tracking-[0.3em] text-[10px] mb-6 block">Expertise Verification</span>
+           <div className="max-w-xl">
+              <span className="text-orange-500 font-black uppercase tracking-[0.3em] text-[9px] md:text-[10px] mb-4 md:mb-6 block">Expertise Verification</span>
               <h2 className="text-4xl md:text-6xl font-black mb-0 tracking-tighter leading-none">
                 Verified <br className="hidden md:block" /> <span className="text-gray-300 italic underline decoration-orange-500/20 underline-offset-8">Professionalism</span>
               </h2>
            </div>
-           <p className="text-gray-400 text-lg leading-relaxed max-w-xs mb-2 text-center md:text-left">
+           <p className="text-gray-400 text-base md:text-lg leading-relaxed max-w-xs md:mb-2">
               A collection of industry-standard credentials validating my technical mastery in AI, Cloud, and Engineering.
            </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        {/* 2-Column Grid on Mobile Fixed */}
+        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
           {certifications.map((cert, index) => (
             <motion.div
               key={cert.id}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.1, duration: 0.6 }}
-              whileHover={{ y: -10 }}
+              transition={{ delay: index * 0.05, duration: 0.6 }}
               className="group"
             >
-              <div className="relative aspect-[4/5] rounded-[2.5rem] overflow-hidden bg-gray-50 border-2 border-gray-100 p-4 transition-all duration-500 hover:shadow-2xl hover:border-orange-200 group-hover:bg-white">
+              <div className="relative aspect-[4/5] rounded-[1.5rem] md:rounded-[2.5rem] overflow-hidden bg-gray-50 border border-gray-100 p-2 md:p-4 transition-all duration-500 hover:shadow-xl hover:border-orange-200 group-hover:bg-white">
                 <img 
                   src={cert.image} 
                   alt={cert.title} 
-                  className="w-full h-full object-contain rounded-xl transition-transform duration-700 group-hover:scale-105"
+                  className="w-full h-full object-contain rounded-lg md:rounded-xl transition-transform duration-700 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
               </div>
               
-              <div className="mt-8 px-4 text-center md:text-left">
-                 <div className="flex items-center gap-2 mb-2">
-                    <div className="text-[10px] font-black text-orange-500 uppercase tracking-widest">{cert.issuer}</div>
-                    <div className="h-px flex-1 bg-gray-100 hidden md:block" />
+              <div className="mt-4 md:mt-8 px-1 md:px-4 text-center md:text-left">
+                 <div className="flex items-center gap-2 mb-1 md:mb-2 justify-center md:justify-start">
+                    <div className="text-[8px] md:text-[10px] font-black text-orange-500 uppercase tracking-widest">{cert.issuer}</div>
                  </div>
-                 <div className="font-black text-gray-900 uppercase text-sm leading-tight tracking-tight mb-2 min-h-[40px]">{cert.title}</div>
-                 <div className="flex flex-col md:flex-row justify-between items-center gap-2">
-                    <div className="text-[10px] text-gray-300 font-bold tracking-widest uppercase">{cert.date} // VALIDATED</div>
-                    <div className="flex gap-0.5">
-                        {[1,2,3,4,5].map(s => <Star key={s} className="w-2.5 h-2.5 fill-orange-500 text-orange-500" />)}
-                    </div>
+                 <div className="font-black text-gray-900 uppercase text-[10px] md:text-sm leading-tight tracking-tight mb-1 md:mb-2 min-h-[30px] md:min-h-[40px] line-clamp-2 md:line-clamp-none">
+                    {cert.title}
+                 </div>
+                 <div className="flex flex-col md:flex-row justify-between items-center gap-1 md:gap-2">
+                    <div className="text-[7px] md:text-[10px] text-gray-300 font-bold tracking-widest uppercase">{cert.date} // VALIDATED</div>
                  </div>
               </div>
             </motion.div>

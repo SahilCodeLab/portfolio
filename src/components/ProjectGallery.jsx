@@ -98,7 +98,7 @@ const uiSuites = [
 const ProjectGallery = () => {
   return (
     <section id="projects" className="py-24 bg-white overflow-hidden">
-      <div className="container-tight">
+      <div className="container-tight px-4 md:px-6">
         {/* Apps Section */}
         <div className="mb-32">
           <motion.div 
@@ -111,19 +111,19 @@ const ProjectGallery = () => {
                 <Smartphone className="w-3 h-3" />
                 <span>Featured Applications</span>
             </div>
-            <h2 className="text-5xl md:text-7xl font-black tracking-tighter mb-8">
+            <h2 className="text-4xl md:text-7xl font-black tracking-tighter mb-8 leading-tight">
               Full-Stack <span className="text-gray-300">Solutions.</span>
             </h2>
           </motion.div>
 
-          <div className="space-y-40">
+          <div className="space-y-32 md:space-y-40">
             {coreApps.map((project, index) => (
               <ProjectCard key={project.id} project={project} index={index} />
             ))}
           </div>
         </div>
 
-        {/* UI Section - Now at the end */}
+        {/* UI Section */}
         <div className="pt-24 border-t border-gray-100">
           <motion.div 
             initial={{ opacity: 0, x: 50 }}
@@ -135,12 +135,12 @@ const ProjectGallery = () => {
                 <Layout className="w-3 h-3" />
                 <span>Interface Design Architecture</span>
             </div>
-            <h2 className="text-5xl md:text-7xl font-black tracking-tighter mb-8">
+            <h2 className="text-4xl md:text-7xl font-black tracking-tighter mb-8 leading-tight">
               UI/UX <span className="text-gray-300 italic">Ecosystems.</span>
             </h2>
           </motion.div>
 
-          <div className="space-y-40">
+          <div className="space-y-32 md:space-y-40">
             {uiSuites.map((project, index) => (
               <ProjectCard key={project.id} project={project} index={index} />
             ))}
@@ -158,15 +158,15 @@ const ProjectCard = ({ project, index }) => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-100px" }}
       transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-      className="flex flex-col gap-16"
+      className="flex flex-col gap-12 md:gap-16"
     >
       {/* Header Info */}
-      <div className="flex flex-col md:flex-row gap-10 items-end justify-between">
-        <div className="max-w-2xl">
-            <div className="flex items-center gap-4 mb-6">
+      <div className="flex flex-col md:flex-row gap-8 md:gap-10 items-start md:items-end justify-between">
+        <div className="max-w-2xl text-center md:text-left w-full">
+            <div className="flex flex-col md:flex-row items-center md:items-start gap-4 mb-6">
                 <motion.div 
                     whileHover={{ rotate: 10, scale: 1.1 }}
-                    className="w-16 h-16 bg-white rounded-2xl p-2 shadow-xl border border-gray-100 flex items-center justify-center"
+                    className="w-14 h-14 md:w-16 md:h-16 bg-white rounded-2xl p-2 shadow-xl border border-gray-100 flex items-center justify-center"
                 >
                 {project.logo ? (
                     <img src={project.logo} className="w-full h-full object-contain" />
@@ -174,24 +174,24 @@ const ProjectCard = ({ project, index }) => {
                     project.icon
                 )}
                 </motion.div>
-                <div>
-                    <span className="text-orange-500 font-black tracking-widest text-[10px] uppercase block mb-1">
+                <div className="text-center md:text-left">
+                    <span className="text-orange-500 font-black tracking-widest text-[9px] md:text-[10px] uppercase block mb-1">
                         {project.category}
                     </span>
-                    <h3 className="text-4xl md:text-5xl font-black tracking-tighter leading-none">
+                    <h3 className="text-3xl md:text-5xl font-black tracking-tighter leading-none">
                         {project.title}
                     </h3>
                 </div>
             </div>
-            <p className="text-gray-500 text-lg md:text-xl leading-relaxed">
+            <p className="text-gray-500 text-base md:text-xl leading-relaxed mx-auto md:mx-0">
             {project.desc}
             </p>
         </div>
         
-        <div className="flex flex-col gap-6 items-start md:items-end w-full md:w-auto">
-            <div className="flex flex-wrap gap-2 justify-start md:justify-end">
+        <div className="flex flex-col gap-6 items-center md:items-end w-full md:w-auto">
+            <div className="flex flex-wrap gap-2 justify-center md:justify-end">
             {project.tech.map(t => (
-                <span key={t} className="px-4 py-2 bg-gray-50 rounded-xl text-[10px] font-bold text-gray-400 border border-gray-100 uppercase tracking-widest">
+                <span key={t} className="px-3 py-1.5 md:px-4 md:py-2 bg-gray-50 rounded-lg md:rounded-xl text-[8px] md:text-[10px] font-bold text-gray-400 border border-gray-100 uppercase tracking-widest">
                 {t}
                 </span>
             ))}
@@ -199,38 +199,33 @@ const ProjectCard = ({ project, index }) => {
             <motion.button 
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="flex items-center gap-4 group"
+                className="flex items-center gap-3 md:gap-4 group"
             >
-                <span className="text-xs font-black uppercase tracking-[0.3em] group-hover:text-orange-500 transition-colors">Details</span>
-                <div className="w-12 h-12 rounded-xl border-2 border-gray-100 flex items-center justify-center group-hover:border-orange-500 group-hover:bg-orange-500 group-hover:text-white transition-all">
-                    <ExternalLink className="w-5 h-5" />
+                <span className="text-[10px] md:text-xs font-black uppercase tracking-[0.3em] group-hover:text-orange-500 transition-colors">Details</span>
+                <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl border-2 border-gray-100 flex items-center justify-center group-hover:border-orange-500 group-hover:bg-orange-500 group-hover:text-white transition-all">
+                    <ExternalLink className="w-4 h-4 md:w-5 md:h-5" />
                 </div>
             </motion.button>
         </div>
       </div>
 
-      {/* Screenshot Grid (The "Matched" Display) */}
-      <div className="w-full bg-gray-50 rounded-[4rem] p-4 md:p-12 border border-gray-100/50">
-        <div className={`grid grid-cols-1 ${project.isUI ? 'md:grid-cols-1 lg:grid-cols-1 gap-12' : 'md:grid-cols-2 lg:grid-cols-3 gap-8'}`}>
+      {/* Screenshot Grid - Mobile 2 Columns Fixed */}
+      <div className="w-full bg-gray-50 rounded-[2.5rem] md:rounded-[4rem] p-3 md:p-12 border border-gray-100/50">
+        <div className={`grid grid-cols-2 ${project.isUI ? 'md:grid-cols-1 lg:grid-cols-1 gap-4 md:gap-12' : 'md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-8'}`}>
           {project.screenshots.map((img, i) => (
             <motion.div 
               key={i}
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.1, duration: 0.5 }}
-              className={`relative group rounded-3xl overflow-hidden shadow-2xl border-4 border-white ${project.isUI ? 'w-full mx-auto' : ''}`}
+              transition={{ delay: i * 0.05, duration: 0.5 }}
+              className={`relative group rounded-2xl md:rounded-3xl overflow-hidden shadow-lg md:shadow-2xl border-2 md:border-4 border-white ${project.isUI && i === 0 ? 'col-span-2 md:col-span-1' : ''}`}
             >
               <img 
                 src={img} 
                 className={`w-full h-auto ${project.isUI ? 'object-contain' : 'object-cover'} transition-transform duration-700 group-hover:scale-105`}
                 alt={`${project.title} screenshot ${i + 1}`}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-8">
-                  <div className="text-white text-[10px] font-black uppercase tracking-[0.4em]">
-                      Full View Analysis // {i + 1}
-                  </div>
-              </div>
             </motion.div>
           ))}
         </div>
