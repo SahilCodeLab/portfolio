@@ -7,42 +7,42 @@ const testimonials = [
     name: "Rohan Sharma",
     role: "Founder, E-Com Solutions",
     text: "Sahil built a high-converting landing page for our brand. The performance optimization is insane! Conversion increased by 40%.",
-    image: "https://i.pravatar.cc/150?u=rohan",
+    image: "https://xsgames.co/randomusers/assets/avatars/male/1.jpg",
     rating: 5
   },
   {
     name: "Anita Jaiswal",
     role: "CTO, Zenith Systems Pvt Ltd",
     text: "Delivered a robust Android application for our internal management. The security architecture is top-notch and the UI is very smooth.",
-    image: null,
+    image: "https://xsgames.co/randomusers/assets/avatars/female/2.jpg",
     rating: 5
   },
   {
     name: "David Miller",
     role: "SaaS Entrepreneur",
     text: "The dashboard UI Sahil designed is world-class. It's clean, intuitive, and exactly what we needed for our beta launch. Highly recommended!",
-    image: "https://i.pravatar.cc/150?u=david",
+    image: "https://xsgames.co/randomusers/assets/avatars/male/3.jpg",
     rating: 5
   },
   {
     name: "Sneha Kapoor",
     role: "E-learning Platform Owner",
     text: "Best developer for Android source code. Handled our complex Firebase integrations perfectly. Great communication throughout the project.",
-    image: "https://i.pravatar.cc/150?u=sneha",
+    image: null, // Using initials for organic feel
     rating: 5
   },
   {
     name: "Kevin Peterson",
     role: "Startup Founder",
     text: "Needed a premium landing page in 3 days, and Sahil delivered. The animations and speed are just wow. My go-to guy for web development.",
-    image: null,
+    image: "https://xsgames.co/randomusers/assets/avatars/male/5.jpg",
     rating: 5
   },
   {
     name: "Arjun Verma",
     role: "PropTech Solutions",
     text: "Modern UI/UX with super clean code. He understood our business requirements perfectly and delivered a flawless product.",
-    image: "https://i.pravatar.cc/150?u=arjun",
+    image: null, // Using initials for organic feel
     rating: 5
   }
 ];
@@ -55,7 +55,7 @@ const Testimonials = () => {
           <h2 className="text-4xl md:text-6xl font-black tracking-tighter mb-8 leading-none">
             Trusted by <br/> <span className="text-gray-300 italic underline decoration-orange-500/20 underline-offset-8">Happy Clients</span>
           </h2>
-          <p className="text-gray-400 text-base md:text-lg max-w-2xl mx-auto font-medium">
+          <p className="text-gray-400 text-base md:text-lg max-w-2xl mx-auto font-medium px-4">
             Real reviews from entrepreneurs and companies who scaled their business with SahilCodeLab.
           </p>
       </div>
@@ -64,14 +64,14 @@ const Testimonials = () => {
       <div className="flex flex-col gap-10">
           <div className="relative flex overflow-x-hidden py-10">
             <motion.div 
-                className="flex whitespace-nowrap gap-8 items-center"
+                className="flex whitespace-nowrap gap-6 md:gap-10 items-center"
                 animate={{ x: ["0%", "-50%"] }}
-                transition={{ ease: "linear", duration: 40, repeat: Infinity }}
+                transition={{ ease: "linear", duration: 45, repeat: Infinity }}
             >
                 {[...testimonials, ...testimonials].map((item, idx) => (
                 <div 
                     key={idx} 
-                    className="w-[350px] md:w-[450px] flex-shrink-0 p-8 md:p-10 rounded-[2.5rem] bg-gray-50 border border-gray-100 flex flex-col justify-between hover:shadow-2xl hover:border-orange-200 transition-all duration-500 group whitespace-normal"
+                    className="w-[320px] md:w-[450px] flex-shrink-0 p-8 md:p-10 rounded-[2.5rem] bg-gray-50 border border-gray-100 flex flex-col justify-between hover:shadow-2xl hover:border-orange-200 transition-all duration-500 group whitespace-normal"
                 >
                     <div>
                         <div className="flex justify-between items-start mb-6">
@@ -88,7 +88,7 @@ const Testimonials = () => {
                     </div>
                     
                     <div className="flex items-center gap-4">
-                        <div className="w-12 h-12 md:w-14 md:h-14 rounded-2xl overflow-hidden shadow-lg bg-orange-500 flex items-center justify-center text-white font-black text-xl">
+                        <div className={`w-12 h-12 md:w-14 md:h-14 rounded-2xl overflow-hidden shadow-lg ${!item.image ? 'bg-orange-500 flex items-center justify-center text-white font-black text-xl' : ''}`}>
                             {item.image ? (
                                 <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
                             ) : (
@@ -111,7 +111,7 @@ const Testimonials = () => {
                 <div className="flex -space-x-3 mb-2 md:mb-0">
                     {[1,2,3,4,5].map(i => (
                         <div key={i} className="w-8 h-8 md:w-10 md:h-10 rounded-full border-2 border-white overflow-hidden shadow-sm">
-                            <img src={`https://i.pravatar.cc/100?u=${i+30}`} alt="Client" className="w-full h-full object-cover" />
+                            <img src={`https://xsgames.co/randomusers/assets/avatars/${i%2 === 0 ? 'female' : 'male'}/${i+10}.jpg`} alt="Client" className="w-full h-full object-cover" />
                         </div>
                     ))}
                 </div>
