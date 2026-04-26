@@ -26,8 +26,8 @@ const Navbar = () => {
           className="bg-white/90 backdrop-blur-3xl border border-gray-100 rounded-2xl md:rounded-[2rem] px-5 py-3 md:px-6 md:py-4 shadow-2xl pointer-events-auto flex items-center gap-3"
         >
           <img src={brandLogo} alt="SahilCodeLab Logo" className="w-8 h-8 md:w-10 md:h-10 object-contain rounded-lg shadow-inner" />
-          <div className="text-lg md:text-xl font-black tracking-tighter uppercase block sm:block">
-            Sahil<span className="text-orange-500">Code</span>
+          <div className="text-lg md:text-xl font-black tracking-tighter uppercase">
+            Sahil<span className="text-orange-500">CodeLab</span>
           </div>
         </motion.div>
 
