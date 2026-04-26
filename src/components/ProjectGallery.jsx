@@ -209,9 +209,9 @@ const ProjectCard = ({ project, index }) => {
         </div>
       </div>
 
-      {/* Screenshot Grid - Adjusted for UI Projects to be smaller */}
+      {/* Screenshot Grid - Optimized Sizing */}
       <div className="w-full bg-gray-50 rounded-[2.5rem] md:rounded-[4rem] p-3 md:p-12 border border-gray-100/50">
-        <div className={`grid grid-cols-2 ${project.isUI ? 'md:grid-cols-2 lg:grid-cols-2 gap-6 md:gap-12' : 'md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-8'}`}>
+        <div className={`grid ${project.isUI ? 'grid-cols-1 md:grid-cols-2 gap-4 md:gap-8' : 'grid-cols-2 lg:grid-cols-3 gap-3 md:gap-8'}`}>
           {project.screenshots.map((img, i) => (
             <motion.div 
               key={i}
@@ -219,7 +219,7 @@ const ProjectCard = ({ project, index }) => {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.05, duration: 0.5 }}
-              className={`relative group rounded-2xl md:rounded-3xl overflow-hidden shadow-lg md:shadow-2xl border-2 md:border-4 border-white ${project.isUI && i === 0 ? 'col-span-2' : ''}`}
+              className={`relative group rounded-xl md:rounded-3xl overflow-hidden shadow-lg md:shadow-2xl border-2 md:border-4 border-white ${project.isUI ? 'max-w-[100%]' : ''}`}
             >
               <img 
                 src={img} 
