@@ -1,0 +1,242 @@
+import React from 'react';
+import { motion } from 'framer-motion';
+import { ExternalLink, Layout, Smartphone } from 'lucide-react';
+
+// Import Logos
+import pocketIdLogo from '../assets/pocketid_logo.png';
+import masterDexLogo from '../assets/masterdex_logo.png';
+import warpifyLogo from '../assets/warpify_logo.png';
+import auraNotesLogo from '../assets/aura_notes_logo.webp';
+
+// Import Screenshots
+import masterDex1 from '../assets/masterdex_homepage_1.jpg';
+import masterDexSplash from '../assets/masterdex_splash_screenshot.jpg';
+import masterDex2 from '../assets/masterdex_2nd.jpg';
+import masterDex3 from '../assets/masterdex_3rd.jpg';
+import masterDex4 from '../assets/masterdex_4th.jpg';
+import masterDex5 from '../assets/masterdex_5th.jpg';
+import masterDex6 from '../assets/masterdex_6th.jpg';
+
+import pocketId1 from '../assets/pocket_id_1_ss.jpg';
+import pocketId3 from '../assets/pocket_id_3rd_ss.jpg';
+import pocketId4 from '../assets/pocket_id_4rd_ss.jpg';
+import pocketId5 from '../assets/pocket_id_5rd_ss.jpg';
+import pocketIdCert from '../assets/pocket_id_subscription_certificate.jpg';
+
+import wrapify1 from '../assets/warpify_screenshot_Slice_1.jpg';
+import wrapify2 from '../assets/slice_2.jpg';
+import wrapify4 from '../assets/slice_4.jpg';
+import wrapify5 from '../assets/slice_5.jpg';
+import wrapify6 from '../assets/slice_6.jpg';
+import wrapifyBanner from '../assets/warpify_banner.jpg';
+
+import uiCoaching from '../assets/ui_coaching.jpg';
+import uiBeauty from '../assets/ui_beauty.jpg';
+import uiSeller from '../assets/ui_seller.jpg';
+import uiMotor from '../assets/ui_motor.jpg';
+import dashboardMain from '../assets/dashboard_ui_design.jpg';
+
+const coreApps = [
+  { 
+    id: 'pocketid', 
+    title: "PocketID", 
+    desc: "Military-grade secure vault implementation with biometric authentication and real-time cloud synchronization. Focus on end-to-end encryption.", 
+    logo: pocketIdLogo,
+    screenshots: [pocketId1, pocketId3, pocketId4, pocketId5, pocketIdCert],
+    tech: ["Kotlin", "Firebase", "Security"],
+    category: "Security Solution",
+    color: "#4f46e5"
+  },
+  { 
+    id: 'wrapify', 
+    title: "Wrapify", 
+    desc: "Performance-optimized landing page suite with deep Razorpay integration and automated conversion tracking for premium digital services.", 
+    logo: warpifyLogo,
+    screenshots: [wrapify1, wrapify2, wrapify4, wrapify5, wrapify6, wrapifyBanner],
+    tech: ["Next.js", "Razorpay", "Analytics"],
+    category: "Web Platform",
+    color: "#f59e0b"
+  },
+  { 
+    id: 'masterdex', 
+    title: "Master Dex", 
+    desc: "A high-performance Pokémon encyclopedia featuring a custom low-latency audio engine and high-fidelity UI transitions. Designed for speed and reliability.", 
+    logo: masterDexLogo,
+    screenshots: [masterDex1, masterDexSplash, masterDex2, masterDex3, masterDex4, masterDex5, masterDex6],
+    tech: ["React Native", "Audio Engine", "Framer Motion"],
+    category: "Mobile App",
+    color: "#ff3d00"
+  },
+  { 
+    id: 'auranotes', 
+    title: "Aura Notes", 
+    desc: "Next-generation note management system with AI-driven categorization and seamless cross-platform syncing. Currently in advanced development.", 
+    logo: auraNotesLogo,
+    screenshots: [auraNotesLogo],
+    tech: ["React", "Node.js", "AI"],
+    category: "Productivity",
+    color: "#8b5cf6",
+    isComingSoon: true
+  },
+];
+
+const uiSuites = [
+  { 
+    id: 'dashboard', 
+    title: "Nexus Dashboard UI", 
+    desc: "A premium suite of administrative dashboards and business management interfaces. Designed for clarity, data visualization, and seamless user workflow.", 
+    logo: null, 
+    icon: <Layout className="w-10 h-10 text-orange-500" />,
+    screenshots: [dashboardMain, uiCoaching, uiBeauty, uiSeller, uiMotor],
+    tech: ["React", "Tailwind CSS", "Data Viz"],
+    category: "Admin Suite",
+    color: "#10b981",
+    isUI: true
+  },
+];
+
+const ProjectGallery = () => {
+  return (
+    <section id="projects" className="py-24 bg-white overflow-hidden">
+      <div className="container-tight">
+        {/* Apps Section */}
+        <div className="mb-32">
+          <motion.div 
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="mb-20 text-center md:text-left"
+          >
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-orange-50 rounded-full text-orange-600 font-bold text-[10px] uppercase tracking-widest mb-6">
+                <Smartphone className="w-3 h-3" />
+                <span>Featured Applications</span>
+            </div>
+            <h2 className="text-5xl md:text-7xl font-black tracking-tighter mb-8">
+              Full-Stack <span className="text-gray-300">Solutions.</span>
+            </h2>
+          </motion.div>
+
+          <div className="space-y-40">
+            {coreApps.map((project, index) => (
+              <ProjectCard key={project.id} project={project} index={index} />
+            ))}
+          </div>
+        </div>
+
+        {/* UI Section - Now at the end */}
+        <div className="pt-24 border-t border-gray-100">
+          <motion.div 
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="mb-20 text-center md:text-left"
+          >
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-50 rounded-full text-blue-600 font-bold text-[10px] uppercase tracking-widest mb-6">
+                <Layout className="w-3 h-3" />
+                <span>Interface Design Architecture</span>
+            </div>
+            <h2 className="text-5xl md:text-7xl font-black tracking-tighter mb-8">
+              UI/UX <span className="text-gray-300 italic">Ecosystems.</span>
+            </h2>
+          </motion.div>
+
+          <div className="space-y-40">
+            {uiSuites.map((project, index) => (
+              <ProjectCard key={project.id} project={project} index={index} />
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const ProjectCard = ({ project, index }) => {
+  return (
+    <motion.div 
+      initial={{ opacity: 0, y: 100 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-100px" }}
+      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+      className="flex flex-col gap-16"
+    >
+      {/* Header Info */}
+      <div className="flex flex-col md:flex-row gap-10 items-end justify-between">
+        <div className="max-w-2xl">
+            <div className="flex items-center gap-4 mb-6">
+                <motion.div 
+                    whileHover={{ rotate: 10, scale: 1.1 }}
+                    className="w-16 h-16 bg-white rounded-2xl p-2 shadow-xl border border-gray-100 flex items-center justify-center"
+                >
+                {project.logo ? (
+                    <img src={project.logo} className="w-full h-full object-contain" />
+                ) : (
+                    project.icon
+                )}
+                </motion.div>
+                <div>
+                    <span className="text-orange-500 font-black tracking-widest text-[10px] uppercase block mb-1">
+                        {project.category}
+                    </span>
+                    <h3 className="text-4xl md:text-5xl font-black tracking-tighter leading-none">
+                        {project.title}
+                    </h3>
+                </div>
+            </div>
+            <p className="text-gray-500 text-lg md:text-xl leading-relaxed">
+            {project.desc}
+            </p>
+        </div>
+        
+        <div className="flex flex-col gap-6 items-start md:items-end w-full md:w-auto">
+            <div className="flex flex-wrap gap-2 justify-start md:justify-end">
+            {project.tech.map(t => (
+                <span key={t} className="px-4 py-2 bg-gray-50 rounded-xl text-[10px] font-bold text-gray-400 border border-gray-100 uppercase tracking-widest">
+                {t}
+                </span>
+            ))}
+            </div>
+            <motion.button 
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="flex items-center gap-4 group"
+            >
+                <span className="text-xs font-black uppercase tracking-[0.3em] group-hover:text-orange-500 transition-colors">Details</span>
+                <div className="w-12 h-12 rounded-xl border-2 border-gray-100 flex items-center justify-center group-hover:border-orange-500 group-hover:bg-orange-500 group-hover:text-white transition-all">
+                    <ExternalLink className="w-5 h-5" />
+                </div>
+            </motion.button>
+        </div>
+      </div>
+
+      {/* Screenshot Grid (The "Matched" Display) */}
+      <div className="w-full bg-gray-50 rounded-[4rem] p-4 md:p-12 border border-gray-100/50">
+        <div className={`grid grid-cols-1 ${project.isUI ? 'md:grid-cols-1 lg:grid-cols-1 gap-12' : 'md:grid-cols-2 lg:grid-cols-3 gap-8'}`}>
+          {project.screenshots.map((img, i) => (
+            <motion.div 
+              key={i}
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1, duration: 0.5 }}
+              className={`relative group rounded-3xl overflow-hidden shadow-2xl border-4 border-white ${project.isUI ? 'w-full mx-auto' : ''}`}
+            >
+              <img 
+                src={img} 
+                className={`w-full h-auto ${project.isUI ? 'object-contain' : 'object-cover'} transition-transform duration-700 group-hover:scale-105`}
+                alt={`${project.title} screenshot ${i + 1}`}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-8">
+                  <div className="text-white text-[10px] font-black uppercase tracking-[0.4em]">
+                      Full View Analysis // {i + 1}
+                  </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </motion.div>
+  );
+};
+
+export default ProjectGallery;
