@@ -33,9 +33,9 @@ const StatsCounter = ({ value, label, suffix = "" }) => {
     return () => clearInterval(timer);
   }, [value]);
   return (
-    <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="flex flex-col">
+    <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="flex flex-col items-center md:items-start">
       <div className="text-4xl md:text-5xl font-black text-gray-900 mb-2">{count}{suffix}</div>
-      <div className="text-[10px] font-black uppercase tracking-[0.3em] text-orange-500">{label}</div>
+      <div className="text-[9px] md:text-[10px] font-black uppercase tracking-[0.3em] text-orange-500">{label}</div>
     </motion.div>
   );
 };
@@ -58,7 +58,7 @@ const BackToTop = () => {
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0 }}
           onClick={() => window.scrollTo({ top: 0, behavior: 'auto' })}
-          className="fixed bottom-10 right-10 z-[99] w-16 h-16 bg-orange-500 text-white rounded-2xl shadow-2xl flex items-center justify-center hover:bg-gray-900 transition-all group"
+          className="fixed bottom-6 right-6 md:bottom-10 md:right-10 z-[99] w-14 h-14 md:w-16 md:h-16 bg-orange-500 text-white rounded-2xl shadow-2xl flex items-center justify-center hover:bg-gray-900 transition-all group"
         >
           <ArrowUp className="w-6 h-6 group-hover:-translate-y-1 transition-transform" />
         </motion.button>
@@ -92,63 +92,63 @@ function App() {
       <main>
         <Hero />
         
-        {/* About Sahil Raza Section */}
-        <section id="about" className="py-32 bg-gray-50 relative overflow-hidden">
+        {/* About Sahil Raza Section - Mobile Optimized */}
+        <section id="about" className="py-24 md:py-40 bg-gray-50 relative overflow-hidden">
           <div className="container-tight">
-            <div className="flex flex-col lg:flex-row gap-24 items-center">
-              <motion.div initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="w-full lg:w-1/2">
-                <div className="relative group">
-                  <motion.div className="relative z-10 overflow-hidden rounded-[4rem] shadow-2xl">
-                    <img src={profilePic} alt="Sahil Raza" className="w-full h-auto grayscale group-hover:grayscale-0 transition-all duration-1000" />
+            <div className="flex flex-col lg:flex-row gap-16 md:gap-24 items-center">
+              <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="w-full lg:w-1/2">
+                <div className="relative group mx-auto max-w-[400px] lg:max-w-none">
+                  <motion.div className="relative z-10 overflow-hidden rounded-[3rem] md:rounded-[4rem] shadow-2xl aspect-square">
+                    <img src={profilePic} alt="Sahil Raza" className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000" />
                   </motion.div>
-                  <div className="absolute -bottom-10 -right-10 w-80 h-80 bg-orange-500/10 rounded-full blur-[100px]"></div>
+                  <div className="absolute -bottom-10 -right-10 w-60 h-60 md:w-80 md:h-80 bg-orange-500/10 rounded-full blur-[80px] md:blur-[100px]"></div>
                   
                   <motion.div 
                     initial={{ opacity: 0, scale: 0.5 }}
                     whileInView={{ opacity: 1, scale: 1 }}
-                    className="absolute -top-10 -left-10 bg-white p-6 rounded-3xl shadow-2xl z-20 flex items-center gap-4 border border-gray-50"
+                    className="absolute -top-6 -left-6 md:-top-10 md:-left-10 bg-white p-4 md:p-6 rounded-2xl md:rounded-3xl shadow-2xl z-20 flex items-center gap-3 md:gap-4 border border-gray-50"
                   >
                     <div className="relative">
-                        <Activity className="w-8 h-8 text-orange-500" />
-                        <div className="absolute top-0 right-0 w-3 h-3 bg-green-500 rounded-full border-2 border-white animate-pulse" />
+                        <Activity className="w-6 h-6 md:w-8 md:h-8 text-orange-500" />
+                        <div className="absolute top-0 right-0 w-2.5 h-2.5 md:w-3 md:h-3 bg-green-500 rounded-full border-2 border-white animate-pulse" />
                     </div>
                     <div>
-                        <div className="text-[10px] font-black uppercase tracking-widest text-gray-400 mb-0.5">Live Status</div>
-                        <div className="text-xs font-black text-gray-900 uppercase">Available for Hire</div>
+                        <div className="text-[9px] md:text-[10px] font-black uppercase tracking-widest text-gray-400 mb-0.5">Live Status</div>
+                        <div className="text-[10px] md:text-xs font-black text-gray-900 uppercase">Available for Hire</div>
                     </div>
                   </motion.div>
                 </div>
               </motion.div>
               
-              <motion.div initial={{ opacity: 0, x: 50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="flex-1">
+              <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="flex-1 text-center lg:text-left">
                 <div className="inline-flex items-center gap-3 mb-6">
-                    <div className="w-10 h-[2px] bg-orange-500" />
+                    <div className="w-8 md:w-10 h-[2px] bg-orange-500" />
                     <span className="text-orange-500 font-black tracking-widest text-[10px] uppercase">The Expert</span>
                 </div>
-                <h2 className="text-5xl md:text-7xl font-black tracking-tighter mb-10 leading-[0.9]">
+                <h2 className="text-4xl md:text-7xl font-black tracking-tighter mb-8 md:mb-10 leading-[0.9]">
                   Sahil Raza: <br/> <span className="text-gray-300 italic">Software Engineer.</span>
                 </h2>
-                <p className="text-gray-500 text-xl leading-relaxed mb-8 font-medium">
+                <p className="text-gray-500 text-lg md:text-xl leading-relaxed mb-8 md:mb-12 font-medium max-w-2xl mx-auto lg:mx-0">
                   Founder of <span className="text-gray-900 font-black">SahilCodeLab</span>. Delivering world-class software architectures and premium engineering solutions.
                 </p>
-                <div className="grid grid-cols-2 gap-12 pt-10 border-t border-gray-200">
-                  <StatsCounter value="20" label="Global Deployments" suffix="+" />
-                  <StatsCounter value="4" label="Years Experience" suffix="+" />
+                <div className="grid grid-cols-2 gap-8 md:gap-12 pt-10 border-t border-gray-200">
+                  <StatsCounter value="20" label="Deployments" suffix="+" />
+                  <StatsCounter value="4" label="Exp Years" suffix="+" />
                 </div>
               </motion.div>
             </div>
           </div>
         </section>
 
-        <Skills /> {/* The Sliding Tech Marquee */}
+        <Skills />
 
         <TechnicalArsenal />
 
         <Services />
 
-        <section className="py-24 bg-white relative">
-            <div className="container-tight">
-                <div className="relative rounded-[4rem] overflow-hidden shadow-[0_50px_100px_rgba(0,0,0,0.1)]">
+        <section className="py-20 md:py-24 bg-white relative">
+            <div className="container-tight px-4 md:px-6">
+                <div className="relative rounded-[2.5rem] md:rounded-[4rem] overflow-hidden shadow-[0_30px_60px_rgba(0,0,0,0.08)]">
                     <img src={allAppsEcosystem} alt="SahilCodeLab Ecosystem" className="w-full h-auto" />
                 </div>
             </div>
@@ -158,15 +158,15 @@ function App() {
         <Certifications />
         <Testimonials />
 
-        <section id="contact" className="py-40 bg-gray-900 text-white relative overflow-hidden">
+        <section id="contact" className="py-32 md:py-40 bg-gray-900 text-white relative overflow-hidden">
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(249,115,22,0.15)_0,transparent_70%)]"></div>
           <div className="container-tight text-center relative z-10">
             <motion.div initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }}>
-                <h2 className="text-6xl md:text-9xl font-black tracking-tighter mb-12 leading-none uppercase">
+                <h2 className="text-5xl md:text-9xl font-black tracking-tighter mb-10 md:mb-12 leading-none uppercase">
                 Let's <span className="text-orange-500 italic">Create.</span>
                 </h2>
-                <div className="flex flex-col sm:flex-row items-center justify-center gap-10">
-                    <a href="mailto:hello@sahilcodelab.com" className="w-full sm:w-auto bg-orange-500 text-white px-16 py-8 rounded-[2rem] font-black uppercase tracking-[0.3em] text-sm shadow-xl hover:bg-white hover:text-orange-500 transition-all">
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-6 md:gap-10">
+                    <a href="mailto:hello@sahilcodelab.com" className="w-full sm:w-auto bg-orange-500 text-white px-12 md:px-16 py-6 md:py-8 rounded-[1.5rem] md:rounded-[2rem] font-black uppercase tracking-[0.2em] md:tracking-[0.3em] text-xs md:text-sm shadow-xl hover:bg-white hover:text-orange-500 transition-all">
                         Get in Touch
                     </a>
                 </div>
@@ -175,19 +175,19 @@ function App() {
         </section>
       </main>
 
-      <footer className="py-24 bg-white border-t border-gray-100">
+      <footer className="py-20 md:py-24 bg-white border-t border-gray-100">
         <div className="container-tight text-center md:text-left">
-          <div className="flex flex-col md:flex-row justify-between items-start gap-16 mb-20">
+          <div className="flex flex-col md:flex-row justify-between items-start gap-12 md:gap-16 mb-16 md:mb-20">
             <div className="max-w-sm mx-auto md:mx-0">
-              <div className="flex items-center gap-4 mb-8 justify-center md:justify-start">
-                <img src={brandLogo} alt="SahilCodeLab Logo" className="w-14 h-14 object-contain rounded-xl" />
-                <div className="text-2xl font-black tracking-tighter uppercase">Sahil<span className="text-orange-500">CodeLab</span></div>
+              <div className="flex items-center gap-4 mb-6 md:mb-8 justify-center md:justify-start">
+                <img src={brandLogo} alt="SahilCodeLab Logo" className="w-12 h-12 md:w-14 md:h-14 object-contain rounded-xl" />
+                <div className="text-xl md:text-2xl font-black tracking-tighter uppercase">Sahil<span className="text-orange-500">CodeLab</span></div>
               </div>
-              <p className="text-gray-400 text-sm leading-relaxed font-medium">Precision engineered in India for a global developer community.</p>
+              <p className="text-gray-400 text-xs md:text-sm leading-relaxed font-medium">Precision engineered in India for a global developer community.</p>
             </div>
           </div>
-          <div className="text-center pt-12 border-t border-gray-100">
-            <div className="text-[10px] font-black uppercase tracking-[0.5em] text-gray-300">© 2026 SAHIL RAZA // SOFTWARE ENGINEER</div>
+          <div className="text-center pt-10 md:pt-12 border-t border-gray-100">
+            <div className="text-[9px] md:text-[10px] font-black uppercase tracking-[0.4em] md:tracking-[0.5em] text-gray-300">© 2026 SAHIL RAZA // SOFTWARE ENGINEER</div>
           </div>
         </div>
       </footer>
