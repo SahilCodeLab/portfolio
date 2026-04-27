@@ -9,6 +9,7 @@ import Services from './components/Services';
 import TechnicalArsenal from './components/TechnicalArsenal';
 import Skills from './components/Skills';
 import Testimonials from './components/Testimonials';
+import ContactForm from './components/ContactForm';
 import Loader from './components/Loader';
 import './index.css';
 
@@ -158,19 +159,19 @@ function App() {
         <Certifications />
         <Testimonials />
 
-        <section id="contact" className="py-32 md:py-40 bg-gray-900 text-white relative overflow-hidden">
+        <section id="contact" className="py-24 md:py-32 bg-gray-900 text-white relative overflow-hidden">
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(249,115,22,0.15)_0,transparent_70%)]"></div>
-          <div className="container-tight text-center relative z-10">
-            <motion.div initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }}>
-                <h2 className="text-5xl md:text-9xl font-black tracking-tighter mb-10 md:mb-12 leading-none uppercase">
+          <div className="container-tight px-4 relative z-10">
+            <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12 md:mb-16">
+              <span className="text-orange-500 font-black tracking-widest text-[9px] md:text-[10px] uppercase mb-4 block">Get in Touch</span>
+              <h2 className="text-5xl md:text-8xl font-black tracking-tighter mb-6 leading-none uppercase">
                 Let's <span className="text-orange-500 italic">Create.</span>
-                </h2>
-                <div className="flex flex-col sm:flex-row items-center justify-center gap-6 md:gap-10">
-                    <a href="mailto:contact.sahilraza@gmail.com" className="w-full sm:w-auto bg-orange-500 text-white px-12 md:px-16 py-6 md:py-8 rounded-[1.5rem] md:rounded-[2rem] font-black uppercase tracking-[0.2em] md:tracking-[0.3em] text-xs md:text-sm shadow-xl hover:bg-white hover:text-orange-500 transition-all">
-                        Get in Touch
-                    </a>
-                </div>
+              </h2>
+              <p className="text-white/40 text-base md:text-lg font-medium max-w-xl mx-auto">
+                Koi project hai? Landing page, Android app, ya UI design — bata do, main 24 ghante mein reply karunga.
+              </p>
             </motion.div>
+            <ContactForm />
           </div>
         </section>
       </main>
