@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence, useScroll, useSpring } from 'framer-motion';
-import { ArrowUp, Activity } from 'lucide-react';
+import { ArrowUp, Activity, Linkedin, Github, Mail } from 'lucide-react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import ProjectGallery from './components/ProjectGallery';
@@ -176,18 +176,52 @@ function App() {
       </main>
 
       <footer className="py-20 md:py-24 bg-white border-t border-gray-100">
-        <div className="container-tight text-center md:text-left">
+        <div className="container-tight px-4 md:px-6 text-center md:text-left">
           <div className="flex flex-col md:flex-row justify-between items-start gap-12 md:gap-16 mb-16 md:mb-20">
             <div className="max-w-sm mx-auto md:mx-0">
               <div className="flex items-center gap-4 mb-6 md:mb-8 justify-center md:justify-start">
                 <img src={brandLogo} alt="SahilCodeLab Logo" className="w-12 h-12 md:w-14 md:h-14 object-contain rounded-xl" />
                 <div className="text-xl md:text-2xl font-black tracking-tighter uppercase">Sahil<span className="text-orange-500">CodeLab</span></div>
               </div>
-              <p className="text-gray-400 text-xs md:text-sm leading-relaxed font-medium">Precision engineered in India for a global developer community.</p>
+              <p className="text-gray-400 text-xs md:text-sm leading-relaxed font-medium mb-8">Precision engineered in India for a global developer community.</p>
+              {/* Social Links */}
+              <div className="flex items-center gap-4 justify-center md:justify-start">
+                <a href="https://www.linkedin.com/in/sahil-razaofficial" target="_blank" rel="noopener noreferrer"
+                  className="w-12 h-12 rounded-2xl bg-gray-100 flex items-center justify-center text-gray-400 hover:bg-[#0077B5] hover:text-white transition-all duration-300 group shadow-sm hover:shadow-lg hover:-translate-y-1">
+                  <Linkedin className="w-5 h-5" />
+                </a>
+                <a href="https://github.com/SahilCodeLab" target="_blank" rel="noopener noreferrer"
+                  className="w-12 h-12 rounded-2xl bg-gray-100 flex items-center justify-center text-gray-400 hover:bg-gray-900 hover:text-white transition-all duration-300 shadow-sm hover:shadow-lg hover:-translate-y-1">
+                  <Github className="w-5 h-5" />
+                </a>
+                <a href="mailto:contact.sahilraza@gmail.com"
+                  className="w-12 h-12 rounded-2xl bg-gray-100 flex items-center justify-center text-gray-400 hover:bg-orange-500 hover:text-white transition-all duration-300 shadow-sm hover:shadow-lg hover:-translate-y-1">
+                  <Mail className="w-5 h-5" />
+                </a>
+              </div>
+            </div>
+
+            {/* Quick Links */}
+            <div className="text-center md:text-left">
+              <div className="text-[10px] font-black uppercase tracking-[0.4em] text-gray-300 mb-6">Quick Links</div>
+              <div className="flex flex-col gap-3">
+                {['Projects', 'About', 'Certifications', 'Contact'].map(link => (
+                  <a key={link} href={`#${link.toLowerCase()}`} className="text-sm font-bold text-gray-400 hover:text-orange-500 transition-colors">{link}</a>
+                ))}
+              </div>
+            </div>
+
+            {/* Contact Info */}
+            <div className="text-center md:text-left">
+              <div className="text-[10px] font-black uppercase tracking-[0.4em] text-gray-300 mb-6">Contact</div>
+              <a href="mailto:contact.sahilraza@gmail.com" className="text-sm font-bold text-gray-400 hover:text-orange-500 transition-colors block mb-3">contact.sahilraza@gmail.com</a>
+              <a href="https://www.linkedin.com/in/sahil-razaofficial" target="_blank" rel="noopener noreferrer" className="text-sm font-bold text-gray-400 hover:text-orange-500 transition-colors block">LinkedIn Profile</a>
             </div>
           </div>
-          <div className="text-center pt-10 md:pt-12 border-t border-gray-100">
+
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4 pt-10 md:pt-12 border-t border-gray-100">
             <div className="text-[9px] md:text-[10px] font-black uppercase tracking-[0.4em] md:tracking-[0.5em] text-gray-300">© 2026 SAHIL RAZA // SOFTWARE ENGINEER</div>
+            <div className="text-[9px] md:text-[10px] font-black uppercase tracking-[0.4em] text-gray-300">SahilCodeLab // India</div>
           </div>
         </div>
       </footer>

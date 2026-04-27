@@ -58,9 +58,9 @@ const Navbar = () => {
             ))}
           </div>
           
-          <button className="hidden sm:block bg-orange-500 text-white px-8 py-4 rounded-[2rem] text-[10px] font-black uppercase tracking-[0.3em] shadow-xl shadow-orange-500/20 hover:bg-gray-900 transition-all active:scale-95">
+          <a href="#contact" className="hidden sm:block bg-orange-500 text-white px-8 py-4 rounded-[2rem] text-[10px] font-black uppercase tracking-[0.3em] shadow-xl shadow-orange-500/20 hover:bg-gray-900 transition-all active:scale-95">
             Hire Me
-          </button>
+          </a>
         </motion.div>
       </div>
     </nav>
