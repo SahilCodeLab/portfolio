@@ -169,7 +169,7 @@ function App() {
                 Let's <span className="text-orange-500 italic">Create.</span>
               </h2>
               <p className="text-white/40 text-base md:text-lg font-medium max-w-xl mx-auto">
-                Koi project hai? Landing page, Android app, ya UI design — bata do, main 24 ghante mein reply karunga.
+                Have a project in mind? Let's build something exceptional together.
               </p>
             </motion.div>
             <ContactForm />
