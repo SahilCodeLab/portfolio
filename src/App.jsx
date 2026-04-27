@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence, useScroll, useSpring } from 'framer-motion';
-import { ArrowUp, Activity, Linkedin, Github, Mail } from 'lucide-react';
+import { ArrowUp, Activity, Linkedin, Github, Mail, Instagram } from 'lucide-react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import ProjectGallery from './components/ProjectGallery';
@@ -193,6 +193,10 @@ function App() {
                 <a href="https://github.com/SahilCodeLab" target="_blank" rel="noopener noreferrer"
                   className="w-12 h-12 rounded-2xl bg-gray-100 flex items-center justify-center text-gray-400 hover:bg-gray-900 hover:text-white transition-all duration-300 shadow-sm hover:shadow-lg hover:-translate-y-1">
                   <Github className="w-5 h-5" />
+                </a>
+                <a href="https://www.instagram.com/clipztar" target="_blank" rel="noopener noreferrer"
+                  className="w-12 h-12 rounded-2xl bg-gray-100 flex items-center justify-center text-gray-400 hover:bg-gradient-to-br hover:from-[#f09433] hover:via-[#e6683c] hover:to-[#dc2743] hover:text-white transition-all duration-300 shadow-sm hover:shadow-lg hover:-translate-y-1">
+                  <Instagram className="w-5 h-5" />
                 </a>
                 <a href="mailto:contact.sahilraza@gmail.com"
                   className="w-12 h-12 rounded-2xl bg-gray-100 flex items-center justify-center text-gray-400 hover:bg-orange-500 hover:text-white transition-all duration-300 shadow-sm hover:shadow-lg hover:-translate-y-1">
