@@ -55,7 +55,7 @@ const ContactForm = () => {
               <CheckCircle className="w-10 h-10 text-green-500" />
             </div>
             <h3 className="text-3xl font-black text-white tracking-tighter">Message Sent!</h3>
-            <p className="text-white/50 font-medium">Main jald hi reply karunga. 🙏</p>
+            <p className="text-white/50 font-medium">I'll get back to you as soon as possible. 🙏</p>
             <button
               onClick={() => setStatus('idle')}
               className="mt-4 px-8 py-3 rounded-2xl bg-white/10 text-white text-xs font-black uppercase tracking-widest hover:bg-white/20 transition-all"
@@ -121,7 +121,7 @@ const ContactForm = () => {
             {status === 'error' && (
               <div className="flex items-center gap-3 px-5 py-4 bg-red-500/10 border border-red-500/20 rounded-2xl">
                 <AlertCircle className="w-5 h-5 text-red-400 flex-shrink-0" />
-                <span className="text-red-400 text-sm font-medium">Kuch error hua, dobara try karo.</span>
+                <span className="text-red-400 text-sm font-medium">Something went wrong. Please try again.</span>
               </div>
             )}
 
