@@ -176,7 +176,7 @@ function App() {
         <Testimonials />
 
         <section id="contact" className="py-24 md:py-32 bg-gray-900 text-white relative overflow-hidden">
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(249,115,22,0.15)_0,transparent_70%)]"></div>
+          <div className="absolute inset-0 w-full h-full bg-[radial-gradient(circle_at_center,rgba(249,115,22,0.15)_0,transparent_70%)]"></div>
           <div className="container-tight px-4 relative z-10">
             <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12 md:mb-16">
               <span className="text-orange-500 font-black tracking-widest text-[9px] md:text-[10px] uppercase mb-4 block">Get in Touch</span>
