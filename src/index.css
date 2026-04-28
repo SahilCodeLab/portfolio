@@ -14,12 +14,14 @@
 
 @layer base {
   html {
-    scroll-behavior: auto; /* Instant scroll to remove delay feel */
+    scroll-behavior: auto;
     background-color: white;
+    overflow-x: hidden;
   }
   body {
     @apply text-gray-900 font-sans antialiased;
     background-color: white;
+    overflow-x: hidden;
   }
   h1, h2, h3, h4, h5, h6 {
     @apply font-display font-black tracking-tighter;
