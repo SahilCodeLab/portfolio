@@ -124,7 +124,7 @@ const Certifications = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={(e) => e.stopPropagation()}
-                    className="absolute bottom-3 right-3 md:bottom-4 md:right-4 flex items-center gap-1 bg-orange-500 text-white text-[7px] md:text-[9px] font-black uppercase tracking-widest px-2 py-1 md:px-3 md:py-1.5 rounded-full shadow-lg hover:bg-gray-900 transition-all opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 duration-300"
+                    className="absolute bottom-3 right-3 md:bottom-4 md:right-4 flex items-center gap-1 bg-orange-500 text-white text-[7px] md:text-[9px] font-black uppercase tracking-widest px-2 py-1 md:px-3 md:py-1.5 rounded-full shadow-lg hover:bg-gray-900 transition-all"
                   >
                     <ExternalLink size={9} />
                     <span>Verify</span>
