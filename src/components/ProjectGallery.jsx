@@ -102,7 +102,7 @@ const ProjectGallery = () => {
     <section id="projects" className="py-24 bg-white overflow-hidden">
       <div className="container-tight px-4 md:px-6">
         {/* Apps Section */}
-        <div className="mb-32">
+        <div id="app-development" className="mb-32">
           <motion.div 
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -126,7 +126,7 @@ const ProjectGallery = () => {
         </div>
 
         {/* UI Section */}
-        <div className="pt-24 border-t border-gray-100">
+        <div id="ui-ux-design" className="pt-24 border-t border-gray-100">
           <motion.div 
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}

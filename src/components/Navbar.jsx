@@ -28,8 +28,8 @@ const Navbar = () => {
   // Mobile menu items (full labels)
   const mobileNav = [
     { label: 'Projects', href: '#projects' },
-    { label: 'App Development', href: '#projects' },
-    { label: 'UI / UX Design', href: '#projects' },
+    { label: 'App Development', href: '#app-development' },
+    { label: 'UI / UX Design', href: '#ui-ux-design' },
     { label: 'Certificates', href: '#certifications' },
     { label: 'Client Reviews', href: '#testimonials' },
     { label: 'About', href: '#about' },
