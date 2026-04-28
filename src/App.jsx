@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence, useScroll, useSpring } from 'framer-motion';
-import { ArrowUp, Activity, Mail } from 'lucide-react';
+import { ArrowUp, Activity, Mail, Globe, Smartphone, Briefcase, Code } from 'lucide-react';
 import { FaLinkedin, FaGithub, FaInstagram } from 'react-icons/fa';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
@@ -19,12 +19,15 @@ import profilePic from './assets/profile_pic.jpg';
 import allAppsEcosystem from './assets/all_apps_ecosystem.jpg';
 import brandLogo from './assets/brand_logo.jpg';
 
-const StatsCounter = ({ value, label, suffix = "" }) => {
+const StatsCounter = ({ value, label, suffix = "", icon: Icon }) => {
   const [count, setCount] = useState(0);
   useEffect(() => {
     let start = 0;
     const end = parseInt(value);
-    if (start === end) return;
+    if (start === end) {
+      setCount(end);
+      return;
+    }
     let totalMiliseconds = 2000;
     let incrementTime = (totalMiliseconds / end);
     let timer = setInterval(() => {
@@ -35,7 +38,12 @@ const StatsCounter = ({ value, label, suffix = "" }) => {
     return () => clearInterval(timer);
   }, [value]);
   return (
-    <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="flex flex-col items-center md:items-start">
+    <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="flex flex-col items-center md:items-start group">
+      {Icon && (
+        <div className="w-10 h-10 md:w-12 md:h-12 bg-orange-50 rounded-xl md:rounded-2xl flex items-center justify-center text-orange-500 mb-4 group-hover:scale-110 group-hover:bg-orange-500 group-hover:text-white transition-all duration-300 shadow-sm">
+          <Icon className="w-5 h-5 md:w-6 md:h-6" />
+        </div>
+      )}
       <div className="text-4xl md:text-5xl font-black text-gray-900 mb-2">{count}{suffix}</div>
       <div className="text-[9px] md:text-[10px] font-black uppercase tracking-[0.3em] text-orange-500">{label}</div>
     </motion.div>
@@ -139,10 +147,10 @@ function App() {
                   </p>
                 </div>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 pt-8 md:pt-10 border-t border-gray-200">
-                  <StatsCounter value="4" label="Web Exp" suffix="Y+" />
-                  <StatsCounter value="1" label="App Exp" suffix="Y+" />
-                  <StatsCounter value="4" label="Projects" suffix="+" />
-                  <StatsCounter value="82" label="Repos" suffix="+" />
+                  <StatsCounter value="4" label="Web Exp" suffix="Y+" icon={Globe} />
+                  <StatsCounter value="1" label="App Exp" suffix="Y+" icon={Smartphone} />
+                  <StatsCounter value="20" label="Projects" suffix="+" icon={Briefcase} />
+                  <StatsCounter value="82" label="Repos" suffix="+" icon={Code} />
                 </div>
               </motion.div>
             </div>
