@@ -24,7 +24,7 @@ const certifications = [
   {
     id: 2,
     title: "TypeScript Mastery",
-    issuer: "Microsoft / TechInst.",
+    issuer: "Mimo",
     image: tsCert,
     date: "2025",
     credentialUrl: null
@@ -32,17 +32,17 @@ const certifications = [
   {
     id: 3,
     title: "React Architecture",
-    issuer: "Meta Systems",
+    issuer: "Mimo",
     image: reactCert,
-    date: "2024",
+    date: "2025",
     credentialUrl: null
   },
   {
     id: 4,
     title: "SQL Data Modeling",
-    issuer: "Kaggle",
+    issuer: "Mimo",
     image: sqlCert,
-    date: "2023",
+    date: "2025",
     credentialUrl: null
   },
   {
