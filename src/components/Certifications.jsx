@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Star } from 'lucide-react';
+import { ExternalLink } from 'lucide-react';
 
 // Import Certificates
 import aiAgentCert from '../assets/ai_agent_intensive_cert.jpg';
@@ -18,56 +18,64 @@ const certifications = [
     title: "5-Day AI Agent Intensive",
     issuer: "Google Cloud / AI Academy",
     image: aiAgentCert,
-    date: "2025"
+    date: "2025",
+    credentialUrl: null
   },
   {
     id: 2,
     title: "TypeScript Mastery",
     issuer: "Microsoft / TechInst.",
     image: tsCert,
-    date: "2025"
+    date: "2025",
+    credentialUrl: null
   },
   {
     id: 3,
     title: "React Architecture",
     issuer: "Meta Systems",
     image: reactCert,
-    date: "2024"
+    date: "2024",
+    credentialUrl: null
   },
   {
     id: 4,
     title: "SQL Data Modeling",
-    issuer: "Standard Inst.",
+    issuer: "Kaggle",
     image: sqlCert,
-    date: "2023"
+    date: "2023",
+    credentialUrl: "https://www.kaggle.com/certification/badges/sahilrazaa/105"
   },
   {
     id: 5,
     title: "AI Prompt Strategy",
-    issuer: "OpenAI Labs",
+    issuer: "Simplilearn",
     image: promptCert,
-    date: "2024"
+    date: "2024",
+    credentialUrl: "https://simpli-web.app.link/e/Q3TKJIyjG2b"
   },
   {
     id: 6,
     title: "Claude Code in Action",
     issuer: "Anthropic / Claude",
     image: claudeCodeCert,
-    date: "2025"
+    date: "2025",
+    credentialUrl: "https://verify.skilljar.com/c/3ezqqk5g8ait"
   },
   {
     id: 7,
     title: "Google Vertex AI",
     issuer: "Google Cloud",
     image: claudeVertexCert,
-    date: "2025"
+    date: "2025",
+    credentialUrl: "https://verify.skilljar.com/c/e8e2uufdhoub"
   },
   {
     id: 8,
     title: "AI Fluency Framework",
-    issuer: "AI Academy",
+    issuer: "Anthropic / Claude",
     image: aiFluencyCert,
-    date: "2024"
+    date: "2024",
+    credentialUrl: "https://verify.skilljar.com/c/haagesjikas3"
   }
 ];
 
@@ -109,6 +117,19 @@ const Certifications = () => {
                   alt={cert.title} 
                   className="w-full h-full object-contain rounded-lg md:rounded-xl transition-transform duration-700 group-hover:scale-105"
                 />
+                {/* Credential Verify Badge - only if URL exists */}
+                {cert.credentialUrl && (
+                  <a
+                    href={cert.credentialUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={(e) => e.stopPropagation()}
+                    className="absolute bottom-3 right-3 md:bottom-4 md:right-4 flex items-center gap-1 bg-orange-500 text-white text-[7px] md:text-[9px] font-black uppercase tracking-widest px-2 py-1 md:px-3 md:py-1.5 rounded-full shadow-lg hover:bg-gray-900 transition-all opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 duration-300"
+                  >
+                    <ExternalLink size={9} />
+                    <span>Verify</span>
+                  </a>
+                )}
               </div>
               
               <div className="mt-4 md:mt-8 px-1 md:px-4 text-center md:text-left">
@@ -120,6 +141,17 @@ const Certifications = () => {
                  </div>
                  <div className="flex flex-col md:flex-row justify-between items-center gap-1 md:gap-2">
                     <div className="text-[7px] md:text-[10px] text-gray-300 font-bold tracking-widest uppercase">{cert.date} // VALIDATED</div>
+                    {cert.credentialUrl && (
+                      <a
+                        href={cert.credentialUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hidden md:flex items-center gap-1 text-[8px] font-black text-orange-500 hover:text-gray-900 uppercase tracking-widest transition-colors"
+                      >
+                        <ExternalLink size={9} />
+                        <span>View Credential</span>
+                      </a>
+                    )}
                  </div>
               </div>
             </motion.div>
