@@ -180,7 +180,7 @@ function App() {
           <div className="container-tight px-4 relative z-10">
             <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12 md:mb-16">
               <span className="text-orange-500 font-black tracking-widest text-[9px] md:text-[10px] uppercase mb-4 block">Get in Touch</span>
-              <h2 className="text-5xl md:text-8xl font-black tracking-tighter mb-6 leading-none uppercase">
+              <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-black tracking-tighter mb-6 leading-none uppercase w-full">
                 Let's <span className="text-orange-500 italic">Create.</span>
               </h2>
               <p className="text-white/40 text-base md:text-lg font-medium max-w-xl mx-auto">
