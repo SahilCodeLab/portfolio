@@ -136,7 +136,7 @@ function App() {
                     <span className="text-orange-500 font-black tracking-widest text-[10px] uppercase">The Expert</span>
                 </div>
                 <h2 className="text-4xl md:text-7xl font-black tracking-tighter mb-8 md:mb-10 leading-[0.9]">
-                  Sahil Raza: <br/> <span className="text-gray-300 italic">Software Engineer.</span>
+                  Sahil Raza <br/> <span className="text-gray-300 italic">Software Engineer.</span>
                 </h2>
                 <div className="space-y-6 text-gray-500 text-base md:text-lg leading-relaxed mb-8 md:mb-12 font-medium max-w-2xl mx-auto lg:mx-0 text-left">
                   <p>
