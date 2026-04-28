@@ -19,7 +19,7 @@ const certifications = [
     issuer: "Google Cloud / AI Academy",
     image: aiAgentCert,
     date: "2025",
-    credentialUrl: null
+    credentialUrl: "https://www.kaggle.com/certification/badges/sahilrazaa/105"
   },
   {
     id: 2,
@@ -43,7 +43,7 @@ const certifications = [
     issuer: "Kaggle",
     image: sqlCert,
     date: "2023",
-    credentialUrl: "https://www.kaggle.com/certification/badges/sahilrazaa/105"
+    credentialUrl: null
   },
   {
     id: 5,
