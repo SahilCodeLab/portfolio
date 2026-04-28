@@ -55,7 +55,8 @@ const coreApps = [
     screenshots: [wrapify1, wrapify2, wrapify4, wrapify5, wrapify6, wrapifyBanner],
     tech: ["Next.js", "Razorpay", "Analytics"],
     category: "Web Platform",
-    color: "#f59e0b"
+    color: "#f59e0b",
+    liveLink: "https://com-sahilcodelab-wrapify.en.uptodown.com/android"
   },
   { 
     id: 'masterdex', 
@@ -76,7 +77,8 @@ const coreApps = [
     tech: ["React", "Node.js", "AI"],
     category: "Productivity",
     color: "#8b5cf6",
-    isComingSoon: true
+    isComingSoon: true,
+    liveLink: "https://www.palmplaystore.com/detail/com.razatech.auranotes?country=IN"
   },
 ];
 
@@ -197,12 +199,16 @@ const ProjectCard = ({ project, index }) => {
             ))}
             </div>
             <motion.a 
-                href="#contact"
+                href={project.liveLink || "#contact"}
+                target={project.liveLink ? "_blank" : undefined}
+                rel={project.liveLink ? "noopener noreferrer" : undefined}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="flex items-center gap-3 md:gap-4 group"
             >
-                <span className="text-[10px] md:text-xs font-black uppercase tracking-[0.3em] group-hover:text-orange-500 transition-colors">Request Demo</span>
+                <span className="text-[10px] md:text-xs font-black uppercase tracking-[0.3em] group-hover:text-orange-500 transition-colors">
+                    {project.liveLink ? "Live App" : "Request Demo"}
+                </span>
                 <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl border-2 border-gray-100 flex items-center justify-center group-hover:border-orange-500 group-hover:bg-orange-500 group-hover:text-white transition-all">
                     <ExternalLink className="w-4 h-4 md:w-5 md:h-5" />
                 </div>
