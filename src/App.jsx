@@ -130,12 +130,19 @@ function App() {
                 <h2 className="text-4xl md:text-7xl font-black tracking-tighter mb-8 md:mb-10 leading-[0.9]">
                   Sahil Raza: <br/> <span className="text-gray-300 italic">Software Engineer.</span>
                 </h2>
-                <p className="text-gray-500 text-lg md:text-xl leading-relaxed mb-8 md:mb-12 font-medium max-w-2xl mx-auto lg:mx-0">
-                  Founder of <span className="text-gray-900 font-black">SahilCodeLab</span>. Delivering world-class software architectures and premium engineering solutions.
-                </p>
-                <div className="grid grid-cols-2 gap-8 md:gap-12 pt-10 border-t border-gray-200">
-                  <StatsCounter value="20" label="Deployments" suffix="+" />
-                  <StatsCounter value="4" label="Exp Years" suffix="+" />
+                <div className="space-y-6 text-gray-500 text-base md:text-lg leading-relaxed mb-8 md:mb-12 font-medium max-w-2xl mx-auto lg:mx-0 text-left">
+                  <p>
+                    With <span className="text-gray-900 font-black">4+ years in Web</span> and <span className="text-gray-900 font-black">1+ year in Android</span> engineering, I approach software logically—architecting workflows and drawing logic before writing a single line of code.
+                  </p>
+                  <p>
+                    I don't just copy UIs; I build entirely unique products. Apps like <span className="text-orange-500 font-bold">PocketID, Wrapify</span>, and <span className="text-orange-500 font-bold">MasterDex</span> are original concepts filling untouched market gaps.
+                  </p>
+                </div>
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 pt-8 md:pt-10 border-t border-gray-200">
+                  <StatsCounter value="4" label="Web Exp" suffix="Y+" />
+                  <StatsCounter value="1" label="App Exp" suffix="Y+" />
+                  <StatsCounter value="4" label="Projects" suffix="+" />
+                  <StatsCounter value="82" label="Repos" suffix="+" />
                 </div>
               </motion.div>
             </div>

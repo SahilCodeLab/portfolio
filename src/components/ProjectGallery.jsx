@@ -196,16 +196,17 @@ const ProjectCard = ({ project, index }) => {
                 </span>
             ))}
             </div>
-            <motion.button 
+            <motion.a 
+                href="#contact"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="flex items-center gap-3 md:gap-4 group"
             >
-                <span className="text-[10px] md:text-xs font-black uppercase tracking-[0.3em] group-hover:text-orange-500 transition-colors">Details</span>
+                <span className="text-[10px] md:text-xs font-black uppercase tracking-[0.3em] group-hover:text-orange-500 transition-colors">Request Demo</span>
                 <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl border-2 border-gray-100 flex items-center justify-center group-hover:border-orange-500 group-hover:bg-orange-500 group-hover:text-white transition-all">
                     <ExternalLink className="w-4 h-4 md:w-5 md:h-5" />
                 </div>
-            </motion.button>
+            </motion.a>
         </div>
       </div>
 
