@@ -16,7 +16,7 @@ const certifications = [
   {
     id: 1,
     title: "5-Day AI Agent Intensive",
-    issuer: "Google Cloud / AI Academy",
+    issuer: "Kaggle | Google",
     image: aiAgentCert,
     date: "2025",
     credentialUrl: "https://www.kaggle.com/certification/badges/sahilrazaa/105"
