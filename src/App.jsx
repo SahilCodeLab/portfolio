@@ -18,6 +18,7 @@ import './index.css';
 import profilePic from './assets/profile_pic.jpg';
 import allAppsEcosystem from './assets/all_apps_ecosystem.jpg';
 import brandLogo from './assets/brand_logo.jpg';
+import undrawCoding from './assets/undraw_coding.svg';
 
 const StatsCounter = ({ value, label, suffix = "", icon: Icon }) => {
   const [count, setCount] = useState(0);
@@ -151,6 +152,12 @@ function App() {
                   <StatsCounter value="1" label="App Exp" suffix="Y+" icon={Smartphone} />
                   <StatsCounter value="20" label="Projects" suffix="+" icon={Briefcase} />
                   <StatsCounter value="82" label="Repos" suffix="+" icon={Code} />
+                </div>
+                <div className="mt-12 flex justify-center lg:justify-start">
+                  <div className="p-6 bg-orange-50/50 rounded-[2rem] border border-orange-100/50 w-full max-w-sm">
+                    <img src={undrawCoding} alt="Coding Illustration" className="w-full h-auto drop-shadow-xl" />
+                    <p className="text-[10px] font-black uppercase tracking-widest text-orange-500 text-center mt-4">unDraw Test Illustration</p>
+                  </div>
                 </div>
               </motion.div>
             </div>
