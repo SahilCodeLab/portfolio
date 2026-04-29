@@ -11,6 +11,7 @@ import promptCert from '../assets/prompt_engineering_certificate.jpg';
 import claudeCodeCert from '../assets/claude_code_action_cert.jpg';
 import claudeVertexCert from '../assets/claude_vertex_ai_cert.jpg';
 import aiFluencyCert from '../assets/ai_fluency_cert.jpg';
+import undrawAwards from '../assets/undraw_awards.svg';
 
 const certifications = [
   {
@@ -89,15 +90,22 @@ const Certifications = () => {
             viewport={{ once: true }}
             className="flex flex-col md:flex-row justify-between items-center md:items-end mb-16 gap-8 text-center md:text-left"
         >
-           <div className="max-w-xl">
-              <span className="text-orange-500 font-black uppercase tracking-[0.3em] text-[9px] md:text-[10px] mb-4 md:mb-6 block">Expertise Verification</span>
-              <h2 className="text-4xl md:text-6xl font-black mb-0 tracking-tighter leading-none">
-                Verified <br className="hidden md:block" /> <span className="text-gray-300 italic underline decoration-orange-500/20 underline-offset-8">Professionalism</span>
-              </h2>
-           </div>
-           <p className="text-gray-400 text-base md:text-lg leading-relaxed max-w-xs md:mb-2">
-              A collection of industry-standard credentials validating my technical mastery in AI, Cloud, and Engineering.
-           </p>
+            <div className="flex flex-col md:flex-row justify-between items-center md:items-end w-full">
+               <div className="max-w-xl">
+                  <span className="text-orange-500 font-black uppercase tracking-[0.3em] text-[9px] md:text-[10px] mb-4 md:mb-6 block">Expertise Verification</span>
+                  <h2 className="text-4xl md:text-6xl font-black mb-0 tracking-tighter leading-none">
+                    Verified <br className="hidden md:block" /> <span className="text-gray-300 italic underline decoration-orange-500/20 underline-offset-8">Professionalism</span>
+                  </h2>
+               </div>
+               <div className="flex flex-col items-center md:items-end mt-8 md:mt-0">
+                 <div className="w-full max-w-[150px] md:max-w-[200px] mb-4">
+                   <img src={undrawAwards} alt="Awards Illustration" className="w-full h-auto drop-shadow-md" />
+                 </div>
+                 <p className="text-gray-400 text-base md:text-lg leading-relaxed max-w-xs md:text-right">
+                    A collection of industry-standard credentials validating my technical mastery.
+                 </p>
+               </div>
+            </div>
         </motion.div>
 
         {/* 2-Column Grid on Mobile Fixed */}

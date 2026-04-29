@@ -7,6 +7,7 @@ import pocketIdLogo from '../assets/pocketid_logo.png';
 import masterDexLogo from '../assets/masterdex_logo.png';
 import warpifyLogo from '../assets/warpify_logo.png';
 import auraNotesLogo from '../assets/aura_notes_logo.webp';
+import undrawApp from '../assets/undraw_app_installation.svg';
 
 // Import Screenshots
 import masterDex1 from '../assets/masterdex_homepage_1.jpg';
@@ -109,13 +110,20 @@ const ProjectGallery = () => {
             viewport={{ once: true }}
             className="mb-20 text-center md:text-left"
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-orange-50 rounded-full text-orange-600 font-bold text-[10px] uppercase tracking-widest mb-6">
-                <Smartphone className="w-3 h-3" />
-                <span>Featured Applications</span>
+            <div className="flex flex-col lg:flex-row items-center justify-between gap-10">
+              <div>
+                <div className="inline-flex items-center gap-2 px-4 py-2 bg-orange-50 rounded-full text-orange-600 font-bold text-[10px] uppercase tracking-widest mb-6">
+                    <Smartphone className="w-3 h-3" />
+                    <span>Featured Applications</span>
+                </div>
+                <h2 className="text-4xl md:text-7xl font-black tracking-tighter mb-8 leading-tight">
+                  Full-Stack <span className="text-gray-300">Solutions.</span>
+                </h2>
+              </div>
+              <div className="w-full max-w-[250px] lg:max-w-[300px]">
+                <img src={undrawApp} alt="App Development Illustration" className="w-full h-auto drop-shadow-xl" />
+              </div>
             </div>
-            <h2 className="text-4xl md:text-7xl font-black tracking-tighter mb-8 leading-tight">
-              Full-Stack <span className="text-gray-300">Solutions.</span>
-            </h2>
           </motion.div>
 
           <div className="space-y-32 md:space-y-40">

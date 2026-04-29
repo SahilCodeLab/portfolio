@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Star, Quote } from 'lucide-react';
+import undrawCodeReview from '../assets/undraw_code_review.svg';
 
 const testimonials = [
   {
@@ -50,11 +51,14 @@ const testimonials = [
 const Testimonials = () => {
   return (
     <section id="testimonials" className="py-24 bg-white relative overflow-hidden">
-      <div className="container-tight px-4 mb-20 text-center">
+      <div className="container-tight px-4 mb-20 text-center flex flex-col items-center">
           <span className="text-orange-500 font-black tracking-widest text-[9px] md:text-[10px] uppercase mb-4 block">Client Feedback</span>
           <h2 className="text-4xl md:text-6xl font-black tracking-tighter mb-8 leading-none">
             Trusted by <br/> <span className="text-gray-300 italic underline decoration-orange-500/20 underline-offset-8">Happy Clients</span>
           </h2>
+          <div className="w-full max-w-[150px] md:max-w-[200px] mb-6">
+            <img src={undrawCodeReview} alt="Reviews Illustration" className="w-full h-auto drop-shadow-md" />
+          </div>
           <p className="text-gray-400 text-base md:text-lg max-w-2xl mx-auto font-medium px-4">
             Real reviews from entrepreneurs and companies who scaled their business with SahilCodeLab.
           </p>
