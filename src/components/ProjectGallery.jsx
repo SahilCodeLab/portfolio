@@ -226,8 +226,31 @@ const ProjectGallery = () => {
 const ProjectCard = ({ project, index }) => {
   const [showCode, setShowCode] = React.useState(false);
 
-  // Sample colorful code for UI designs
-  const uiCodeSnippet = `<!-- Nexus Admin Dashboard Structure -->
+  // Dynamic colorful code snippets
+  const getCodeSnippet = (title) => {
+    if (title === "The Crochet City") {
+      return `<!-- The Crochet City: Premium Mobile UI -->
+<div class="glass-card rounded-[2.5rem] p-8 ambient-shadow">
+  <div class="relative group">
+    <div class="size-32 rounded-full border-4 border-white shadow-xl ring-1 ring-primary/20">
+      <div class="w-full h-full bg-cover scale-110 group-hover:scale-100 transition-700" 
+           style="background-image: url('crochet_profile.jpg')"></div>
+    </div>
+  </div>
+  <div class="mt-6 text-center">
+    <h1 class="text-3xl font-display font-medium tracking-tight">The Crochet City</h1>
+    <div class="flex items-center justify-center gap-2 text-sm text-[#866573]">
+      <span class="text-primary font-bold">6.2k Followers</span>
+    </div>
+  </div>
+  <button class="w-full h-14 bg-whatsapp text-white rounded-full flex items-center justify-center gap-3">
+    <span class="material-symbols-outlined">chat_bubble</span>
+    Inquire on WhatsApp
+  </button>
+</div>`;
+    }
+    
+    return `<!-- Nexus Admin Dashboard Structure -->
 <div class="flex h-screen bg-gray-900">
   <aside class="w-64 bg-orange-600 p-6">
     <nav class="space-y-4">
@@ -242,13 +265,9 @@ const ProjectCard = ({ project, index }) => {
         Export Data
       </button>
     </header>
-    <div class="grid grid-cols-3 gap-8">
-      <div class="h-40 bg-gray-800 rounded-3xl border border-white/5" />
-      <div class="h-40 bg-gray-800 rounded-3xl border border-white/5" />
-      <div class="h-40 bg-gray-800 rounded-3xl border border-white/5" />
-    </div>
   </main>
 </div>`;
+  };
 
   return (
     <motion.div 
@@ -337,9 +356,9 @@ const ProjectCard = ({ project, index }) => {
                         <div className="w-3 h-3 rounded-full bg-yellow-500/20" />
                         <div className="w-3 h-3 rounded-full bg-green-500/20" />
                     </div>
-                    <pre className="custom-scrollbar overflow-x-auto">
+                    <pre className="custom-scrollbar overflow-x-auto max-h-[400px]">
                         <code className="block">
-                            {uiCodeSnippet.split('\n').map((line, i) => (
+                            {getCodeSnippet(project.title).split('\n').map((line, i) => (
                                 <div key={i} className="flex gap-4">
                                     <span className="text-gray-600 select-none w-4">{i + 1}</span>
                                     <span dangerouslySetInnerHTML={{ 
@@ -348,6 +367,10 @@ const ProjectCard = ({ project, index }) => {
                                             .replace(/"/g, '</span><span class="text-orange-400">"</span>')
                                             .replace(/<div/g, '<span class="text-blue-400">&lt;div</span>')
                                             .replace(/<\/div>/g, '<span class="text-blue-400">&lt;/div&gt;</span>')
+                                            .replace(/<button/g, '<span class="text-purple-400">&lt;button</span>')
+                                            .replace(/<\/button>/g, '<span class="text-purple-400">&lt;/button&gt;</span>')
+                                            .replace(/<span/g, '<span class="text-yellow-400">&lt;span</span>')
+                                            .replace(/<\/span>/g, '<span class="text-yellow-400">&lt;/span&gt;</span>')
                                     }} />
                                 </div>
                             ))}
