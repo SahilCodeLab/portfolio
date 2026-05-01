@@ -277,16 +277,16 @@ const ProjectCard = ({ project, index }) => {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.05, duration: 0.5 }}
-              className={`relative group rounded-xl md:rounded-3xl overflow-hidden shadow-lg md:shadow-2xl border-2 md:border-4 border-white ${project.isUI ? 'h-[300px] md:h-[450px]' : 'h-auto'}`}
+              className={`relative group rounded-xl md:rounded-3xl overflow-hidden shadow-lg md:shadow-2xl border-2 md:border-4 border-white ${project.isUI ? 'h-[300px] md:h-[450px] overflow-y-auto custom-scrollbar-hide md:overflow-hidden' : 'h-auto'}`}
             >
               <img 
                 src={img} 
-                className={`w-full ${project.isUI ? 'absolute top-0 left-0 transition-transform duration-[5s] ease-in-out group-hover:-translate-y-[calc(100%-100%)] group-hover:translate-y-[-70%]' : 'h-auto object-cover'} transition-transform duration-700 group-hover:scale-105`}
-                style={project.isUI ? { transitionDuration: '8s', transformOrigin: 'top' } : {}}
+                className={`w-full ${project.isUI ? 'md:absolute md:top-0 md:left-0 md:transition-transform md:duration-[8s] md:ease-in-out md:group-hover:-translate-y-[calc(100%-100%)] md:group-hover:translate-y-[-70%]' : 'h-auto object-cover'} transition-transform duration-700 group-hover:scale-105`}
+                style={project.isUI ? { transformOrigin: 'top' } : {}}
                 alt={`${project.title} screenshot ${i + 1}`}
               />
               {project.isUI && (
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 md:group-hover:opacity-100 transition-opacity pointer-events-none" />
               )}
             </motion.div>
           ))}
