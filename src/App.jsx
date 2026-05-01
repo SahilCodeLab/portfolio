@@ -13,6 +13,7 @@ import GithubActivity from './components/GithubActivity';
 import Testimonials from './components/Testimonials';
 import ContactForm from './components/ContactForm';
 import Loader from './components/Loader';
+import CustomCursor from './components/CustomCursor';
 import './index.css';
 
 // Import Assets
@@ -92,6 +93,7 @@ function App() {
 
   return (
     <div className="bg-white selection:bg-orange-100 selection:text-orange-600 font-sans relative overflow-x-hidden">
+      <CustomCursor />
       <AnimatePresence>
         {loading && <Loader />}
       </AnimatePresence>
