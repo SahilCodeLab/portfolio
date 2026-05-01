@@ -267,7 +267,7 @@ const ProjectCard = ({ project, index }) => {
         )}
       </AnimatePresence>
 
-      {/* Screenshot Grid */}
+      {/* Screenshot Grid with Hover-to-Scroll for UI */}
       <div className={`w-full ${project.isUI ? 'bg-orange-500' : 'bg-gray-50'} rounded-[2.5rem] md:rounded-[4rem] p-3 md:p-12 border border-gray-100/50 overflow-hidden`}>
         <div className={`grid grid-cols-2 lg:grid-cols-3 gap-3 md:gap-8`}>
           {project.screenshots.map((img, i) => (
@@ -277,16 +277,25 @@ const ProjectCard = ({ project, index }) => {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.05, duration: 0.5 }}
-              className={`relative group rounded-xl md:rounded-3xl overflow-hidden shadow-lg md:shadow-2xl border-2 md:border-4 border-white`}
+              className={`relative group rounded-xl md:rounded-3xl overflow-hidden shadow-lg md:shadow-2xl border-2 md:border-4 border-white ${project.isUI ? 'h-[300px] md:h-[450px]' : 'h-auto'}`}
             >
               <img 
                 src={img} 
-                className={`w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105`}
+                className={`w-full ${project.isUI ? 'absolute top-0 left-0 transition-transform duration-[5s] ease-in-out group-hover:-translate-y-[calc(100%-100%)] group-hover:translate-y-[-70%]' : 'h-auto object-cover'} transition-transform duration-700 group-hover:scale-105`}
+                style={project.isUI ? { transitionDuration: '8s', transformOrigin: 'top' } : {}}
                 alt={`${project.title} screenshot ${i + 1}`}
               />
+              {project.isUI && (
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
+              )}
             </motion.div>
           ))}
         </div>
+        {project.isUI && (
+            <p className="mt-8 text-center text-[10px] font-black uppercase tracking-[0.3em] text-white/40">
+                Hover to explore full design scroll
+            </p>
+        )}
       </div>
     </motion.div>
   );
