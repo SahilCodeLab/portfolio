@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ExternalLink, Layout, Smartphone, Code } from 'lucide-react';
+import { ExternalLink, Smartphone, Code } from 'lucide-react';
 
 // Import Logos
 import pocketIdLogo from '../assets/pocketid_logo.png';
@@ -30,12 +30,6 @@ import wrapify4 from '../assets/slice_4.jpg';
 import wrapify5 from '../assets/slice_5.jpg';
 import wrapify6 from '../assets/slice_6.jpg';
 import wrapifyBanner from '../assets/warpify_banner.jpg';
-
-import uiCoaching from '../assets/ui_coaching.jpg';
-import uiBeauty from '../assets/ui_beauty.jpg';
-import uiSeller from '../assets/ui_seller.jpg';
-import uiMotor from '../assets/ui_motor.jpg';
-import dashboardMain from '../assets/dashboard_ui_design.jpg';
 
 const coreApps = [
   { 
@@ -84,33 +78,6 @@ const coreApps = [
   },
 ];
 
-const uiSuites = [
-  { 
-    id: 'crochet-city', 
-    title: "The Crochet City", 
-    desc: "A boutique artisan storefront featuring a mindful, ambient design system and deep WhatsApp integration for bespoke ordering experiences.", 
-    logo: null, 
-    icon: <Layout className="w-10 h-10 text-orange-500" />,
-    screenshots: [dashboardMain, uiCoaching, uiBeauty, uiSeller, uiMotor],
-    tech: ["React", "Tailwind CSS", "Mindful UI"],
-    category: "Boutique Design",
-    color: "#10b981",
-    isUI: true
-  },
-  { 
-    id: 'nexus-dashboard', 
-    title: "Nexus Admin Suite", 
-    desc: "A premium suite of administrative dashboards and business management interfaces. Designed for clarity, data visualization, and seamless user workflow.", 
-    logo: null, 
-    icon: <Layout className="w-10 h-10 text-orange-500" />,
-    screenshots: [dashboardMain, uiCoaching, uiBeauty, uiSeller, uiMotor],
-    tech: ["React", "Tailwind CSS", "Data Viz"],
-    category: "Admin Suite",
-    color: "#3b82f6",
-    isUI: true
-  },
-];
-
 const microProjects = [
   { title: "Resume Craft", category: "Utility", link: "https://sahilcodelab.github.io/resume-craft/" },
   { title: "Budget Planner", category: "Finance", link: "https://sahilcodelab.github.io/Budget-Planner/" },
@@ -124,37 +91,6 @@ const microProjects = [
 ];
 
 const ProjectCard = ({ project, index }) => {
-  const [showCode, setShowCode] = React.useState(false);
-
-  const getCodeSnippet = (title) => {
-    if (title === "The Crochet City") {
-      return `<!-- The Crochet City: Premium Mobile UI -->
-<div class="glass-card rounded-[2.5rem] p-8 ambient-shadow">
-  <div class="relative group">
-    <div class="size-32 rounded-full border-4 border-white shadow-xl ring-1 ring-primary/20">
-      <div class="w-full h-full bg-cover scale-110 group-hover:scale-100 transition-700" 
-           style="background-image: url('crochet_profile.jpg')"></div>
-    </div>
-  </div>
-  <div class="mt-6 text-center">
-    <h1 class="text-3xl font-display font-medium tracking-tight">The Crochet City</h1>
-  </div>
-  <button class="w-full h-14 bg-whatsapp text-white rounded-full flex items-center justify-center gap-3">
-    Inquire on WhatsApp
-  </button>
-</div>`;
-    }
-    
-    return `<!-- Nexus Admin Dashboard Structure -->
-<div class="flex h-screen bg-gray-900">
-  <aside class="w-64 bg-orange-600 p-6">
-    <nav class="space-y-4">
-      <div class="h-10 w-full bg-white/20 rounded-lg animate-pulse" />
-    </nav>
-  </aside>
-</div>`;
-  };
-
   return (
     <motion.div 
       initial={{ opacity: 0, y: 100 }}
@@ -171,11 +107,7 @@ const ProjectCard = ({ project, index }) => {
                     whileHover={{ rotate: 10, scale: 1.1 }}
                     className="w-14 h-14 md:w-16 md:h-16 bg-white rounded-2xl p-2 shadow-xl border border-gray-100 flex items-center justify-center"
                 >
-                {project.logo ? (
-                    <img src={project.logo} className="w-full h-full object-contain" />
-                ) : (
-                    project.icon
-                )}
+                {project.logo && <img src={project.logo} className="w-full h-full object-contain" alt="" />}
                 </motion.div>
                 <div className="text-center md:text-left">
                     <span className="text-orange-500 font-black tracking-widest text-[9px] md:text-[10px] uppercase block mb-1">
@@ -200,14 +132,6 @@ const ProjectCard = ({ project, index }) => {
             ))}
             </div>
             <div className="flex items-center gap-4">
-                {project.isUI && (
-                    <button 
-                        onClick={() => setShowCode(!showCode)}
-                        className="text-[10px] md:text-xs font-black uppercase tracking-[0.3em] text-orange-500 hover:text-gray-900 transition-colors"
-                    >
-                        {showCode ? "[ Hide Code ]" : "[ View UI Code ]"}
-                    </button>
-                )}
                 <motion.a 
                     href={project.liveLink || "#contact"}
                     target={project.liveLink ? "_blank" : undefined}
@@ -227,49 +151,9 @@ const ProjectCard = ({ project, index }) => {
         </div>
       </div>
 
-      {/* Code Preview - Colorful & Animated */}
-      <AnimatePresence>
-        {showCode && (
-            <motion.div 
-                initial={{ opacity: 0, height: 0 }}
-                animate={{ opacity: 1, height: 'auto' }}
-                exit={{ opacity: 0, height: 0 }}
-                className="overflow-hidden"
-            >
-                <div className="bg-gray-900 rounded-[2rem] p-6 md:p-8 font-mono text-[10px] md:text-xs leading-relaxed text-gray-300 border border-white/5 relative overflow-hidden group">
-                    <div className="absolute top-4 right-6 flex gap-2">
-                        <div className="w-3 h-3 rounded-full bg-red-500/20" />
-                        <div className="w-3 h-3 rounded-full bg-yellow-500/20" />
-                        <div className="w-3 h-3 rounded-full bg-green-500/20" />
-                    </div>
-                    <pre className="custom-scrollbar overflow-x-auto max-h-[400px]">
-                        <code className="block">
-                            {getCodeSnippet(project.title).split('\n').map((line, i) => (
-                                <div key={i} className="flex gap-4">
-                                    <span className="text-gray-600 select-none w-4">{i + 1}</span>
-                                    <span dangerouslySetInnerHTML={{ 
-                                        __html: line
-                                            .replace(/class="/g, '<span class="text-orange-400">class="</span><span class="text-green-400">')
-                                            .replace(/"/g, '</span><span class="text-orange-400">"</span>')
-                                            .replace(/<div/g, '<span class="text-blue-400">&lt;div</span>')
-                                            .replace(/<\/div>/g, '<span class="text-blue-400">&lt;/div&gt;</span>')
-                                            .replace(/<button/g, '<span class="text-purple-400">&lt;button</span>')
-                                            .replace(/<\/button>/g, '<span class="text-purple-400">&lt;/button&gt;</span>')
-                                            .replace(/<span/g, '<span class="text-yellow-400">&lt;span</span>')
-                                            .replace(/<\/span>/g, '<span class="text-yellow-400">&lt;/span&gt;</span>')
-                                    }} />
-                                </div>
-                            ))}
-                        </code>
-                    </pre>
-                </div>
-            </motion.div>
-        )}
-      </AnimatePresence>
-
-      {/* Screenshot Grid with Hover-to-Scroll for UI */}
-      <div className={`w-full ${project.isUI ? 'bg-orange-500' : 'bg-gray-50'} rounded-[2.5rem] md:rounded-[4rem] p-3 md:p-12 border border-gray-100/50 overflow-hidden`}>
-        <div className={`grid grid-cols-2 lg:grid-cols-3 gap-3 md:gap-8`}>
+      {/* Screenshot Grid */}
+      <div className="w-full bg-gray-50 rounded-[2.5rem] md:rounded-[4rem] p-3 md:p-12 border border-gray-100/50 overflow-hidden">
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 md:gap-8">
           {project.screenshots.map((img, i) => (
             <motion.div 
               key={i}
@@ -277,25 +161,16 @@ const ProjectCard = ({ project, index }) => {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.05, duration: 0.5 }}
-              className={`relative group rounded-xl md:rounded-3xl overflow-hidden shadow-lg md:shadow-2xl border-2 md:border-4 border-white ${project.isUI ? 'h-[300px] md:h-[450px] overflow-y-auto custom-scrollbar-hide md:overflow-hidden' : 'h-auto'}`}
+              className="relative group rounded-xl md:rounded-3xl overflow-hidden shadow-lg md:shadow-2xl border-2 md:border-4 border-white"
             >
               <img 
                 src={img} 
-                className={`w-full ${project.isUI ? 'md:absolute md:top-0 md:left-0 md:transition-transform md:duration-[8s] md:ease-in-out md:group-hover:-translate-y-[calc(100%-100%)] md:group-hover:translate-y-[-70%]' : 'h-auto object-cover'} transition-transform duration-700 group-hover:scale-105`}
-                style={project.isUI ? { transformOrigin: 'top' } : {}}
+                className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
                 alt={`${project.title} screenshot ${i + 1}`}
               />
-              {project.isUI && (
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 md:group-hover:opacity-100 transition-opacity pointer-events-none" />
-              )}
             </motion.div>
           ))}
         </div>
-        {project.isUI && (
-            <p className="mt-8 text-center text-[10px] font-black uppercase tracking-[0.3em] text-white/40">
-                Hover to explore full design scroll
-            </p>
-        )}
       </div>
     </motion.div>
   );
@@ -320,25 +195,6 @@ const ProjectGallery = () => {
         
         <div className="space-y-32 mb-40">
           {coreApps.map((project, idx) => (
-            <ProjectCard key={project.id} project={project} index={idx} />
-          ))}
-        </div>
-
-        {/* UI Suite Section */}
-        <motion.div 
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="mb-20 text-center md:text-left pt-20 border-t border-gray-50"
-        >
-            <span className="text-orange-500 font-black uppercase tracking-[0.3em] text-[10px] mb-4 block">Visual Systems</span>
-            <h2 className="text-4xl md:text-7xl font-black mb-12 tracking-tighter leading-none">
-              UI/UX <span className="text-gray-300 italic underline decoration-orange-500/20 underline-offset-8">Ecosystem</span>
-            </h2>
-        </motion.div>
-
-        <div className="space-y-40 mb-40">
-          {uiSuites.map((project, idx) => (
             <ProjectCard key={project.id} project={project} index={idx} />
           ))}
         </div>
