@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Sparkles } from 'lucide-react';
+import { SiExpressdotcom } from 'react-icons/si';
 
 const Hero = () => {
   const container = {
@@ -87,3 +88,4 @@ const Hero = () => {
 };
 
 export default Hero;
+ 
