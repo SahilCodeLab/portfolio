@@ -9,7 +9,7 @@ import Certifications from './components/Certifications';
 import Services from './components/Services';
 import TechnicalArsenal from './components/TechnicalArsenal';
 import Skills from './components/Skills';
-// import GithubActivity from './components/GithubActivity';
+import GithubActivity from './components/GithubActivity';
 import Testimonials from './components/Testimonials';
 import ContactForm from './components/ContactForm';
 import Loader from './components/Loader';
@@ -167,7 +167,7 @@ function App() {
         </section>
 
         <Skills />
-        {/* <GithubActivity /> */}
+        <GithubActivity />
 
         <TechnicalArsenal />
 
