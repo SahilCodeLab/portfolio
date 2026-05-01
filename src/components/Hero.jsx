@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Sparkles } from 'lucide-react';
 import { SiExpressdotcom } from 'react-icons/si';
+import resume from '../assets/Resume.pdf';
 
 const Hero = () => {
   const container = {
@@ -78,6 +79,13 @@ const Hero = () => {
                 >
                     Explore Projects
                 </button>
+                <a 
+                    href={resume}
+                    download="Sahil_Raza_Resume.pdf"
+                    className="w-full sm:w-auto border-4 border-gray-900 text-gray-900 px-12 md:px-16 py-6 md:py-8 rounded-[1.5rem] md:rounded-[2rem] font-black uppercase tracking-[0.2em] md:tracking-[0.3em] text-xs md:text-sm hover:bg-orange-500 hover:border-orange-500 hover:text-white transition-all shadow-xl active:scale-95 flex items-center justify-center"
+                >
+                    Download CV
+                </a>
             </div>
           </motion.div>
 

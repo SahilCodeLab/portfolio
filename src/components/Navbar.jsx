@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import brandLogo from '../assets/brand_logo.jpg';
+import resume from '../assets/Resume.pdf';
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -23,6 +24,7 @@ const Navbar = () => {
     { label: 'Reviews', href: '#testimonials' },
     { label: 'About', href: '#about' },
     { label: 'Contact', href: '#contact' },
+    { label: 'Resume', href: resume, download: true },
   ];
 
   // Mobile menu items (full labels)
@@ -34,6 +36,7 @@ const Navbar = () => {
     { label: 'Client Reviews', href: '#testimonials' },
     { label: 'About', href: '#about' },
     { label: 'Contact', href: '#contact' },
+    { label: 'Download Resume', href: resume, download: true },
   ];
 
   return (
@@ -67,6 +70,7 @@ const Navbar = () => {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   className="relative px-5 py-3 rounded-xl text-[10px] font-black uppercase tracking-[0.25em] text-gray-400 hover:text-orange-500 transition-all group overflow-hidden"
+                  download={item.download ? "Sahil_Raza_Resume.pdf" : undefined}
                 >
                   <span className="relative z-10">{item.label}</span>
                   <motion.div className="absolute inset-0 bg-orange-500/10 scale-0 group-hover:scale-100 transition-transform duration-300 rounded-lg origin-center" />
@@ -119,6 +123,7 @@ const Navbar = () => {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: idx * 0.05 }}
                   className="flex items-center gap-3 px-5 py-4 rounded-2xl text-gray-700 font-black text-xs uppercase tracking-[0.2em] hover:bg-orange-500/10 hover:text-orange-500 transition-all group"
+                  download={item.download ? "Sahil_Raza_Resume.pdf" : undefined}
                 >
                   <span className="w-1.5 h-1.5 rounded-full bg-orange-500/30 group-hover:bg-orange-500 transition-colors flex-shrink-0"></span>
                   {item.label}
