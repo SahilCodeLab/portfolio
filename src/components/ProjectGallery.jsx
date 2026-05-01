@@ -217,16 +217,9 @@ const ProjectGallery = () => {
               </motion.a>
             ))}
           </div>
-        </div>
-      </div>
-    </section>
-  );
-};
-
 const ProjectCard = ({ project, index }) => {
-  const [showCode, setShowCode] = React.useState(false);
+  const [showCode, setShowCode] = React.useState(true); // Default to true for UI to show off
 
-  // Dynamic colorful code snippets
   const getCodeSnippet = (title) => {
     if (title === "The Crochet City") {
       return `<!-- The Crochet City: Premium Mobile UI -->
@@ -261,9 +254,6 @@ const ProjectCard = ({ project, index }) => {
   <main class="flex-1 p-10">
     <header class="flex justify-between items-center mb-10">
       <h1 class="text-3xl font-bold text-white tracking-tight">Analytics Dashboard</h1>
-      <button class="px-6 py-2 bg-orange-500 rounded-full shadow-lg hover:scale-105 transition-all">
-        Export Data
-      </button>
     </header>
   </main>
 </div>`;
@@ -275,15 +265,15 @@ const ProjectCard = ({ project, index }) => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-100px" }}
       transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-      className="flex flex-col gap-12 md:gap-16"
+      className="flex flex-col gap-8 md:gap-12"
     >
       {/* Header Info */}
-      <div className="flex flex-col md:flex-row gap-8 md:gap-10 items-start md:items-end justify-between">
-        <div className="max-w-2xl text-center md:text-left w-full">
-            <div className="flex flex-col md:flex-row items-center md:items-start gap-4 mb-6">
+      <div className="flex flex-col md:flex-row gap-6 md:gap-10 items-start md:items-end justify-between">
+        <div className="max-w-2xl w-full">
+            <div className="flex items-center gap-4 mb-4">
                 <motion.div 
                     whileHover={{ rotate: 10, scale: 1.1 }}
-                    className="w-14 h-14 md:w-16 md:h-16 bg-white rounded-2xl p-2 shadow-xl border border-gray-100 flex items-center justify-center"
+                    className="w-12 h-12 md:w-14 md:h-14 bg-white rounded-xl p-2 shadow-lg border border-gray-100 flex items-center justify-center"
                 >
                 {project.logo ? (
                     <img src={project.logo} className="w-full h-full object-contain" />
@@ -291,76 +281,78 @@ const ProjectCard = ({ project, index }) => {
                     project.icon
                 )}
                 </motion.div>
-                <div className="text-center md:text-left">
-                    <span className="text-orange-500 font-black tracking-widest text-[9px] md:text-[10px] uppercase block mb-1">
+                <div>
+                    <span className="text-orange-500 font-black tracking-widest text-[8px] md:text-[9px] uppercase block mb-1">
                         {project.category}
                     </span>
-                    <h3 className="text-3xl md:text-5xl font-black tracking-tighter leading-none">
+                    <h3 className="text-2xl md:text-4xl font-black tracking-tighter leading-none">
                         {project.title}
                     </h3>
                 </div>
             </div>
-            <p className="text-gray-500 text-base md:text-xl leading-relaxed mx-auto md:mx-0 font-medium">
+            <p className="text-gray-500 text-sm md:text-lg leading-relaxed font-medium">
             {project.desc}
             </p>
         </div>
         
-        <div className="flex flex-col gap-6 items-center md:items-end w-full md:w-auto">
-            <div className="flex flex-wrap gap-2 justify-center md:justify-end">
+        <div className="flex flex-wrap gap-2 justify-start md:justify-end">
             {project.tech.map(t => (
-                <span key={t} className="px-3 py-1.5 md:px-4 md:py-2 bg-gray-50 rounded-lg md:rounded-xl text-[8px] md:text-[10px] font-bold text-gray-400 border border-gray-100 uppercase tracking-widest">
+                <span key={t} className="px-3 py-1 bg-gray-50 rounded-lg text-[8px] md:text-[9px] font-bold text-gray-400 border border-gray-100 uppercase tracking-widest">
                 {t}
                 </span>
             ))}
-            </div>
-            <div className="flex items-center gap-4">
-                {project.isUI && (
-                    <button 
-                        onClick={() => setShowCode(!showCode)}
-                        className="text-[10px] md:text-xs font-black uppercase tracking-[0.3em] text-orange-500 hover:text-gray-900 transition-colors"
-                    >
-                        {showCode ? "[ Hide Code ]" : "[ View UI Code ]"}
-                    </button>
-                )}
-                <motion.a 
-                    href={project.liveLink || "#contact"}
-                    target={project.liveLink ? "_blank" : undefined}
-                    rel={project.liveLink ? "noopener noreferrer" : undefined}
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="flex items-center gap-3 md:gap-4 group"
-                >
-                    <span className="text-[10px] md:text-xs font-black uppercase tracking-[0.3em] group-hover:text-orange-500 transition-colors">
-                        {project.liveLink ? "Live App" : "Request Demo"}
-                    </span>
-                    <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl border-2 border-gray-100 flex items-center justify-center group-hover:border-orange-500 group-hover:bg-orange-500 group-hover:text-white transition-all">
-                        <ExternalLink className="w-4 h-4 md:w-5 md:h-5" />
-                    </div>
-                </motion.a>
-            </div>
         </div>
       </div>
 
-      {/* Code Preview - Colorful & Animated */}
-      <AnimatePresence>
-        {showCode && (
+      {/* Split View Content */}
+      <div className={`grid grid-cols-1 ${project.isUI ? 'lg:grid-cols-2' : 'lg:grid-cols-1'} gap-6 md:gap-10`}>
+        
+        {/* Design Side */}
+        <div className={`relative group rounded-[2rem] md:rounded-[3rem] overflow-hidden shadow-2xl border-4 border-white ${project.isUI ? 'bg-orange-500' : 'bg-gray-100'}`}>
+            <div className={`p-4 md:p-8 ${project.isUI ? 'grid grid-cols-1 gap-4' : 'grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8'}`}>
+                {project.screenshots.slice(0, project.isUI ? 1 : 6).map((img, i) => (
+                    <motion.div 
+                        key={i}
+                        className="relative rounded-2xl overflow-hidden shadow-lg border-2 border-white"
+                    >
+                        <img 
+                            src={img} 
+                            className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
+                            alt={project.title}
+                        />
+                    </motion.div>
+                ))}
+            </div>
+            {project.isUI && (
+                <div className="absolute top-6 right-6">
+                    <span className="bg-white/90 backdrop-blur px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest shadow-xl">Original Concept</span>
+                </div>
+            )}
+        </div>
+
+        {/* Code Side (Only for UI) */}
+        {project.isUI && (
             <motion.div 
-                initial={{ opacity: 0, height: 0 }}
-                animate={{ opacity: 1, height: 'auto' }}
-                exit={{ opacity: 0, height: 0 }}
-                className="overflow-hidden"
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                className="bg-gray-900 rounded-[2rem] md:rounded-[3rem] p-6 md:p-10 border border-white/5 shadow-2xl flex flex-col justify-between"
             >
-                <div className="bg-gray-900 rounded-[2rem] p-6 md:p-8 font-mono text-[10px] md:text-xs leading-relaxed text-gray-300 border border-white/5 relative overflow-hidden group">
-                    <div className="absolute top-4 right-6 flex gap-2">
-                        <div className="w-3 h-3 rounded-full bg-red-500/20" />
-                        <div className="w-3 h-3 rounded-full bg-yellow-500/20" />
-                        <div className="w-3 h-3 rounded-full bg-green-500/20" />
+                <div className="mb-6 flex justify-between items-center">
+                    <div className="flex gap-2">
+                        <div className="w-3 h-3 rounded-full bg-red-500/30" />
+                        <div className="w-3 h-3 rounded-full bg-yellow-500/30" />
+                        <div className="w-3 h-3 rounded-full bg-green-500/30" />
                     </div>
-                    <pre className="custom-scrollbar overflow-x-auto max-h-[400px]">
-                        <code className="block">
+                    <div className="text-[10px] font-black uppercase tracking-[0.2em] text-white/40">Source Structure</div>
+                </div>
+                
+                <div className="font-mono text-[9px] md:text-xs leading-relaxed text-gray-400 overflow-x-auto custom-scrollbar-hide max-h-[350px]">
+                    <pre>
+                        <code>
                             {getCodeSnippet(project.title).split('\n').map((line, i) => (
                                 <div key={i} className="flex gap-4">
-                                    <span className="text-gray-600 select-none w-4">{i + 1}</span>
+                                    <span className="text-gray-700 select-none w-4">{i + 1}</span>
                                     <span dangerouslySetInnerHTML={{ 
                                         __html: line
                                             .replace(/class="/g, '<span class="text-orange-400">class="</span><span class="text-green-400">')
@@ -377,39 +369,113 @@ const ProjectCard = ({ project, index }) => {
                         </code>
                     </pre>
                 </div>
-            </motion.div>
-        )}
-      </AnimatePresence>
 
-      {/* Screenshot Grid / Slider */}
-      <div className={`w-full ${project.isUI ? 'bg-orange-500' : 'bg-gray-50'} rounded-[2.5rem] md:rounded-[4rem] p-3 md:p-12 border border-gray-100/50 overflow-hidden`}>
-        <div className={`flex ${project.isUI ? 'overflow-x-auto custom-scrollbar-hide snap-x gap-4 md:gap-8 pb-4' : 'grid grid-cols-2 lg:grid-cols-3 gap-3 md:gap-8'}`}>
-          {project.screenshots.map((img, i) => (
-            <motion.div 
-              key={i}
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.05, duration: 0.5 }}
-              className={`relative group rounded-xl md:rounded-3xl overflow-hidden shadow-lg md:shadow-2xl border-2 md:border-4 border-white shrink-0 ${project.isUI ? 'w-[280px] md:w-[450px] snap-center' : 'w-full'}`}
-            >
-              <img 
-                src={img} 
-                className={`w-full h-auto ${project.isUI ? 'aspect-video object-cover' : 'object-cover'} transition-transform duration-700 group-hover:scale-105`}
-                alt={`${project.title} screenshot ${i + 1}`}
-              />
+                <div className="mt-8 pt-6 border-t border-white/5 flex justify-between items-center">
+                    <div className="flex items-center gap-4">
+                        <Code size={16} className="text-orange-500" />
+                        <span className="text-[10px] font-bold text-gray-500 uppercase tracking-widest">Tailwind Architecture</span>
+                    </div>
+                    <motion.a 
+                        href={project.liveLink || "#contact"}
+                        whileHover={{ scale: 1.05 }}
+                        className="px-6 py-2 bg-white/5 hover:bg-white/10 rounded-full text-[10px] font-black uppercase tracking-widest text-white transition-all border border-white/10"
+                    >
+                        View Full Source
+                    </motion.a>
+                </div>
             </motion.div>
-          ))}
-        </div>
-        {project.isUI && (
-            <div className="mt-6 flex justify-center items-center gap-2 text-[8px] font-black uppercase tracking-widest text-white/60 md:hidden">
-                <span>Scroll Left</span>
-                <div className="w-12 h-[1px] bg-white/20" />
-                <span>Scroll Right</span>
-            </div>
         )}
       </div>
+
+      {/* Link for non-UI apps */}
+      {!project.isUI && (
+          <div className="flex justify-center md:justify-end">
+            <motion.a 
+                href={project.liveLink || "#contact"}
+                target={project.liveLink ? "_blank" : undefined}
+                rel={project.liveLink ? "noopener noreferrer" : undefined}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="flex items-center gap-3 group"
+            >
+                <span className="text-[10px] font-black uppercase tracking-[0.3em] group-hover:text-orange-500 transition-colors">
+                    {project.liveLink ? "Explore Live App" : "Request Access"}
+                </span>
+                <div className="w-10 h-10 rounded-xl border-2 border-gray-100 flex items-center justify-center group-hover:border-orange-500 group-hover:bg-orange-500 group-hover:text-white transition-all">
+                    <ExternalLink size={16} />
+                </div>
+            </motion.a>
+          </div>
+      )}
     </motion.div>
+  );
+};
+
+const ProjectGallery = () => {
+  return (
+    <section id="projects" className="py-24 bg-white relative overflow-hidden">
+      <div className="container-tight px-4 md:px-6">
+        {/* Core Apps Section */}
+        <motion.div 
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mb-20 text-center md:text-left"
+        >
+            <span className="text-orange-500 font-black uppercase tracking-[0.3em] text-[10px] mb-4 block">Primary Portfolio</span>
+            <h2 className="text-4xl md:text-7xl font-black mb-12 tracking-tighter leading-none">
+              Featured <span className="text-gray-300 italic underline decoration-orange-500/20 underline-offset-8">Applications</span>
+            </h2>
+        </motion.div>
+        
+        <div className="space-y-32 mb-40">
+          {coreApps.map((project, idx) => (
+            <ProjectCard key={project.id} project={project} index={idx} />
+          ))}
+        </div>
+
+        {/* UI Suite Section */}
+        <motion.div 
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mb-20 text-center md:text-left pt-20 border-t border-gray-50"
+        >
+            <span className="text-orange-500 font-black uppercase tracking-[0.3em] text-[10px] mb-4 block">Visual Systems</span>
+            <h2 className="text-4xl md:text-7xl font-black mb-12 tracking-tighter leading-none">
+              UI/UX <span className="text-gray-300 italic underline decoration-orange-500/20 underline-offset-8">Ecosystem</span>
+            </h2>
+        </motion.div>
+
+        <div className="space-y-40">
+          {uiSuites.map((project, idx) => (
+            <ProjectCard key={project.id} project={project} index={idx} />
+          ))}
+        </div>
+
+        {/* Global Footer Call to Action */}
+        <motion.div 
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="mt-40 p-8 md:p-20 bg-gray-900 rounded-[3rem] md:rounded-[5rem] text-center relative overflow-hidden group"
+        >
+            <div className="absolute top-0 left-0 w-full h-full bg-orange-500/10 opacity-0 group-hover:opacity-100 transition-opacity" />
+            <div className="relative z-10">
+                <h3 className="text-3xl md:text-5xl font-black text-white mb-8 tracking-tighter">Ready to Build Your <br/> <span className="text-orange-500">Next Big Idea?</span></h3>
+                <motion.a 
+                    href="#contact"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="inline-flex items-center gap-4 bg-orange-500 text-white px-8 md:px-12 py-4 md:py-6 rounded-full text-sm md:text-base font-black uppercase tracking-widest shadow-2xl hover:bg-white hover:text-gray-900 transition-all"
+                >
+                    Start a Project
+                    <ExternalLink size={20} />
+                </motion.a>
+            </div>
+        </motion.div>
+      </div>
+    </section>
   );
 };
 
