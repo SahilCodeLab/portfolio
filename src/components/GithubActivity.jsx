@@ -1,33 +1,41 @@
-import React, { useMemo } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { FaGithub } from 'react-icons/fa';
 import { ExternalLink } from 'lucide-react';
 
 const GithubActivity = () => {
-  // Generate random contribution levels (0 to 4) for a 52x7 grid
-  const activityData = useMemo(() => {
-    const data = [];
-    for (let i = 0; i < 52 * 7; i++) {
-      // Logic to make it look realistic: mostly low activity, some high bursts
-      const rand = Math.random();
-      if (rand > 0.9) data.push(4);      // Darkest Orange
-      else if (rand > 0.75) data.push(3); // Medium Orange
-      else if (rand > 0.5) data.push(2);  // Light Orange
-      else if (rand > 0.2) data.push(1);  // Very Light Orange
-      else data.push(0);                 // Empty
-    }
-    return data;
+  const [realData, setRealData] = useState([]);
+  const [total, setTotal] = useState(0);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetch('https://github-contributions-api.deno.dev/SahilCodeLab.json')
+      .then(res => res.json())
+      .then(data => {
+        // The API returns an array of weeks, each week is an array of days
+        const flattened = data.contributions.flat();
+        setRealData(flattened);
+        setTotal(data.totalContributions);
+        setLoading(false);
+      })
+      .catch(err => {
+        console.error("GitHub Fetch Error:", err);
+        setLoading(false);
+      });
   }, []);
 
   const getLevelColor = (level) => {
     switch (level) {
-      case 4: return 'bg-orange-600';
-      case 3: return 'bg-orange-500';
-      case 2: return 'bg-orange-400';
-      case 1: return 'bg-orange-200';
+      case "FOURTH_QUARTILE": return 'bg-orange-600';
+      case "THIRD_QUARTILE": return 'bg-orange-500';
+      case "SECOND_QUARTILE": return 'bg-orange-400';
+      case "FIRST_QUARTILE": return 'bg-orange-200';
       default: return 'bg-gray-100';
     }
   };
+
+  // Fallback data if API fails or is loading
+  const skeletonData = useMemo(() => Array(365).fill(0), []);
 
   return (
     <section className="py-24 bg-white border-t border-gray-100 overflow-hidden relative">
@@ -40,13 +48,13 @@ const GithubActivity = () => {
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-gray-900 rounded-full text-white font-bold text-[10px] uppercase tracking-widest mb-6">
               <FaGithub className="w-3 h-3" />
-              <span>Open Source Commitment</span>
+              <span>Real-Time Contributions</span>
           </div>
           <h2 className="text-4xl md:text-6xl font-black tracking-tighter mb-4 leading-tight">
             Code <span className="text-gray-300 italic">Consistency.</span>
           </h2>
           <p className="text-gray-400 text-base md:text-lg max-w-2xl mx-auto font-medium">
-            Daily commitment to building robust software systems. Tracking 82+ repositories and constant open-source involvement.
+            Live data fetched from GitHub showcasing my daily commitment to open-source and software engineering.
           </p>
         </motion.div>
 
@@ -64,13 +72,13 @@ const GithubActivity = () => {
               </div>
               <div>
                 <div className="text-xl font-black tracking-tight">SahilCodeLab</div>
-                <div className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Active Developer Journey</div>
+                <div className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Verified Developer Journey</div>
               </div>
             </div>
             
             <div className="flex flex-col items-center md:items-end">
-                <div className="text-3xl font-black text-gray-900 leading-none mb-1">1,482+</div>
-                <div className="text-[10px] font-bold text-orange-500 uppercase tracking-widest">Commits in 2024</div>
+                <div className="text-3xl font-black text-gray-900 leading-none mb-1">{loading ? "..." : total.toLocaleString()}</div>
+                <div className="text-[10px] font-bold text-orange-500 uppercase tracking-widest">Total Contributions</div>
             </div>
           </div>
 
@@ -78,14 +86,15 @@ const GithubActivity = () => {
           <div className="overflow-x-auto custom-scrollbar pb-6">
             <div className="min-w-[800px]">
               <div className="grid grid-flow-col grid-rows-7 gap-1.5 md:gap-2">
-                {activityData.map((level, i) => (
+                {(loading ? skeletonData : realData).map((day, i) => (
                   <motion.div
                     key={i}
                     initial={{ opacity: 0, scale: 0.5 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
-                    transition={{ delay: (i % 52) * 0.01 }}
-                    className={`w-3 h-3 md:w-3.5 md:h-3.5 rounded-sm ${getLevelColor(level)} transition-colors duration-500 hover:ring-2 hover:ring-orange-500/20`}
+                    transition={{ delay: (i % 52) * 0.005 }}
+                    title={day.date ? `${day.date}: ${day.contributionCount} commits` : ""}
+                    className={`w-3 h-3 md:w-3.5 md:h-3.5 rounded-sm ${day === 0 ? 'bg-gray-100' : getLevelColor(day.contributionLevel)} transition-colors duration-500 hover:ring-2 hover:ring-orange-500/20`}
                   />
                 ))}
               </div>
