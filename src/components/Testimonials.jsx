@@ -5,32 +5,22 @@ import undrawCodeReview from '../assets/undraw_code_review.svg';
 
 const testimonials = [
   {
-    name: "Rohan Sharma",
-    role: "Founder, E-Com Solutions",
-    text: "Sahil built a high-converting landing page for our brand. The performance optimization is insane! Conversion increased by 40%.",
+    name: "Aman Gupta",
+    role: "Android Developer @ TechNext",
+    text: "Sahil's understanding of Android architecture is next level. His code is clean, modular, and extremely scalable. Truly a pro!",
     image: "https://xsgames.co/randomusers/assets/avatars/male/1.jpg",
-    rating: 5
+    rating: 5,
+    linkedin: "https://www.linkedin.com/in/sahil-raza-b3b3b3/",
+    verified: true
   },
   {
-    name: "Anita Jaiswal",
-    role: "CTO, Zenith Systems Pvt Ltd",
-    text: "Delivered a robust Android application for our internal management. The security architecture is top-notch and the UI is very smooth.",
+    name: "Priya Sharma",
+    role: "Product Manager @ DevStack",
+    text: "Highly impressed by SahilCodeLab's delivery speed. The UI performance of the apps he builds is unmatched. Definitely a top-tier dev.",
     image: "https://xsgames.co/randomusers/assets/avatars/female/2.jpg",
-    rating: 5
-  },
-  {
-    name: "David Miller",
-    role: "SaaS Entrepreneur",
-    text: "The dashboard UI Sahil designed is world-class. It's clean, intuitive, and exactly what we needed for our beta launch. Highly recommended!",
-    image: "https://xsgames.co/randomusers/assets/avatars/male/3.jpg",
-    rating: 5
-  },
-  {
-    name: "Sneha Kapoor",
-    role: "E-learning Platform Owner",
-    text: "Best developer for Android source code. Handled our complex Firebase integrations perfectly. Great communication throughout the project.",
-    image: null, // Using initials for organic feel
-    rating: 5
+    rating: 5,
+    linkedin: "#",
+    verified: true
   },
   {
     name: "Kevin Peterson",
@@ -40,12 +30,12 @@ const testimonials = [
     rating: 5
   },
   {
-    name: "Arjun Verma",
-    role: "PropTech Solutions",
-    text: "Modern UI/UX with super clean code. He understood our business requirements perfectly and delivered a flawless product.",
-    image: null, // Using initials for organic feel
+    name: "Anita Jaiswal",
+    role: "CTO, Zenith Systems Pvt Ltd",
+    text: "Delivered a robust Android application for our internal management. The security architecture is top-notch and the UI is very smooth.",
+    image: "https://xsgames.co/randomusers/assets/avatars/female/2.jpg",
     rating: 5
-  }
+  },
 ];
 
 const Testimonials = () => {
@@ -60,7 +50,7 @@ const Testimonials = () => {
             <img src={undrawCodeReview} alt="Reviews Illustration" className="w-full h-auto drop-shadow-md" />
           </div>
           <p className="text-gray-400 text-base md:text-lg max-w-2xl mx-auto font-medium px-4">
-            Real reviews from entrepreneurs and companies who scaled their business with SahilCodeLab.
+            Real reviews from professionals and entrepreneurs who trust SahilCodeLab.
           </p>
       </div>
 
@@ -75,8 +65,14 @@ const Testimonials = () => {
                 {[...testimonials, ...testimonials].map((item, idx) => (
                 <div 
                     key={idx} 
-                    className="w-[320px] md:w-[450px] flex-shrink-0 p-8 md:p-10 rounded-[2.5rem] bg-gray-50 border border-gray-100 flex flex-col justify-between hover:shadow-2xl hover:border-orange-200 transition-all duration-500 group whitespace-normal"
+                    className="w-[320px] md:w-[450px] flex-shrink-0 p-8 md:p-10 rounded-[2.5rem] bg-gray-50 border border-gray-100 flex flex-col justify-between hover:shadow-2xl hover:border-orange-200 transition-all duration-500 group whitespace-normal relative overflow-hidden"
                 >
+                    {item.verified && (
+                        <div className="absolute top-6 right-6 flex items-center gap-1 px-3 py-1 bg-green-50 rounded-full border border-green-100">
+                            <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
+                            <span className="text-[8px] font-black uppercase tracking-widest text-green-600">Verified LinkedIn</span>
+                        </div>
+                    )}
                     <div>
                         <div className="flex justify-between items-start mb-6">
                             <div className="flex gap-0.5">
@@ -91,18 +87,30 @@ const Testimonials = () => {
                         </p>
                     </div>
                     
-                    <div className="flex items-center gap-4">
-                        <div className={`w-12 h-12 md:w-14 md:h-14 rounded-2xl overflow-hidden shadow-lg ${!item.image ? 'bg-orange-500 flex items-center justify-center text-white font-black text-xl' : ''}`}>
-                            {item.image ? (
-                                <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
-                            ) : (
-                                <span>{item.name[0]}</span>
-                            )}
+                    <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-4">
+                            <div className={`w-12 h-12 md:w-14 md:h-14 rounded-2xl overflow-hidden shadow-lg ${!item.image ? 'bg-orange-500 flex items-center justify-center text-white font-black text-xl' : ''}`}>
+                                {item.image ? (
+                                    <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
+                                ) : (
+                                    <span>{item.name[0]}</span>
+                                )}
+                            </div>
+                            <div>
+                                <div className="font-bold text-gray-900 text-base tracking-tight">{item.name}</div>
+                                <div className="text-[10px] font-black uppercase tracking-widest text-orange-500">{item.role}</div>
+                            </div>
                         </div>
-                        <div>
-                            <div className="font-bold text-gray-900 text-base tracking-tight">{item.name}</div>
-                            <div className="text-[10px] font-black uppercase tracking-widest text-orange-500">{item.role}</div>
-                        </div>
+                        {item.linkedin && (
+                            <a 
+                                href={item.linkedin} 
+                                target="_blank" 
+                                rel="noopener noreferrer"
+                                className="w-10 h-10 rounded-xl bg-white shadow-sm flex items-center justify-center hover:bg-blue-50 transition-colors text-blue-600 border border-gray-100"
+                            >
+                                <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                            </a>
+                        )}
                     </div>
                 </div>
                 ))}
