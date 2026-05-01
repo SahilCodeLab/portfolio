@@ -87,138 +87,20 @@ const coreApps = [
 const uiSuites = [
   { 
     id: 'dashboard', 
-    title: "Nexus Dashboard UI", 
-    desc: "A premium suite of administrative dashboards and business management interfaces. Designed for clarity, data visualization, and seamless user workflow.", 
+    title: "The Crochet City", 
+    desc: "A boutique artisan storefront featuring a mindful, ambient design system and deep WhatsApp integration for bespoke ordering experiences.", 
     logo: null, 
     icon: <Layout className="w-10 h-10 text-orange-500" />,
     screenshots: [dashboardMain, uiCoaching, uiBeauty, uiSeller, uiMotor],
-    tech: ["React", "Tailwind CSS", "Data Viz"],
-    category: "Admin Suite",
+    tech: ["React", "Tailwind CSS", "Mindful UI"],
+    category: "Boutique Design",
     color: "#10b981",
     isUI: true
   },
 ];
 
-const microProjects = [
-  { title: "Resume Craft", category: "Utility", link: "https://sahilcodelab.github.io/resume-craft/" },
-  { title: "Budget Planner", category: "Finance", link: "https://sahilcodelab.github.io/Budget-Planner/" },
-  { title: "CurrencyX", category: "Utility", link: "https://sahilcodelab.github.io/CurrencyX/" },
-  { title: "AI Meal Planner", category: "AI Tool", link: "https://sahilcodelab.github.io/AI-Meal-Planner-/" },
-  { title: "Mailora", category: "Communication", link: "https://sahilcodelab.github.io/Mailora/" },
-  { title: "Digital Tool Kit", category: "Utility Suite", link: "https://sahilcodelab.github.io/digital-tool-kit/" },
-  { title: "CultuChat AI", category: "AI Chat", link: "https://sahilcodelab.github.io/CultuChat-AI/" },
-  { title: "RazaWorks", category: "Portfolio", link: "https://sahilcodelab.github.io/RazaWorks/" },
-  { title: "Bill Boutique", category: "Finance", link: "https://sahilcodelab.github.io/bill-boutique/" },
-];
-
-const ProjectGallery = () => {
-  return (
-    <section id="projects" className="py-24 bg-white overflow-hidden">
-      <div className="container-tight px-4 md:px-6">
-        {/* Apps Section */}
-        <div id="app-development" className="mb-32">
-          <motion.div 
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="mb-20 text-center md:text-left"
-          >
-            <div className="flex flex-col lg:flex-row items-center justify-between gap-10">
-              <div>
-                <div className="inline-flex items-center gap-2 px-4 py-2 bg-orange-50 rounded-full text-orange-600 font-bold text-[10px] uppercase tracking-widest mb-6">
-                    <Smartphone className="w-3 h-3" />
-                    <span>Featured Applications</span>
-                </div>
-                <h2 className="text-4xl md:text-7xl font-black tracking-tighter mb-8 leading-tight">
-                  Full-Stack <span className="text-gray-300">Solutions.</span>
-                </h2>
-              </div>
-              <div className="w-full max-w-[250px] lg:max-w-[300px]">
-                <img src={undrawApp} alt="App Development Illustration" className="w-full h-auto drop-shadow-xl" />
-              </div>
-            </div>
-          </motion.div>
-
-          <div className="space-y-32 md:space-y-40">
-            {coreApps.map((project, index) => (
-              <ProjectCard key={project.id} project={project} index={index} />
-            ))}
-          </div>
-        </div>
-
-        {/* UI Section */}
-        <div id="ui-ux-design" className="pt-24 border-t border-gray-100">
-          <motion.div 
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="mb-20 text-center md:text-left"
-          >
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-50 rounded-full text-blue-600 font-bold text-[10px] uppercase tracking-widest mb-6">
-                <Layout className="w-3 h-3" />
-                <span>Interface Design Architecture</span>
-            </div>
-            <h2 className="text-4xl md:text-7xl font-black tracking-tighter mb-8 leading-tight">
-              UI/UX <span className="text-gray-300 italic">Ecosystems.</span>
-            </h2>
-          </motion.div>
-
-          <div className="space-y-32 md:space-y-40">
-            {uiSuites.map((project, index) => (
-              <ProjectCard key={project.id} project={project} index={index} />
-            ))}
-          </div>
-        </div>
-
-        {/* Micro Projects Section */}
-        <div className="pt-24 mt-24 border-t border-gray-100">
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="mb-16 text-center md:text-left"
-          >
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-purple-50 rounded-full text-purple-600 font-bold text-[10px] uppercase tracking-widest mb-6">
-                <Code className="w-3 h-3" />
-                <span>Open Source & Micro-Apps</span>
-            </div>
-            <h2 className="text-4xl md:text-6xl font-black tracking-tighter mb-4 leading-tight">
-              Utility <span className="text-gray-300 italic">Ecosystem.</span>
-            </h2>
-            <p className="text-gray-400 text-base md:text-lg max-w-2xl mx-auto md:mx-0 font-medium">
-              A collection of lightweight, single-purpose web utilities and open-source tools I've built.
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {microProjects.map((proj, i) => (
-              <motion.a 
-                key={i}
-                href={proj.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.05 }}
-                className="group flex flex-col justify-between p-6 md:p-8 rounded-[2rem] bg-gray-50 hover:bg-orange-500 transition-colors duration-500 border border-gray-100 hover:border-orange-500"
-              >
-                <div>
-                  <span className="text-[9px] font-black tracking-widest text-gray-400 group-hover:text-orange-200 uppercase block mb-3">
-                    {proj.category}
-                  </span>
-                  <h3 className="text-2xl font-black text-gray-900 group-hover:text-white tracking-tighter mb-8">
-                    {proj.title}
-                  </h3>
-                </div>
-                <div className="flex items-center gap-2 text-orange-500 group-hover:text-white font-bold text-[10px] uppercase tracking-widest">
-                  View Project <ExternalLink className="w-3 h-3" />
-                </div>
-              </motion.a>
-            ))}
-          </div>
 const ProjectCard = ({ project, index }) => {
-  const [showCode, setShowCode] = React.useState(true); // Default to true for UI to show off
+  const [showCode, setShowCode] = React.useState(true);
 
   const getCodeSnippet = (title) => {
     if (title === "The Crochet City") {
