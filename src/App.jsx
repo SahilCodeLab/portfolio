@@ -167,7 +167,7 @@ function App() {
         </section>
 
         <Skills />
-        <GithubActivity />
+        {/* <GithubActivity /> */}
 
         <TechnicalArsenal />
 
