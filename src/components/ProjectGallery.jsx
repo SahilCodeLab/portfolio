@@ -224,6 +224,32 @@ const ProjectGallery = () => {
 };
 
 const ProjectCard = ({ project, index }) => {
+  const [showCode, setShowCode] = React.useState(false);
+
+  // Sample colorful code for UI designs
+  const uiCodeSnippet = `<!-- Nexus Admin Dashboard Structure -->
+<div class="flex h-screen bg-gray-900">
+  <aside class="w-64 bg-orange-600 p-6">
+    <nav class="space-y-4">
+      <div class="h-10 w-full bg-white/20 rounded-lg animate-pulse" />
+      <div class="h-10 w-3/4 bg-white/10 rounded-lg" />
+    </nav>
+  </aside>
+  <main class="flex-1 p-10">
+    <header class="flex justify-between items-center mb-10">
+      <h1 class="text-3xl font-bold text-white tracking-tight">Analytics Dashboard</h1>
+      <button class="px-6 py-2 bg-orange-500 rounded-full shadow-lg hover:scale-105 transition-all">
+        Export Data
+      </button>
+    </header>
+    <div class="grid grid-cols-3 gap-8">
+      <div class="h-40 bg-gray-800 rounded-3xl border border-white/5" />
+      <div class="h-40 bg-gray-800 rounded-3xl border border-white/5" />
+      <div class="h-40 bg-gray-800 rounded-3xl border border-white/5" />
+    </div>
+  </main>
+</div>`;
+
   return (
     <motion.div 
       initial={{ opacity: 0, y: 100 }}
@@ -255,7 +281,7 @@ const ProjectCard = ({ project, index }) => {
                     </h3>
                 </div>
             </div>
-            <p className="text-gray-500 text-base md:text-xl leading-relaxed mx-auto md:mx-0">
+            <p className="text-gray-500 text-base md:text-xl leading-relaxed mx-auto md:mx-0 font-medium">
             {project.desc}
             </p>
         </div>
@@ -268,27 +294,73 @@ const ProjectCard = ({ project, index }) => {
                 </span>
             ))}
             </div>
-            <motion.a 
-                href={project.liveLink || "#contact"}
-                target={project.liveLink ? "_blank" : undefined}
-                rel={project.liveLink ? "noopener noreferrer" : undefined}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="flex items-center gap-3 md:gap-4 group"
-            >
-                <span className="text-[10px] md:text-xs font-black uppercase tracking-[0.3em] group-hover:text-orange-500 transition-colors">
-                    {project.liveLink ? "Live App" : "Request Demo"}
-                </span>
-                <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl border-2 border-gray-100 flex items-center justify-center group-hover:border-orange-500 group-hover:bg-orange-500 group-hover:text-white transition-all">
-                    <ExternalLink className="w-4 h-4 md:w-5 md:h-5" />
-                </div>
-            </motion.a>
+            <div className="flex items-center gap-4">
+                {project.isUI && (
+                    <button 
+                        onClick={() => setShowCode(!showCode)}
+                        className="text-[10px] md:text-xs font-black uppercase tracking-[0.3em] text-orange-500 hover:text-gray-900 transition-colors"
+                    >
+                        {showCode ? "[ Hide Code ]" : "[ View UI Code ]"}
+                    </button>
+                )}
+                <motion.a 
+                    href={project.liveLink || "#contact"}
+                    target={project.liveLink ? "_blank" : undefined}
+                    rel={project.liveLink ? "noopener noreferrer" : undefined}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="flex items-center gap-3 md:gap-4 group"
+                >
+                    <span className="text-[10px] md:text-xs font-black uppercase tracking-[0.3em] group-hover:text-orange-500 transition-colors">
+                        {project.liveLink ? "Live App" : "Request Demo"}
+                    </span>
+                    <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl border-2 border-gray-100 flex items-center justify-center group-hover:border-orange-500 group-hover:bg-orange-500 group-hover:text-white transition-all">
+                        <ExternalLink className="w-4 h-4 md:w-5 md:h-5" />
+                    </div>
+                </motion.a>
+            </div>
         </div>
       </div>
 
-      {/* Screenshot Grid - Optimized Sizing */}
-      <div className="w-full bg-gray-50 rounded-[2.5rem] md:rounded-[4rem] p-3 md:p-12 border border-gray-100/50">
-        <div className={`grid ${project.isUI ? 'grid-cols-1 md:grid-cols-2 gap-4 md:gap-8' : 'grid-cols-2 lg:grid-cols-3 gap-3 md:gap-8'}`}>
+      {/* Code Preview - Colorful & Animated */}
+      <AnimatePresence>
+        {showCode && (
+            <motion.div 
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: 'auto' }}
+                exit={{ opacity: 0, height: 0 }}
+                className="overflow-hidden"
+            >
+                <div className="bg-gray-900 rounded-[2rem] p-6 md:p-8 font-mono text-[10px] md:text-xs leading-relaxed text-gray-300 border border-white/5 relative overflow-hidden group">
+                    <div className="absolute top-4 right-6 flex gap-2">
+                        <div className="w-3 h-3 rounded-full bg-red-500/20" />
+                        <div className="w-3 h-3 rounded-full bg-yellow-500/20" />
+                        <div className="w-3 h-3 rounded-full bg-green-500/20" />
+                    </div>
+                    <pre className="custom-scrollbar overflow-x-auto">
+                        <code className="block">
+                            {uiCodeSnippet.split('\n').map((line, i) => (
+                                <div key={i} className="flex gap-4">
+                                    <span className="text-gray-600 select-none w-4">{i + 1}</span>
+                                    <span dangerouslySetInnerHTML={{ 
+                                        __html: line
+                                            .replace(/class="/g, '<span class="text-orange-400">class="</span><span class="text-green-400">')
+                                            .replace(/"/g, '</span><span class="text-orange-400">"</span>')
+                                            .replace(/<div/g, '<span class="text-blue-400">&lt;div</span>')
+                                            .replace(/<\/div>/g, '<span class="text-blue-400">&lt;/div&gt;</span>')
+                                    }} />
+                                </div>
+                            ))}
+                        </code>
+                    </pre>
+                </div>
+            </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Screenshot Grid / Slider */}
+      <div className={`w-full ${project.isUI ? 'bg-orange-500' : 'bg-gray-50'} rounded-[2.5rem] md:rounded-[4rem] p-3 md:p-12 border border-gray-100/50 overflow-hidden`}>
+        <div className={`flex ${project.isUI ? 'overflow-x-auto custom-scrollbar-hide snap-x gap-4 md:gap-8 pb-4' : 'grid grid-cols-2 lg:grid-cols-3 gap-3 md:gap-8'}`}>
           {project.screenshots.map((img, i) => (
             <motion.div 
               key={i}
@@ -296,16 +368,23 @@ const ProjectCard = ({ project, index }) => {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.05, duration: 0.5 }}
-              className={`relative group rounded-xl md:rounded-3xl overflow-hidden shadow-lg md:shadow-2xl border-2 md:border-4 border-white ${project.isUI ? 'max-w-[100%]' : ''}`}
+              className={`relative group rounded-xl md:rounded-3xl overflow-hidden shadow-lg md:shadow-2xl border-2 md:border-4 border-white shrink-0 ${project.isUI ? 'w-[280px] md:w-[450px] snap-center' : 'w-full'}`}
             >
               <img 
                 src={img} 
-                className={`w-full h-auto ${project.isUI ? 'object-contain' : 'object-cover'} transition-transform duration-700 group-hover:scale-105`}
+                className={`w-full h-auto ${project.isUI ? 'aspect-video object-cover' : 'object-cover'} transition-transform duration-700 group-hover:scale-105`}
                 alt={`${project.title} screenshot ${i + 1}`}
               />
             </motion.div>
           ))}
         </div>
+        {project.isUI && (
+            <div className="mt-6 flex justify-center items-center gap-2 text-[8px] font-black uppercase tracking-widest text-white/60 md:hidden">
+                <span>Scroll Left</span>
+                <div className="w-12 h-[1px] bg-white/20" />
+                <span>Scroll Right</span>
+            </div>
+        )}
       </div>
     </motion.div>
   );
