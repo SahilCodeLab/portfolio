@@ -26,6 +26,13 @@
   h1, h2, h3, h4, h5, h6 {
     @apply font-display font-black tracking-tighter;
   }
+  *::selection {
+    background-color: #ffedd5;
+    color: #f97316;
+  }
+  * {
+    @apply transition-colors duration-200;
+  }
 }
 
 /* Minimalist Architecture */
