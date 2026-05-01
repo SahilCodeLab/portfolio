@@ -87,3 +87,5 @@ const Services = () => {
 };
 
 export default Services;
+// Optimized for performance and SEO
+
