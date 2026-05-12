@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
 import { Send, CheckCircle, AlertCircle, User, Mail, MessageSquare } from 'lucide-react';
 
-// ⚠️ REPLACE 'YOUR_FORM_ID' with your actual Formspree Form ID
 const FORMSPREE_ID = 'mvzdnbkk';
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
-  const [status, setStatus] = useState('idle'); // idle | loading | success | error
+  const [status, setStatus] = useState('idle'); 
 
   const handleChange = (e) => {
     setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
@@ -16,14 +14,12 @@ const ContactForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setStatus('loading');
-
     try {
       const res = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
         body: JSON.stringify(formData)
       });
-
       if (res.ok) {
         setStatus('success');
         setFormData({ name: '', email: '', message: '' });
@@ -36,7 +32,7 @@ const ContactForm = () => {
   };
 
   return (
-    <div className="w-full max-w-2xl mx-auto px-4 md:px-0">
+    <div className="w-full max-w-2xl mx-auto px-4 md:px-0 relative">
       {status === 'success' ? (
         <div className="flex flex-col items-center justify-center py-20 gap-6 text-center">
           <div className="w-20 h-20 rounded-full bg-green-500/10 flex items-center justify-center">
@@ -52,10 +48,9 @@ const ContactForm = () => {
           </button>
         </div>
       ) : (
-        <form onSubmit={handleSubmit} className="flex flex-col gap-4 md:gap-6">
-          {/* Name */}
+        <form onSubmit={handleSubmit} className="flex flex-col gap-4">
           <div className="relative">
-            <div className="absolute left-4 md:left-5 top-1/2 -translate-y-1/2 text-white/30">
+            <div className="absolute left-4 top-1/2 -translate-y-1/2 text-white/30">
               <User className="w-5 h-5" />
             </div>
             <input
@@ -65,13 +60,12 @@ const ContactForm = () => {
               value={formData.name}
               onChange={handleChange}
               required
-              className="w-full bg-white/5 border border-white/10 rounded-2xl pl-12 md:pl-14 pr-4 md:pr-6 py-4 md:py-5 text-white placeholder:text-white/30 font-medium focus:outline-none focus:border-orange-500/50 focus:bg-white/10 transition-all text-sm md:text-base"
+              className="w-full bg-white/5 border border-white/10 rounded-2xl pl-12 pr-4 py-4 text-white placeholder:text-white/30 focus:outline-none focus:border-orange-500/50 transition-all text-sm md:text-base"
             />
           </div>
 
-          {/* Email */}
           <div className="relative">
-            <div className="absolute left-4 md:left-5 top-1/2 -translate-y-1/2 text-white/30">
+            <div className="absolute left-4 top-1/2 -translate-y-1/2 text-white/30">
               <Mail className="w-5 h-5" />
             </div>
             <input
@@ -81,13 +75,12 @@ const ContactForm = () => {
               value={formData.email}
               onChange={handleChange}
               required
-              className="w-full bg-white/5 border border-white/10 rounded-2xl pl-12 md:pl-14 pr-4 md:pr-6 py-4 md:py-5 text-white placeholder:text-white/30 font-medium focus:outline-none focus:border-orange-500/50 focus:bg-white/10 transition-all text-sm md:text-base"
+              className="w-full bg-white/5 border border-white/10 rounded-2xl pl-12 pr-4 py-4 text-white placeholder:text-white/30 focus:outline-none focus:border-orange-500/50 transition-all text-sm md:text-base"
             />
           </div>
 
-          {/* Message */}
           <div className="relative">
-            <div className="absolute left-4 md:left-5 top-5 text-white/30">
+            <div className="absolute left-4 top-5 text-white/30">
               <MessageSquare className="w-5 h-5" />
             </div>
             <textarea
@@ -97,29 +90,24 @@ const ContactForm = () => {
               onChange={handleChange}
               required
               rows={4}
-              className="w-full bg-white/5 border border-white/10 rounded-2xl pl-12 md:pl-14 pr-4 md:pr-6 py-4 md:py-5 text-white placeholder:text-white/30 font-medium focus:outline-none focus:border-orange-500/50 focus:bg-white/10 transition-all resize-none text-sm md:text-base"
+              className="w-full bg-white/5 border border-white/10 rounded-2xl pl-12 pr-4 py-4 text-white placeholder:text-white/30 focus:outline-none focus:border-orange-500/50 transition-all resize-none text-sm md:text-base"
             />
           </div>
 
-          {/* Error */}
           {status === 'error' && (
             <div className="flex items-center gap-3 px-5 py-4 bg-red-500/10 border border-red-500/20 rounded-2xl">
-              <AlertCircle className="w-5 h-5 text-red-400 flex-shrink-0" />
-              <span className="text-red-400 text-sm font-medium">Something went wrong. Please try again.</span>
+              <AlertCircle className="w-5 h-5 text-red-400" />
+              <span className="text-red-400 text-sm">Something went wrong. Please try again.</span>
             </div>
           )}
 
-          {/* Submit */}
           <button
             type="submit"
             disabled={status === 'loading'}
-            className="flex items-center justify-center gap-3 w-full bg-orange-500 text-white py-5 rounded-2xl font-black uppercase tracking-[0.3em] text-xs md:text-sm shadow-xl shadow-orange-500/20 hover:bg-white hover:text-orange-500 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+            className="flex items-center justify-center gap-3 w-full bg-orange-500 text-white py-5 rounded-2xl font-black uppercase tracking-[0.3em] text-xs md:text-sm shadow-xl shadow-orange-500/20 hover:bg-white hover:text-orange-500 transition-all disabled:opacity-50"
           >
             {status === 'loading' ? (
-              <>
-                <div className="w-5 h-5 rounded-full border-2 border-white/30 border-t-white animate-spin" />
-                <span>Sending...</span>
-              </>
+              <div className="w-5 h-5 rounded-full border-2 border-white/30 border-t-white animate-spin" />
             ) : (
               <>
                 <Send className="w-5 h-5" />
