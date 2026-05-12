@@ -184,9 +184,9 @@ function App() {
 
         <section id="contact" className="py-24 md:py-32 bg-gray-900 text-white relative overflow-hidden">
           <div className="container-tight px-4 relative z-10">
-            <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12 md:mb-16 flex flex-col items-center">
+            <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="text-center mb-12 md:mb-16 flex flex-col items-center">
               <span className="text-orange-500 font-black tracking-widest text-[9px] md:text-[10px] uppercase mb-4 block">Get in Touch</span>
-              <h2 className="text-5xl md:text-6xl lg:text-8xl font-black tracking-tighter mb-6 leading-none uppercase">
+              <h2 className="text-5xl md:text-6xl lg:text-8xl font-black tracking-tighter mb-6 leading-[0.9] md:leading-none uppercase">
                 Let's <br className="block sm:hidden" /><span className="text-orange-500 italic">Create.</span>
               </h2>
               <div className="w-full max-w-[200px] md:max-w-[250px] mb-8">
