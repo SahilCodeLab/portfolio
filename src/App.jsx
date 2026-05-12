@@ -117,11 +117,11 @@ function App() {
                   <motion.div className="relative z-10 overflow-hidden rounded-[2.5rem] md:rounded-[4rem] shadow-2xl aspect-square">
                     <img src={profilePic} alt="Sahil Raza" className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000" />
                   </motion.div>
-                  <div className="absolute -bottom-10 -right-10 w-40 h-40 md:w-80 md:h-80 bg-orange-500/10 rounded-full blur-[60px] md:blur-[100px]"></div>
+                  <div className="absolute -bottom-10 -right-10 w-40 h-40 md:w-80 md:h-80 bg-orange-500/10 rounded-full blur-[60px] md:blur-[100px] hidden md:block"></div>
                   
                   <motion.div 
-                    initial={{ opacity: 0, scale: 0.5 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
                     className="absolute -top-4 -left-4 md:-top-10 md:-left-10 bg-white p-3 md:p-6 rounded-xl md:rounded-3xl shadow-2xl z-20 flex items-center gap-2 md:gap-4 border border-gray-50"
                   >
                     <div className="relative">

@@ -94,7 +94,7 @@ const Navbar = () => {
             </a>
             <button
               onClick={() => setMenuOpen(!menuOpen)}
-              className="bg-white/90 backdrop-blur-3xl border border-gray-100 rounded-2xl w-10 h-10 flex items-center justify-center shadow-2xl text-gray-700 hover:text-orange-500 transition-colors"
+              className="bg-white/95 backdrop-blur-sm border border-gray-100 rounded-2xl w-10 h-10 flex items-center justify-center shadow-2xl text-gray-700 hover:text-orange-500 transition-colors"
             >
               {menuOpen ? <X size={18} /> : <Menu size={18} />}
             </button>
@@ -107,11 +107,11 @@ const Navbar = () => {
         {menuOpen && (
           <motion.div
             key="mobile-menu"
-            initial={{ opacity: 0, y: -20, scale: 0.95 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: -10, scale: 0.95 }}
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.2 }}
-            className="fixed top-20 left-2 right-2 z-40 bg-white/95 backdrop-blur-3xl border border-gray-100 rounded-[2rem] shadow-2xl p-4 pointer-events-auto"
+            className="fixed top-20 left-2 right-2 z-40 bg-white/98 border border-gray-100 rounded-[2rem] shadow-2xl p-4 pointer-events-auto"
           >
             <div className="flex flex-col gap-1">
               {mobileNav.map((item, idx) => (
