@@ -22,6 +22,7 @@ import allAppsEcosystem from './assets/all_apps_ecosystem.jpg';
 import brandLogo from './assets/brand_logo.jpg';
 import undrawCoding from './assets/undraw_coding.svg';
 import undrawContactUs from './assets/undraw_contact_us.svg';
+import googleQr from './assets/google_qr.png';
 
 const StatsCounter = ({ value, label, suffix = "", icon: Icon }) => {
   const [count, setCount] = useState(0);
@@ -234,6 +235,21 @@ function App() {
                   <Mail className="w-5 h-5" />
                 </a>
               </div>
+
+              {/* Verified on Google Badge */}
+              <motion.div 
+                whileHover={{ scale: 1.05 }}
+                className="mt-10 p-6 bg-white border border-gray-100 rounded-[2rem] shadow-xl max-w-[200px] mx-auto md:mx-0 group cursor-pointer overflow-hidden relative"
+              >
+                <div className="absolute top-0 right-0 p-2 bg-orange-500/5 rounded-bl-2xl">
+                    <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+                </div>
+                <a href="https://share.google/T7XulMOxTsOuHCC5M" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center gap-3">
+                    <img src={googleQr} alt="Verified on Google" className="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-110" />
+                    <div className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-900 group-hover:text-orange-500 transition-colors">Verified Presence</div>
+                    <div className="text-[8px] font-bold text-gray-400 uppercase tracking-widest text-center">Check us out on Google</div>
+                </a>
+              </motion.div>
             </div>
 
             {/* Quick Links */}
