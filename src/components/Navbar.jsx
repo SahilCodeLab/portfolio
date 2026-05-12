@@ -41,8 +41,8 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="fixed top-0 md:top-6 left-0 right-0 z-50 px-2 md:px-6 pointer-events-none transition-all duration-500">
-        <div className={`max-w-7xl mx-auto flex items-center justify-between p-2 md:p-0 ${scrolled ? 'md:scale-[0.97]' : 'md:scale-100'} transition-transform duration-500`}>
+      <nav className="fixed top-0 md:top-6 left-0 right-0 z-50 px-2 md:px-6 pointer-events-none transition-all duration-500 w-full">
+        <div className={`w-full max-w-7xl mx-auto flex items-center justify-between p-2 md:p-0 ${scrolled ? 'md:scale-[0.97]' : 'md:scale-100'} transition-transform duration-500`}>
 
           {/* Logo */}
           <motion.div

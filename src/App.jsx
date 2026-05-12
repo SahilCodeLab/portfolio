@@ -182,11 +182,11 @@ function App() {
         <Certifications />
         <Testimonials />
 
-        <section id="contact" className="py-24 md:py-32 bg-gray-900 text-white relative overflow-hidden">
-          <div className="container-tight px-4 relative z-10">
-            <div className="text-center mb-12 md:mb-16 flex flex-col items-center">
+        <section id="contact" className="py-24 md:py-32 bg-gray-900 text-white relative overflow-hidden w-full">
+          <div className="container-tight px-4 relative z-10 w-full">
+            <div className="text-center mb-12 md:mb-16 flex flex-col items-center w-full">
               <span className="text-orange-500 font-black tracking-widest text-[9px] md:text-[10px] uppercase mb-4 block">Get in Touch</span>
-              <h2 className="text-5xl md:text-6xl lg:text-8xl font-black tracking-tighter mb-6 leading-tight uppercase">
+              <h2 className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tighter mb-6 leading-tight uppercase max-w-full break-words">
                 Let's <br className="block sm:hidden" /><span className="text-orange-500 italic">Create.</span>
               </h2>
               <div className="w-full max-w-[200px] md:max-w-[250px] mb-8">
