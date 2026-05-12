@@ -40,7 +40,7 @@ const ContactForm = () => {
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      className="w-full max-w-2xl mx-auto"
+      className="w-full max-w-2xl mx-auto px-4 md:px-0"
     >
       <AnimatePresence mode="wait">
         {status === 'success' ? (
@@ -71,7 +71,7 @@ const ContactForm = () => {
           >
             {/* Name */}
             <div className="relative group">
-              <div className="absolute left-5 top-1/2 -translate-y-1/2 text-white/30 group-focus-within:text-orange-500 transition-colors">
+              <div className="absolute left-4 md:left-5 top-1/2 -translate-y-1/2 text-white/30 group-focus-within:text-orange-500 transition-colors">
                 <User className="w-5 h-5" />
               </div>
               <input
@@ -81,13 +81,13 @@ const ContactForm = () => {
                 value={formData.name}
                 onChange={handleChange}
                 required
-                className="w-full bg-white/5 border border-white/10 rounded-2xl pl-14 pr-6 py-5 text-white placeholder:text-white/30 font-medium focus:outline-none focus:border-orange-500/50 focus:bg-white/10 transition-all text-base"
+                className="w-full bg-white/5 border border-white/10 rounded-2xl pl-12 md:pl-14 pr-4 md:pr-6 py-4 md:py-5 text-white placeholder:text-white/30 font-medium focus:outline-none focus:border-orange-500/50 focus:bg-white/10 transition-all text-sm md:text-base"
               />
             </div>
 
             {/* Email */}
             <div className="relative group">
-              <div className="absolute left-5 top-1/2 -translate-y-1/2 text-white/30 group-focus-within:text-orange-500 transition-colors">
+              <div className="absolute left-4 md:left-5 top-1/2 -translate-y-1/2 text-white/30 group-focus-within:text-orange-500 transition-colors">
                 <Mail className="w-5 h-5" />
               </div>
               <input
@@ -97,13 +97,13 @@ const ContactForm = () => {
                 value={formData.email}
                 onChange={handleChange}
                 required
-                className="w-full bg-white/5 border border-white/10 rounded-2xl pl-14 pr-6 py-5 text-white placeholder:text-white/30 font-medium focus:outline-none focus:border-orange-500/50 focus:bg-white/10 transition-all text-base"
+                className="w-full bg-white/5 border border-white/10 rounded-2xl pl-12 md:pl-14 pr-4 md:pr-6 py-4 md:py-5 text-white placeholder:text-white/30 font-medium focus:outline-none focus:border-orange-500/50 focus:bg-white/10 transition-all text-sm md:text-base"
               />
             </div>
 
             {/* Message */}
             <div className="relative group">
-              <div className="absolute left-5 top-5 text-white/30 group-focus-within:text-orange-500 transition-colors">
+              <div className="absolute left-4 md:left-5 top-5 text-white/30 group-focus-within:text-orange-500 transition-colors">
                 <MessageSquare className="w-5 h-5" />
               </div>
               <textarea
@@ -112,8 +112,8 @@ const ContactForm = () => {
                 value={formData.message}
                 onChange={handleChange}
                 required
-                rows={5}
-                className="w-full bg-white/5 border border-white/10 rounded-2xl pl-14 pr-6 py-5 text-white placeholder:text-white/30 font-medium focus:outline-none focus:border-orange-500/50 focus:bg-white/10 transition-all resize-none text-base"
+                rows={4}
+                className="w-full bg-white/5 border border-white/10 rounded-2xl pl-12 md:pl-14 pr-4 md:pr-6 py-4 md:py-5 text-white placeholder:text-white/30 font-medium focus:outline-none focus:border-orange-500/50 focus:bg-white/10 transition-all resize-none text-sm md:text-base"
               />
             </div>
 

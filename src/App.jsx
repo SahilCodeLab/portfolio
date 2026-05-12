@@ -109,42 +109,42 @@ function App() {
         <Hero />
         
         {/* About Sahil Raza Section - Mobile Optimized */}
-        <section id="about" className="py-24 md:py-40 bg-gray-50 relative overflow-hidden">
-          <div className="container-tight">
-            <div className="flex flex-col lg:flex-row gap-16 md:gap-24 items-center">
+        <section id="about" className="py-20 md:py-40 bg-gray-50 relative overflow-hidden">
+          <div className="container-tight px-4">
+            <div className="flex flex-col lg:flex-row gap-12 md:gap-24 items-center">
               <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="w-full lg:w-1/2">
-                <div className="relative group mx-auto max-w-[400px] lg:max-w-none">
-                  <motion.div className="relative z-10 overflow-hidden rounded-[3rem] md:rounded-[4rem] shadow-2xl aspect-square">
+                <div className="relative group mx-auto max-w-full md:max-w-[500px] lg:max-w-none">
+                  <motion.div className="relative z-10 overflow-hidden rounded-[2.5rem] md:rounded-[4rem] shadow-2xl aspect-square">
                     <img src={profilePic} alt="Sahil Raza" className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000" />
                   </motion.div>
-                  <div className="absolute -bottom-10 -right-10 w-60 h-60 md:w-80 md:h-80 bg-orange-500/10 rounded-full blur-[80px] md:blur-[100px]"></div>
+                  <div className="absolute -bottom-10 -right-10 w-40 h-40 md:w-80 md:h-80 bg-orange-500/10 rounded-full blur-[60px] md:blur-[100px]"></div>
                   
                   <motion.div 
                     initial={{ opacity: 0, scale: 0.5 }}
                     whileInView={{ opacity: 1, scale: 1 }}
-                    className="absolute -top-6 -left-6 md:-top-10 md:-left-10 bg-white p-4 md:p-6 rounded-2xl md:rounded-3xl shadow-2xl z-20 flex items-center gap-3 md:gap-4 border border-gray-50"
+                    className="absolute -top-4 -left-4 md:-top-10 md:-left-10 bg-white p-3 md:p-6 rounded-xl md:rounded-3xl shadow-2xl z-20 flex items-center gap-2 md:gap-4 border border-gray-50"
                   >
                     <div className="relative">
-                        <Activity className="w-6 h-6 md:w-8 md:h-8 text-orange-500" />
-                        <div className="absolute top-0 right-0 w-2.5 h-2.5 md:w-3 md:h-3 bg-green-500 rounded-full border-2 border-white animate-pulse" />
+                        <Activity className="w-5 h-5 md:w-8 md:h-8 text-orange-500" />
+                        <div className="absolute top-0 right-0 w-2 md:w-3 h-2 md:h-3 bg-green-500 rounded-full border-2 border-white animate-pulse" />
                     </div>
                     <div>
-                        <div className="text-[9px] md:text-[10px] font-black uppercase tracking-widest text-gray-400 mb-0.5">Live Status</div>
-                        <div className="text-[10px] md:text-xs font-black text-gray-900 uppercase">Available for Hire</div>
+                        <div className="text-[8px] md:text-[10px] font-black uppercase tracking-widest text-gray-400 mb-0.5">Live Status</div>
+                        <div className="text-[9px] md:text-xs font-black text-gray-900 uppercase">Available for Hire</div>
                     </div>
                   </motion.div>
                 </div>
               </motion.div>
               
-              <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="flex-1 text-center lg:text-left">
-                <div className="inline-flex items-center gap-3 mb-6">
-                    <div className="w-8 md:w-10 h-[2px] bg-orange-500" />
-                    <span className="text-orange-500 font-black tracking-widest text-[10px] uppercase">The Expert</span>
+              <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="flex-1 text-center lg:text-left w-full">
+                <div className="inline-flex items-center gap-3 mb-4 md:mb-6">
+                    <div className="w-6 md:w-10 h-[2px] bg-orange-500" />
+                    <span className="text-orange-500 font-black tracking-widest text-[9px] md:text-[10px] uppercase">The Expert</span>
                 </div>
-                <h2 className="text-4xl md:text-7xl font-black tracking-tighter mb-8 md:mb-10 leading-[0.9]">
+                <h2 className="text-3xl md:text-7xl font-black tracking-tighter mb-6 md:mb-10 leading-[0.9]">
                   Sahil Raza <br/> <span className="text-gray-300 italic">Software Engineer.</span>
                 </h2>
-                <div className="space-y-6 text-gray-500 text-base md:text-lg leading-relaxed mb-8 md:mb-12 font-medium max-w-2xl mx-auto lg:mx-0 text-left">
+                <div className="space-y-4 md:space-y-6 text-gray-500 text-sm md:text-lg leading-relaxed mb-8 md:mb-12 font-medium max-w-2xl mx-auto lg:mx-0 text-left">
                   <p>
                     With <span className="text-gray-900 font-black">4+ years in Web</span> and <span className="text-gray-900 font-black">1+ year in Android</span> engineering, I approach software logically—architecting workflows and drawing logic before writing a single line of code.
                   </p>
@@ -152,17 +152,11 @@ function App() {
                     I don't just copy UIs; I build entirely unique products. Apps like <span className="text-orange-500 font-bold">PocketID, Wrapify</span>, and <span className="text-orange-500 font-bold">MasterDex</span> are original concepts filling untouched market gaps.
                   </p>
                 </div>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 pt-8 md:pt-10 border-t border-gray-200">
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 pt-8 md:pt-10 border-t border-gray-200">
                   <StatsCounter value="4" label="Web Exp" suffix="Y+" icon={Globe} />
                   <StatsCounter value="1" label="App Exp" suffix="Y+" icon={Smartphone} />
                   <StatsCounter value="20" label="Projects" suffix="+" icon={Briefcase} />
                   <StatsCounter value="82" label="Repos" suffix="+" icon={Code} />
-                </div>
-                <div className="mt-12 flex justify-center lg:justify-start">
-                  <div className="p-6 bg-orange-50/50 rounded-[2rem] border border-orange-100/50 w-full max-w-sm">
-                    <img src={undrawCoding} alt="Coding Illustration" className="w-full h-auto drop-shadow-xl" />
-                    <p className="text-[10px] font-black uppercase tracking-widest text-orange-500 text-center mt-4">unDraw Test Illustration</p>
-                  </div>
                 </div>
               </motion.div>
             </div>
