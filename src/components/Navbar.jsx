@@ -20,10 +20,10 @@ const Navbar = () => {
   // Desktop nav items
   const desktopNav = [
     { label: 'Home', href: '#' },
+    { label: 'About', href: '#about' },
     { label: 'Projects', href: '#projects' },
     { label: 'Certificates', href: '#certifications' },
     { label: 'Reviews', href: '#testimonials' },
-    { label: 'About', href: '#about' },
     { label: 'Contact', href: '#contact' },
     { label: 'Resume', href: resume, download: true },
   ];
@@ -31,10 +31,10 @@ const Navbar = () => {
   // Mobile menu items (full labels)
   const mobileNav = [
     { label: 'Home', href: '#' },
+    { label: 'About', href: '#about' },
     { label: 'Projects', href: '#projects' },
     { label: 'Certificates', href: '#certifications' },
     { label: 'Reviews', href: '#testimonials' },
-    { label: 'About', href: '#about' },
     { label: 'Contact', href: '#contact' },
     { label: 'Resume', href: resume, download: true },
   ];

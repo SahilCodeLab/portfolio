@@ -109,10 +109,6 @@ function App() {
       <main>
         <Hero />
         
-        <ProjectGallery />
-        <Certifications />
-        <Testimonials />
-
         {/* About Sahil Raza Section - Mobile Optimized */}
         <section id="about" className="py-20 md:py-40 bg-gray-50/50 relative overflow-hidden">
           <div className="container-tight px-4">
@@ -181,6 +177,10 @@ function App() {
                 </div>
             </div>
         </section>
+        
+        <ProjectGallery />
+        <Certifications />
+        <Testimonials />
 
         <section id="contact" className="py-24 md:py-32 bg-surface text-on-surface relative overflow-hidden w-full">
           <div className="container-tight px-4 relative z-10 w-full">
