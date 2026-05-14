@@ -105,12 +105,12 @@ const ProjectCard = ({ project, index }) => {
             <div className="flex flex-col md:flex-row items-center md:items-start gap-4 mb-6">
                 <motion.div 
                     whileHover={{ rotate: 10, scale: 1.1 }}
-                    className="w-14 h-14 md:w-16 md:h-16 bg-white rounded-2xl p-2 shadow-xl border border-gray-100 flex items-center justify-center"
+                    className="w-14 h-14 md:w-16 md:h-16 bg-white/5 rounded-2xl p-2 shadow-xl border border-white/5 flex items-center justify-center"
                 >
                 {project.logo && <img src={project.logo} className="w-full h-full object-contain" alt="" />}
                 </motion.div>
                 <div className="text-center md:text-left">
-                    <span className="text-orange-500 font-black tracking-widest text-[9px] md:text-[10px] uppercase block mb-1">
+                    <span className="text-primary font-black tracking-widest text-[9px] md:text-[10px] uppercase block mb-1">
                         {project.category}
                     </span>
                     <h3 className="text-3xl md:text-5xl font-black tracking-tighter leading-none">
@@ -126,7 +126,7 @@ const ProjectCard = ({ project, index }) => {
         <div className="flex flex-col gap-6 items-center md:items-end w-full md:w-auto">
             <div className="flex flex-wrap gap-2 justify-center md:justify-end">
             {project.tech.map(t => (
-                <span key={t} className="px-3 py-1.5 md:px-4 md:py-2 bg-gray-50 rounded-lg md:rounded-xl text-[8px] md:text-[10px] font-bold text-gray-400 border border-gray-100 uppercase tracking-widest">
+                <span key={t} className="px-3 py-1.5 md:px-4 md:py-2 bg-white/5 rounded-lg md:rounded-xl text-[8px] md:text-[10px] font-bold text-on-surface/40 border border-white/5 uppercase tracking-widest">
                 {t}
                 </span>
             ))}
@@ -143,7 +143,7 @@ const ProjectCard = ({ project, index }) => {
                     <span className="text-[10px] md:text-xs font-black uppercase tracking-[0.3em] group-hover:text-orange-500 transition-colors">
                         {project.liveLink ? "Live App" : "Request Demo"}
                     </span>
-                    <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl border-2 border-gray-100 flex items-center justify-center group-hover:border-orange-500 group-hover:bg-orange-500 group-hover:text-white transition-all">
+                    <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl border-2 border-white/10 flex items-center justify-center group-hover:border-primary group-hover:bg-primary group-hover:text-surface transition-all">
                         <ExternalLink className="w-4 h-4 md:w-5 md:h-5" />
                     </div>
                 </motion.a>
@@ -152,7 +152,7 @@ const ProjectCard = ({ project, index }) => {
       </div>
 
       {/* Screenshot Grid */}
-      <div className="w-full bg-gray-50 rounded-[2.5rem] md:rounded-[4rem] p-3 md:p-12 border border-gray-100/50 overflow-hidden">
+      <div className="w-full bg-white/[0.02] rounded-[2.5rem] md:rounded-[4rem] p-3 md:p-12 border border-white/5 overflow-hidden">
         <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 md:gap-8">
           {project.screenshots.map((img, i) => (
             <motion.div 
@@ -178,7 +178,7 @@ const ProjectCard = ({ project, index }) => {
 
 const ProjectGallery = () => {
   return (
-    <section id="projects" className="py-24 bg-white relative overflow-hidden">
+    <section id="projects" className="py-24 bg-surface relative overflow-hidden text-on-surface">
       <div className="container-tight px-4 md:px-6">
         {/* Core Apps Section */}
         <motion.div 
@@ -187,9 +187,9 @@ const ProjectGallery = () => {
             viewport={{ once: true }}
             className="mb-20 text-center md:text-left"
         >
-            <span className="text-orange-500 font-black uppercase tracking-[0.3em] text-[10px] mb-4 block">Primary Portfolio</span>
+            <span className="text-primary font-black uppercase tracking-[0.3em] text-[10px] mb-4 block">Primary Portfolio</span>
             <h2 className="text-4xl md:text-7xl font-black mb-12 tracking-tighter leading-none">
-              Featured <span className="text-gray-300 italic underline decoration-orange-500/20 underline-offset-8">Applications</span>
+              Featured <span className="text-on-surface/20 italic underline decoration-primary/20 underline-offset-8">Applications</span>
             </h2>
         </motion.div>
         
@@ -230,7 +230,7 @@ const ProjectGallery = () => {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.05 }}
-                className="group flex flex-col justify-between p-6 md:p-8 rounded-[2rem] bg-gray-50 hover:bg-orange-500 transition-colors duration-500 border border-gray-100 hover:border-orange-500"
+                className="group flex flex-col justify-between p-6 md:p-8 rounded-[2rem] bg-white/[0.02] hover:bg-primary transition-colors duration-500 border border-white/5 hover:border-primary"
               >
                 <div>
                   <span className="text-[9px] font-black tracking-widest text-gray-400 group-hover:text-orange-200 uppercase block mb-3">
@@ -253,7 +253,7 @@ const ProjectGallery = () => {
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="mt-40 p-8 md:p-20 bg-gray-900 rounded-[3rem] md:rounded-[5rem] text-center relative overflow-hidden group"
+            className="mt-40 p-8 md:p-20 bg-white/[0.02] border border-white/5 rounded-[3rem] md:rounded-[5rem] text-center relative overflow-hidden group"
         >
             <div className="absolute top-0 left-0 w-full h-full bg-orange-500/10 opacity-0 group-hover:opacity-100 transition-opacity" />
             <div className="relative z-10">
@@ -262,7 +262,7 @@ const ProjectGallery = () => {
                     href="#contact"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="inline-flex items-center gap-4 bg-orange-500 text-white px-8 md:px-12 py-4 md:py-6 rounded-full text-sm md:text-base font-black uppercase tracking-widest shadow-2xl hover:bg-white hover:text-gray-900 transition-all"
+                    className="inline-flex items-center gap-4 bg-primary text-surface px-8 md:px-12 py-4 md:py-6 rounded-full text-sm md:text-base font-black uppercase tracking-widest shadow-2xl hover:bg-white hover:text-surface transition-all"
                 >
                     Start a Project
                     <ExternalLink size={20} />

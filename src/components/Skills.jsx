@@ -28,12 +28,12 @@ const techStack = [
 
 const Skills = () => {
   return (
-    <section id="skills" className="py-24 md:py-32 bg-gray-950 text-white overflow-hidden relative">
+    <section id="skills" className="py-24 md:py-32 bg-surface text-on-surface overflow-hidden relative">
       <div className="container-tight px-4">
         <div className="text-center mb-12 md:mb-16">
-          <span className="text-orange-500 font-black tracking-widest text-[9px] md:text-[10px] uppercase mb-4 block">The Engine Room</span>
+          <span className="text-primary font-black tracking-widest text-[9px] md:text-[10px] uppercase mb-4 block">The Engine Room</span>
           <h2 className="text-4xl md:text-7xl font-black mb-6 tracking-tighter">
-            Technologies I <span className="text-gray-500 italic">Master.</span>
+            Technologies I <span className="text-on-surface/20 italic">Master.</span>
           </h2>
         </div>
 
@@ -46,9 +46,9 @@ const Skills = () => {
                 transition={{ ease: "linear", duration: 20, repeat: Infinity }}
             >
                 {[...techStack, ...techStack].map((tech, idx) => (
-                <div key={idx} className="flex items-center gap-3 md:gap-4 px-6 py-3 md:px-10 md:py-6 bg-white/5 rounded-2xl md:rounded-3xl border border-white/5 hover:border-orange-500/50 transition-all">
-                    <span className={`text-2xl md:text-4xl ${tech.color}`}>{tech.icon}</span>
-                    <span className="text-sm md:text-xl font-bold tracking-tight text-gray-400">{tech.name}</span>
+                <div key={idx} className="flex items-center gap-3 md:gap-4 px-6 py-3 md:px-10 md:py-6 bg-white/5 border border-white/5 hover:border-primary/50 transition-all group">
+                    <span className="text-2xl md:text-4xl text-on-surface/40 group-hover:text-primary transition-colors">{tech.icon}</span>
+                    <span className="text-sm md:text-xl font-bold tracking-tight text-on-surface/40 group-hover:text-on-surface">{tech.name}</span>
                 </div>
                 ))}
             </motion.div>
@@ -62,9 +62,9 @@ const Skills = () => {
                 transition={{ ease: "linear", duration: 25, repeat: Infinity }}
             >
                 {[...techStack.reverse(), ...techStack].map((tech, idx) => (
-                <div key={idx} className="flex items-center gap-3 md:gap-4 px-6 py-3 md:px-10 md:py-6 bg-white/5 rounded-2xl md:rounded-3xl border border-white/5 hover:border-orange-500/50 transition-all">
-                    <span className={`text-2xl md:text-4xl ${tech.color}`}>{tech.icon}</span>
-                    <span className="text-sm md:text-xl font-bold tracking-tight text-gray-400">{tech.name}</span>
+                <div key={idx} className="flex items-center gap-3 md:gap-4 px-6 py-3 md:px-10 md:py-6 bg-white/5 border border-white/5 hover:border-primary/50 transition-all group">
+                    <span className="text-2xl md:text-4xl text-on-surface/40 group-hover:text-primary transition-colors">{tech.icon}</span>
+                    <span className="text-sm md:text-xl font-bold tracking-tight text-on-surface/40 group-hover:text-on-surface">{tech.name}</span>
                 </div>
                 ))}
             </motion.div>
