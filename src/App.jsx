@@ -211,11 +211,10 @@ function App() {
                   <div className="w-full lg:w-2/3 h-[300px] md:h-[500px] relative">
                     <iframe 
                       title="SahilCodeLab Location"
-                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m12!1m3!1d3711.666!2d82.7525!3d21.068!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x21620bfdf86287bd%3A0xa6015bcc8e41aaea!2sSahilCodeLab!5e0!3m2!1sen!2sin!4v1715711200000!5m2!1sen!2sin" 
+                      src="https://maps.google.com/maps?q=SahilCodeLab&t=&z=15&ie=UTF8&iwloc=&output=embed" 
                       className="absolute inset-0 w-full h-full border-0 grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-700"
                       allowFullScreen="" 
                       loading="lazy" 
-                      referrerPolicy="no-referrer-when-downgrade"
                     ></iframe>
                   </div>
                   
