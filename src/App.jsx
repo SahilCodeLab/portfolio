@@ -190,7 +190,7 @@ function App() {
                 Let's <br className="block sm:hidden" /><span className="text-primary italic">Create.</span>
               </h2>
               <div className="w-full max-w-[200px] md:max-w-[250px] mb-8">
-                <img src={undrawContactUs} alt="Contact Us Illustration" className="w-full h-auto drop-shadow-md opacity-90 grayscale hover:grayscale-0 transition-all" />
+                <img src={undrawContactUs} alt="Contact Us Illustration" className="w-full h-auto drop-shadow-md opacity-90 hover:scale-105 transition-all duration-500" />
               </div>
               <p className="text-on-surface/40 text-base md:text-lg font-medium max-w-xl mx-auto">
                 Have a project in mind? Let's build something exceptional together.
