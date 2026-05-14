@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence, useScroll, useSpring } from 'framer-motion';
-import { ArrowUp, Activity, Mail, Globe, Smartphone, Briefcase, Code } from 'lucide-react';
+import { ArrowUp, Activity, Mail, Globe, Smartphone, Briefcase, Code, ArrowUpRight } from 'lucide-react';
 import { FaLinkedin, FaGithub, FaInstagram } from 'react-icons/fa';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
@@ -197,6 +197,51 @@ function App() {
               </p>
             </div>
             <ContactForm />
+
+            {/* Google Maps Location Section */}
+            <motion.div 
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="mt-24 md:mt-32"
+            >
+              <div className="bg-gray-50 border border-gray-100 rounded-[2.5rem] md:rounded-[4rem] overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500">
+                <div className="flex flex-col lg:flex-row">
+                  {/* Map Side */}
+                  <div className="w-full lg:w-2/3 h-[300px] md:h-[500px] relative">
+                    <iframe 
+                      title="SahilCodeLab Location"
+                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m12!1m3!1d3711.666!2d82.7525!3d21.068!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x21620bfdf86287bd%3A0xa6015bcc8e41aaea!2sSahilCodeLab!5e0!3m2!1sen!2sin!4v1715711200000!5m2!1sen!2sin" 
+                      className="absolute inset-0 w-full h-full border-0 grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-700"
+                      allowFullScreen="" 
+                      loading="lazy" 
+                      referrerPolicy="no-referrer-when-downgrade"
+                    ></iframe>
+                  </div>
+                  
+                  {/* Info Side */}
+                  <div className="w-full lg:w-1/3 p-10 md:p-16 flex flex-col justify-center bg-white">
+                    <div className="inline-flex items-center gap-3 px-4 py-2 bg-primary/10 rounded-full text-primary font-bold text-[10px] uppercase tracking-widest mb-8 w-fit">
+                      <Globe size={14} />
+                      <span>Physical Presence</span>
+                    </div>
+                    <h3 className="text-3xl md:text-5xl font-black tracking-tighter mb-6 leading-none">Global <br/> <span className="text-primary italic">Headquarters.</span></h3>
+                    <p className="text-on-surface/40 text-sm md:text-lg font-medium mb-10 leading-relaxed">
+                      Strategically located in the heart of India, serving developers and enterprises across the globe with precision software.
+                    </p>
+                    <a 
+                      href="https://www.google.com/maps/place/SahilCodeLab/@21.0680074,82.7525294,17z/data=!3m1!4b1!4m6!3m5!1s0x21620bfdf86287bd:0xa6015bcc8e41aaea!8m2!3d21.0680074!4d82.7525294!16s%2Fg%2F11zb5yz9m4?entry=ttu" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-4 text-primary font-black text-xs uppercase tracking-widest group"
+                    >
+                      Open in Google Maps
+                      <ArrowUpRight size={18} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
           </div>
         </section>
       </main>
