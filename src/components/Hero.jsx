@@ -49,13 +49,13 @@ const Hero = () => {
           </motion.div>
           
           <div className="flex flex-col gap-1 md:gap-2">
-            <div className="overflow-hidden h-[4.5rem] md:h-[13rem]">
-                <motion.h1 variants={textReveal} className="text-6xl md:text-[14rem] font-black tracking-tighter text-on-surface leading-none">
+            <div className="overflow-hidden h-[5.5rem] md:h-[13.5rem]">
+                <motion.h1 variants={textReveal} className="text-7xl md:text-[14rem] font-serif italic font-black tracking-tighter text-on-surface leading-none">
                 Sahil
                 </motion.h1>
             </div>
-            <div className="overflow-hidden h-[4.5rem] md:h-[13rem]">
-                <motion.h1 variants={textReveal} className="text-6xl md:text-[14rem] font-black tracking-tighter text-primary leading-none">
+            <div className="overflow-hidden h-[5.5rem] md:h-[13.5rem]">
+                <motion.h1 variants={textReveal} className="text-7xl md:text-[14rem] font-outfit font-black tracking-tighter text-primary leading-none">
                 Raza.
                 </motion.h1>
             </div>
