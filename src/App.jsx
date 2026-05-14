@@ -110,7 +110,7 @@ function App() {
         <Hero />
         
         {/* About Sahil Raza Section - Mobile Optimized */}
-        <section id="about" className="py-20 md:py-40 bg-white/[0.01] relative overflow-hidden">
+        <section id="about" className="py-20 md:py-40 bg-gray-50/50 relative overflow-hidden">
           <div className="container-tight px-4">
             <div className="flex flex-col lg:flex-row gap-12 md:gap-24 items-center">
               <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="w-full lg:w-1/2">
@@ -153,7 +153,7 @@ function App() {
                     I don't just copy UIs; I build entirely unique products. Apps like <span className="text-primary font-bold">PocketID, Wrapify</span>, and <span className="text-primary font-bold">MasterDex</span> are original concepts filling untouched market gaps.
                   </p>
                 </div>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 pt-8 md:pt-10 border-t border-white/5">
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 pt-8 md:pt-10 border-t border-gray-100">
                   <StatsCounter value="4" label="Web Exp" suffix="Y+" icon={Globe} />
                   <StatsCounter value="1" label="App Exp" suffix="Y+" icon={Smartphone} />
                   <StatsCounter value="20" label="Projects" suffix="+" icon={Briefcase} />

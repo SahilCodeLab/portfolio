@@ -4,9 +4,10 @@
 
 @theme {
   --color-primary: #4f46e5;
-  --color-surface: #131313;
-  --color-on-surface: #ffffff;
-  --color-outline: rgba(192, 194, 184, 0.2);
+  --color-surface: #ffffff;
+  --color-on-surface: #0f172a;
+  --color-outline: rgba(0, 0, 0, 0.08);
+  --color-on-surface-variant: #64748b;
   --color-secondary: #c0c2b8;
   
   --font-sans: "Inter", "sans-serif";

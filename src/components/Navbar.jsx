@@ -48,7 +48,7 @@ const Navbar = () => {
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
-            className="bg-surface/90 backdrop-blur-3xl border border-white/10 rounded-2xl md:rounded-[2rem] px-4 py-2.5 md:px-6 md:py-4 shadow-2xl pointer-events-auto flex items-center gap-2 md:gap-3"
+            className="bg-surface/90 backdrop-blur-3xl border border-black/5 rounded-2xl md:rounded-[2rem] px-4 py-2.5 md:px-6 md:py-4 shadow-2xl pointer-events-auto flex items-center gap-2 md:gap-3"
           >
             <img src={brandLogo} alt="SahilCodeLab Logo" className="w-7 h-7 md:w-10 md:h-10 object-contain rounded-lg shadow-inner" />
             <div className="text-sm md:text-xl font-black tracking-tighter uppercase whitespace-nowrap text-on-surface">
@@ -62,7 +62,7 @@ const Navbar = () => {
             animate={{ opacity: 1, x: 0 }}
             className="hidden md:flex items-center gap-4 pointer-events-auto"
           >
-            <div className="bg-surface/90 backdrop-blur-3xl border border-white/10 rounded-[2rem] p-2 flex gap-1 shadow-2xl">
+            <div className="bg-surface/90 backdrop-blur-3xl border border-black/5 rounded-[2rem] p-2 flex gap-1 shadow-2xl">
               {desktopNav.map((item) => (
                 <motion.a
                   key={item.label}

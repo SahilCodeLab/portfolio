@@ -42,7 +42,7 @@ const Hero = () => {
         <motion.div variants={container} initial="hidden" animate="show">
           
           <motion.div className="flex justify-center mb-8 md:mb-12">
-            <div className="inline-flex items-center gap-2 md:gap-3 px-6 md:px-8 py-2.5 md:py-3 rounded-full bg-black/40 text-on-surface font-bold text-[9px] md:text-[10px] uppercase tracking-[0.3em] md:tracking-[0.4em] shadow-2xl">
+            <div className="inline-flex items-center gap-2 md:gap-3 px-6 md:px-8 py-2.5 md:py-3 rounded-full bg-gray-100 text-on-surface font-bold text-[9px] md:text-[10px] uppercase tracking-[0.3em] md:tracking-[0.4em] shadow-sm">
                 <Sparkles className="w-3 h-3 md:w-4 md:h-4 text-primary animate-pulse" />
                 <span>Founder of SahilCodeLab</span>
             </div>
@@ -89,7 +89,7 @@ const Hero = () => {
             </div>
 
             {/* Adobix-Inspired Stats Counter */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 mt-24 md:mt-32 pt-12 border-t border-white/5">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 mt-24 md:mt-32 pt-12 border-t border-gray-100">
                 {[
                     { label: "Apps Published", value: "12+" },
                     { label: "Digital Products", value: "05+" },
@@ -104,7 +104,7 @@ const Hero = () => {
                         className="text-center"
                     >
                         <h4 className="text-3xl md:text-5xl font-black text-on-surface mb-2">{stat.value}</h4>
-                        <p className="text-[10px] md:text-xs uppercase tracking-[0.2em] text-on-surface/40 font-bold">{stat.label}</p>
+                        <p className="text-[10px] md:text-xs uppercase tracking-[0.2em] text-on-surface/30 font-bold">{stat.label}</p>
                     </motion.div>
                 ))}
             </div>

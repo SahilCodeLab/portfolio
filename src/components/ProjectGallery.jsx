@@ -97,7 +97,7 @@ const ProjectCard = ({ project, index }) => {
       {/* Background Glow */}
       <div className="absolute inset-0 bg-primary/5 rounded-[3rem] md:rounded-[4rem] blur-[80px] opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
       
-      <div className="relative bg-white/[0.02] border border-white/5 rounded-[2.5rem] md:rounded-[4rem] p-6 md:p-12 overflow-hidden hover:border-primary/20 transition-all duration-500">
+      <div className="relative bg-gray-50 border border-gray-100 rounded-[2.5rem] md:rounded-[4rem] p-6 md:p-12 overflow-hidden hover:border-primary/20 transition-all duration-500 shadow-sm hover:shadow-xl">
         
         {/* Header Info */}
         <div className="flex flex-col lg:flex-row gap-10 items-start justify-between mb-12 md:mb-16">
@@ -200,7 +200,7 @@ const ProjectGallery = () => {
         </div>
 
         {/* Micro Projects Section */}
-        <div className="pt-24 md:pt-40 border-t border-white/5">
+        <div className="pt-24 md:pt-40 border-t border-gray-100">
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
