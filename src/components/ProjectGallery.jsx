@@ -1,13 +1,12 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ExternalLink, Smartphone, Code } from 'lucide-react';
+import { ExternalLink, Smartphone, Code, ArrowUpRight } from 'lucide-react';
 
 // Import Logos
 import pocketIdLogo from '../assets/pocketid_logo.png';
 import masterDexLogo from '../assets/masterdex_logo.png';
 import warpifyLogo from '../assets/warpify_logo.png';
 import auraNotesLogo from '../assets/aura_notes_logo.webp';
-import undrawApp from '../assets/undraw_app_installation.svg';
 
 // Import Screenshots
 import masterDex1 from '../assets/masterdex_homepage_1.jpg';
@@ -40,7 +39,6 @@ const coreApps = [
     screenshots: [pocketId1, pocketId3, pocketId4, pocketId5, pocketIdCert],
     tech: ["Kotlin", "Firebase", "Security"],
     category: "Security Solution",
-    color: "#4f46e5",
     liveLink: "https://sahilcodelab.github.io/PocketID/"
   },
   { 
@@ -51,7 +49,6 @@ const coreApps = [
     screenshots: [wrapify1, wrapify2, wrapify4, wrapify5, wrapify6, wrapifyBanner],
     tech: ["Next.js", "Razorpay", "Analytics"],
     category: "Web Platform",
-    color: "#f59e0b",
     liveLink: "https://com-sahilcodelab-wrapify.en.uptodown.com/android"
   },
   { 
@@ -61,8 +58,7 @@ const coreApps = [
     logo: masterDexLogo,
     screenshots: [masterDex1, masterDexSplash, masterDex2, masterDex3, masterDex4, masterDex5, masterDex6],
     tech: ["React Native", "Audio Engine", "Framer Motion"],
-    category: "Mobile App",
-    color: "#ff3d00"
+    category: "Mobile App"
   },
   { 
     id: 'auranotes', 
@@ -72,7 +68,6 @@ const coreApps = [
     screenshots: [auraNotesLogo],
     tech: ["React", "Node.js", "AI"],
     category: "Productivity",
-    color: "#8b5cf6",
     isComingSoon: true,
     liveLink: "https://www.palmplaystore.com/detail/com.razatech.auranotes?country=IN"
   },
@@ -97,77 +92,78 @@ const ProjectCard = ({ project, index }) => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-100px" }}
       transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-      className="flex flex-col gap-12 md:gap-16"
+      className="relative group"
     >
-      {/* Header Info */}
-      <div className="flex flex-col md:flex-row gap-8 md:gap-10 items-start md:items-end justify-between">
-        <div className="max-w-2xl text-center md:text-left w-full">
-            <div className="flex flex-col md:flex-row items-center md:items-start gap-4 mb-6">
+      {/* Background Glow */}
+      <div className="absolute inset-0 bg-primary/5 rounded-[3rem] md:rounded-[4rem] blur-[80px] opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
+      
+      <div className="relative bg-white/[0.02] border border-white/5 rounded-[2.5rem] md:rounded-[4rem] p-6 md:p-12 overflow-hidden hover:border-primary/20 transition-all duration-500">
+        
+        {/* Header Info */}
+        <div className="flex flex-col lg:flex-row gap-10 items-start justify-between mb-12 md:mb-16">
+          <div className="max-w-2xl">
+            <div className="flex items-center gap-4 mb-6">
                 <motion.div 
                     whileHover={{ rotate: 10, scale: 1.1 }}
-                    className="w-14 h-14 md:w-16 md:h-16 bg-white/5 rounded-2xl p-2 shadow-xl border border-white/5 flex items-center justify-center"
+                    className="w-16 h-16 bg-white rounded-2xl p-2 shadow-2xl flex items-center justify-center border border-white/10"
                 >
                 {project.logo && <img src={project.logo} className="w-full h-full object-contain" alt="" />}
                 </motion.div>
-                <div className="text-center md:text-left">
-                    <span className="text-primary font-black tracking-widest text-[9px] md:text-[10px] uppercase block mb-1">
+                <div>
+                    <span className="text-primary font-black tracking-widest text-[10px] uppercase block mb-1">
                         {project.category}
                     </span>
-                    <h3 className="text-3xl md:text-5xl font-black tracking-tighter leading-none">
+                    <h3 className="text-3xl md:text-6xl font-black tracking-tighter leading-none text-on-surface">
                         {project.title}
                     </h3>
                 </div>
             </div>
-            <p className="text-on-surface/40 text-base md:text-xl leading-relaxed mx-auto md:mx-0 font-medium">
+            <p className="text-on-surface/50 text-base md:text-xl leading-relaxed font-medium">
             {project.desc}
             </p>
+          </div>
+          
+          <div className="flex flex-col gap-6 items-start lg:items-end w-full lg:w-auto">
+              <div className="flex flex-wrap gap-2 justify-start lg:justify-end">
+              {project.tech.map(t => (
+                  <span key={t} className="px-4 py-2 bg-white/5 rounded-xl text-[10px] font-bold text-on-surface/40 border border-white/5 uppercase tracking-widest group-hover:border-primary/30 group-hover:text-primary transition-all">
+                  {t}
+                  </span>
+              ))}
+              </div>
+              <motion.a 
+                  href={project.liveLink || "#contact"}
+                  target={project.liveLink ? "_blank" : undefined}
+                  rel={project.liveLink ? "noopener noreferrer" : undefined}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="inline-flex items-center gap-4 bg-primary text-surface px-8 py-4 rounded-full text-xs font-black uppercase tracking-widest shadow-2xl shadow-primary/20 hover:bg-on-surface hover:text-surface transition-all"
+              >
+                  {project.liveLink ? "Explore App" : "Request Demo"}
+                  <ArrowUpRight size={18} />
+              </motion.a>
+          </div>
         </div>
-        
-        <div className="flex flex-col gap-6 items-center md:items-end w-full md:w-auto">
-            <div className="flex flex-wrap gap-2 justify-center md:justify-end">
-            {project.tech.map(t => (
-                <span key={t} className="px-3 py-1.5 md:px-4 md:py-2 bg-white/5 rounded-lg md:rounded-xl text-[8px] md:text-[10px] font-bold text-on-surface/40 border border-white/5 uppercase tracking-widest">
-                {t}
-                </span>
-            ))}
-            </div>
-            <div className="flex items-center gap-4">
-                <motion.a 
-                    href={project.liveLink || "#contact"}
-                    target={project.liveLink ? "_blank" : undefined}
-                    rel={project.liveLink ? "noopener noreferrer" : undefined}
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="flex items-center gap-3 md:gap-4 group"
-                >
-                    <span className="text-[10px] md:text-xs font-black uppercase tracking-[0.3em] group-hover:text-primary transition-colors">
-                        {project.liveLink ? "Live App" : "Request Demo"}
-                    </span>
-                    <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl border-2 border-white/10 flex items-center justify-center group-hover:border-primary group-hover:bg-primary group-hover:text-surface transition-all">
-                        <ExternalLink className="w-4 h-4 md:w-5 md:h-5" />
-                    </div>
-                </motion.a>
-            </div>
-        </div>
-      </div>
 
-      {/* Screenshot Grid */}
-      <div className="w-full bg-white/[0.02] rounded-[2.5rem] md:rounded-[4rem] p-3 md:p-12 border border-white/5 overflow-hidden">
-        <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 md:gap-8">
-          {project.screenshots.map((img, i) => (
+        {/* Dynamic Screenshot Grid */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+          {project.screenshots.slice(0, 4).map((img, i) => (
             <motion.div 
               key={i}
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.05, duration: 0.5 }}
-              className="relative group rounded-xl md:rounded-3xl overflow-hidden shadow-lg md:shadow-2xl border-2 md:border-4 border-surface"
+              transition={{ delay: i * 0.1 }}
+              className={`relative rounded-2xl md:rounded-3xl overflow-hidden border border-white/10 shadow-2xl ${i === 0 ? 'col-span-2 row-span-2' : ''}`}
             >
               <img 
                 src={img} 
-                className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
-                alt={`${project.title} screenshot ${i + 1}`}
+                className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+                alt={`${project.title} ss ${i}`}
               />
+              <div className="absolute inset-0 bg-gradient-to-t from-surface/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+                <span className="text-[10px] font-black uppercase tracking-widest text-primary">View Full Screen</span>
+              </div>
             </motion.div>
           ))}
         </div>
@@ -178,94 +174,100 @@ const ProjectCard = ({ project, index }) => {
 
 const ProjectGallery = () => {
   return (
-    <section id="projects" className="py-24 bg-surface relative overflow-hidden text-on-surface">
+    <section id="projects" className="py-24 md:py-40 bg-surface relative overflow-hidden text-on-surface">
       <div className="container-tight px-4 md:px-6">
-        {/* Core Apps Section */}
-        <motion.div 
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="mb-20 text-center md:text-left"
-        >
-            <span className="text-primary font-black uppercase tracking-[0.3em] text-[10px] mb-4 block">Primary Portfolio</span>
-            <h2 className="text-4xl md:text-7xl font-black mb-12 tracking-tighter leading-none">
-              Featured <span className="text-on-surface/20 italic underline decoration-primary/20 underline-offset-8">Applications</span>
-            </h2>
-        </motion.div>
         
-        <div className="space-y-32 mb-40">
+        {/* Core Apps Section */}
+        <div className="relative mb-24 md:mb-32">
+            <div className="absolute -top-20 -left-20 w-80 h-80 bg-primary/10 rounded-full blur-[120px]" />
+            <motion.div 
+                initial={{ opacity: 0, x: -50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                className="relative z-10"
+            >
+                <span className="text-primary font-black uppercase tracking-[0.4em] text-[10px] mb-4 block">Product Showcase</span>
+                <h2 className="text-5xl md:text-9xl font-black mb-0 tracking-tighter leading-none uppercase">
+                  Featured <br/> <span className="text-on-surface/10 italic outline-text">Applications.</span>
+                </h2>
+            </motion.div>
+        </div>
+        
+        <div className="space-y-24 md:space-y-40 mb-40">
           {coreApps.map((project, idx) => (
             <ProjectCard key={project.id} project={project} index={idx} />
           ))}
         </div>
 
         {/* Micro Projects Section */}
-        <div className="pt-24 mt-24 border-t border-white/5">
+        <div className="pt-24 md:pt-40 border-t border-white/5">
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="mb-16 text-center md:text-left"
+            className="mb-16 md:mb-24 flex flex-col md:flex-row justify-between items-end gap-10"
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full text-primary font-bold text-[10px] uppercase tracking-widest mb-6">
-                <Code className="w-3 h-3" />
-                <span>Open Source & Micro-Apps</span>
+            <div className="max-w-2xl">
+                <div className="inline-flex items-center gap-3 px-4 py-2 bg-primary/10 rounded-full text-primary font-bold text-[10px] uppercase tracking-widest mb-6">
+                    <Code size={14} />
+                    <span>Micro-Apps Ecosystem</span>
+                </div>
+                <h2 className="text-4xl md:text-7xl font-black tracking-tighter mb-0 leading-none">
+                  Utility <span className="text-on-surface/20 italic">Arsenal.</span>
+                </h2>
             </div>
-            <h2 className="text-4xl md:text-6xl font-black tracking-tighter mb-4 leading-tight">
-              Utility <span className="text-on-surface/20 italic">Ecosystem.</span>
-            </h2>
-            <p className="text-on-surface/40 text-base md:text-lg max-w-2xl mx-auto md:mx-0 font-medium">
-              A collection of lightweight, single-purpose web utilities and open-source tools I've built.
+            <p className="text-on-surface/40 text-base md:text-xl max-w-sm font-medium">
+              A curated collection of lightweight, single-purpose web utilities and open-source tools.
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {microProjects.map((proj, i) => (
               <motion.a 
                 key={i}
                 href={proj.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.05 }}
-                className="group flex flex-col justify-between p-6 md:p-8 rounded-[2rem] bg-white/[0.02] hover:bg-primary transition-colors duration-500 border border-white/5 hover:border-primary"
+                className="group flex flex-col justify-between p-8 md:p-10 rounded-[2.5rem] bg-white/[0.02] border border-white/5 hover:bg-primary transition-all duration-500 hover:border-primary shadow-xl hover:-translate-y-2"
               >
                 <div>
-                  <span className="text-[9px] font-black tracking-widest text-on-surface/40 group-hover:text-surface uppercase block mb-3">
+                  <span className="text-[9px] font-black tracking-widest text-on-surface/40 group-hover:text-surface/60 uppercase block mb-3">
                     {proj.category}
                   </span>
-                  <h3 className="text-2xl font-black text-on-surface group-hover:text-surface tracking-tighter mb-8">
+                  <h3 className="text-2xl md:text-3xl font-black text-on-surface group-hover:text-surface tracking-tighter mb-10 leading-none">
                     {proj.title}
                   </h3>
                 </div>
-                <div className="flex items-center gap-2 text-primary group-hover:text-surface font-bold text-[10px] uppercase tracking-widest">
-                  View Project <ExternalLink size={12} />
+                <div className="flex items-center gap-2 text-primary group-hover:text-surface font-black text-[10px] uppercase tracking-widest">
+                  Explore Project <ArrowUpRight size={14} />
                 </div>
               </motion.a>
             ))}
           </div>
         </div>
 
-        {/* Global Footer Call to Action */}
+        {/* Premium Call to Action */}
         <motion.div 
-            initial={{ opacity: 0, scale: 0.9 }}
+            initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="mt-40 p-8 md:p-20 bg-white/[0.02] border border-white/5 rounded-[3rem] md:rounded-[5rem] text-center relative overflow-hidden group"
+            className="mt-40 p-10 md:p-24 bg-white/[0.02] border border-white/5 rounded-[3rem] md:rounded-[5rem] text-center relative overflow-hidden group"
         >
-            <div className="absolute top-0 left-0 w-full h-full bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity" />
+            <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-1000 blur-[100px]" />
             <div className="relative z-10">
-                <h3 className="text-3xl md:text-5xl font-black text-on-surface mb-8 tracking-tighter">Ready to Build Your <br/> <span className="text-primary">Next Big Idea?</span></h3>
+                <h3 className="text-4xl md:text-7xl font-black text-on-surface mb-10 tracking-tighter uppercase leading-none">Ready to Build Your <br/> <span className="text-primary italic">Next Big Idea?</span></h3>
                 <motion.a 
                     href="#contact"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="inline-flex items-center gap-4 bg-primary text-surface px-8 md:px-12 py-4 md:py-6 rounded-full text-sm md:text-base font-black uppercase tracking-widest shadow-2xl hover:bg-white hover:text-surface transition-all"
+                    className="inline-flex items-center gap-6 bg-primary text-surface px-10 md:px-16 py-5 md:py-8 rounded-full text-sm md:text-lg font-black uppercase tracking-widest shadow-2xl shadow-primary/30 hover:bg-on-surface hover:text-surface transition-all"
                 >
                     Start a Project
-                    <ExternalLink size={20} />
+                    <ExternalLink size={24} />
                 </motion.a>
             </div>
         </motion.div>

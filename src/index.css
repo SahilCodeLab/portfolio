@@ -40,6 +40,11 @@
   .btn-primary {
     @apply inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-bold rounded-md text-surface bg-primary hover:opacity-90 transition-all;
   }
+
+  .outline-text {
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.1);
+    color: transparent;
+  }
 }
 
 /* Custom Scrollbar */
