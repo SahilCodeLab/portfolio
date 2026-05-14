@@ -1,6 +1,6 @@
 @import "tailwindcss";
 
-@import url('https://fonts.googleapis.com/css2?family=Epilogue:wght@300;400;600;900&family=Inter:wght@300;400;600;700&family=Space+Grotesk:wght@300;700&family=Syne:wght@800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Epilogue:wght@300;400;600;900&family=Inter:wght@300;400;600;700&family=Urbanist:wght@400;700;900&display=swap');
 
 @theme {
   --color-primary: #4f46e5;
@@ -11,8 +11,7 @@
   --color-secondary: #c0c2b8;
   
   --font-sans: "Inter", "sans-serif";
-  --font-syne: "Syne", "sans-serif";
-  --font-space: "Space Grotesk", "sans-serif";
+  --font-urbanist: "Urbanist", "sans-serif";
   --font-display: "Epilogue", "sans-serif";
 }
 
