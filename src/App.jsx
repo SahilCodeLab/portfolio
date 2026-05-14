@@ -173,7 +173,7 @@ function App() {
         <section className="py-20 md:py-24 bg-surface relative">
             <div className="container-tight px-4 md:px-6">
                 <div className="relative rounded-[2.5rem] md:rounded-[4rem] overflow-hidden shadow-2xl border border-white/5">
-                    <img src={allAppsEcosystem} alt="SahilCodeLab Ecosystem" className="w-full h-auto grayscale group-hover:grayscale-0 transition-all duration-1000" />
+                    <img src={allAppsEcosystem} alt="SahilCodeLab Ecosystem" className="w-full h-auto hover:scale-[1.02] transition-all duration-1000" />
                 </div>
             </div>
         </section>
