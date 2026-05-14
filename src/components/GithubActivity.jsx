@@ -29,14 +29,14 @@ const GithubActivity = () => {
       case "THIRD_QUARTILE": return 'bg-primary/80';
       case "SECOND_QUARTILE": return 'bg-primary/60';
       case "FIRST_QUARTILE": return 'bg-primary/30';
-      default: return 'bg-white/5';
+      default: return 'bg-gray-100';
     }
   };
 
   const skeletonData = useMemo(() => Array(365).fill(0), []);
 
   return (
-    <section className="py-24 bg-surface border-t border-white/5 overflow-hidden relative text-on-surface">
+    <section className="py-24 bg-surface border-t border-gray-100 overflow-hidden relative text-on-surface">
       <div className="container-tight px-4 md:px-6">
         <motion.div 
             initial={{ opacity: 0, y: 30 }}
@@ -44,7 +44,7 @@ const GithubActivity = () => {
             viewport={{ once: true }}
             className="text-center mb-16"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 rounded-full text-on-surface font-bold text-[10px] uppercase tracking-widest mb-6">
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 rounded-full text-on-surface font-bold text-[10px] uppercase tracking-widest mb-6">
               <FaGithub className="w-3 h-3" />
               <span>Real-Time Contributions</span>
           </div>
@@ -60,17 +60,17 @@ const GithubActivity = () => {
             initial={{ opacity: 0, scale: 0.98 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="bg-white/[0.02] border border-white/5 rounded-[2.5rem] p-6 md:p-12 shadow-inner"
+            className="bg-gray-50 border border-gray-100 rounded-[2.5rem] p-6 md:p-12 shadow-sm"
         >
           {/* Calendar Header */}
           <div className="flex flex-col md:flex-row justify-between items-center mb-10 gap-6">
             <div className="flex items-center gap-4">
-              <div className="w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center shadow-sm border border-white/5">
+              <div className="w-12 h-12 bg-gray-100 rounded-xl flex items-center justify-center shadow-sm border border-gray-200">
                 <FaGithub className="w-6 h-6 text-on-surface" />
               </div>
               <div>
                 <div className="text-xl font-black tracking-tight">SahilCodeLab</div>
-                <div className="text-[10px] font-bold text-on-surface/20 uppercase tracking-widest">Verified Developer Journey</div>
+                <div className="text-[10px] font-bold text-on-surface/40 uppercase tracking-widest">Verified Developer Journey</div>
               </div>
             </div>
             
@@ -92,31 +92,32 @@ const GithubActivity = () => {
                     viewport={{ once: true }}
                     transition={{ delay: (i % 52) * 0.005 }}
                     title={day.date ? `${day.date}: ${day.contributionCount} commits` : ""}
-                    className={`w-3 h-3 md:w-3.5 md:h-3.5 rounded-sm ${day === 0 ? 'bg-white/5' : getLevelColor(day.contributionLevel)} transition-colors duration-500 hover:ring-2 hover:ring-primary/20`}
+                    className={`w-3 h-3 md:w-3.5 md:h-3.5 rounded-sm ${day === 0 ? 'bg-gray-100' : getLevelColor(day.contributionLevel)} transition-colors duration-500 hover:ring-2 hover:ring-primary/20`}
                   />
                 ))}
               </div>
               
-              <div className="flex justify-between mt-6 text-[10px] font-bold text-on-surface/20 uppercase tracking-[0.2em]">
-                <div className="flex gap-8">
+              <div className="flex flex-col items-center mt-10 gap-6">
+                <div className="flex gap-8 text-[11px] font-bold text-on-surface/40 uppercase tracking-[0.2em] w-full justify-between px-2">
                     <span>Jan</span><span>Feb</span><span>Mar</span><span>Apr</span><span>May</span><span>Jun</span><span>Jul</span><span>Aug</span><span>Sep</span><span>Oct</span><span>Nov</span><span>Dec</span>
                 </div>
-                <div className="flex items-center gap-2">
-                    <span>Less</span>
-                    <div className="flex gap-1">
-                        <div className="w-2.5 h-2.5 rounded-sm bg-white/5" />
-                        <div className="w-2.5 h-2.5 rounded-sm bg-primary/30" />
-                        <div className="w-2.5 h-2.5 rounded-sm bg-primary/60" />
-                        <div className="w-2.5 h-2.5 rounded-sm bg-primary/80" />
-                        <div className="w-2.5 h-2.5 rounded-sm bg-primary" />
+                
+                <div className="flex items-center gap-4 bg-gray-100/50 px-6 py-3 rounded-full border border-gray-200">
+                    <span className="text-[10px] font-bold text-on-surface/60 uppercase tracking-widest">Less</span>
+                    <div className="flex gap-1.5">
+                        <div className="w-3.5 h-3.5 rounded-sm bg-gray-100" />
+                        <div className="w-3.5 h-3.5 rounded-sm bg-primary/30" />
+                        <div className="w-3.5 h-3.5 rounded-sm bg-primary/60" />
+                        <div className="w-3.5 h-3.5 rounded-sm bg-primary/80" />
+                        <div className="w-3.5 h-3.5 rounded-sm bg-primary" />
                     </div>
-                    <span>More</span>
+                    <span className="text-[10px] font-bold text-on-surface/60 uppercase tracking-widest">More</span>
                 </div>
               </div>
             </div>
           </div>
 
-          <div className="mt-10 pt-8 border-t border-white/5 flex justify-center">
+          <div className="mt-10 pt-8 border-t border-gray-200 flex justify-center">
             <a 
               href="https://github.com/SahilCodeLab" 
               target="_blank" 
