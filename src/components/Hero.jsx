@@ -28,7 +28,7 @@ const Hero = () => {
   };
 
   return (
-    <section className="min-h-screen flex items-center justify-center bg-surface py-12 md:py-20 px-4 md:px-6 overflow-hidden relative perspective-1000">
+    <section className="min-h-screen flex items-center justify-center bg-surface pt-32 pb-12 md:pt-48 md:pb-20 px-4 md:px-6 overflow-hidden relative perspective-1000">
       {/* High-End Background Effects */}
       <div className="absolute inset-0 pointer-events-none">
         <motion.div 
