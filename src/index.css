@@ -21,40 +21,24 @@
     width: 100%;
     max-width: 100vw;
     overflow-x: hidden;
-    position: relative;
+    font-family: var(--font-sans);
+    color: var(--color-on-surface);
   }
-  body {
-    @apply text-gray-900 font-sans antialiased;
-  }
+
   h1, h2, h3, h4, h5, h6 {
-    @apply font-display font-black tracking-tighter;
-  }
-  *::selection {
-    background-color: #ffedd5;
-    color: #f97316;
-  }
-  * {
-    @apply transition-colors duration-200;
+    font-family: var(--font-display);
+    margin: 0;
   }
 }
 
-/* Minimalist Architecture */
-.container-tight {
-  width: 100%;
-  max-width: 1152px; /* 6xl */
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
-  box-sizing: border-box;
-}
+@layer components {
+  .container-tight {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
 
-.project-img-natural {
-  @apply w-auto max-w-full rounded-3xl shadow-lg border border-gray-100;
-}
-
-.nav-glass {
-  @apply sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-50;
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-orange-600 hover:bg-orange-700 transition-colors;
+  }
 }
 
 /* Custom Scrollbar */
@@ -62,15 +46,14 @@
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #f9f9f9;
+  background: white;
 }
 ::-webkit-scrollbar-thumb {
-  background: #f97316;
-  border-radius: 10px;
+  background: #e5e7eb;
+  border-radius: 4px;
 }
-
-.perspective-1000 {
-  perspective: 1000px;
+::-webkit-scrollbar-thumb:hover {
+  background: #d1d5db;
 }
 
 .no-scrollbar::-webkit-scrollbar {
@@ -79,10 +62,4 @@
 .no-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
-}
-
-@media (max-width: 768px) {
-  body {
-    cursor: auto !important;
-  }
 }
