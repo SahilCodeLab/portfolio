@@ -39,7 +39,7 @@ const coreApps = [
     screenshots: [pocketId1, pocketId3, pocketId4, pocketId5, pocketIdCert],
     tech: ["Kotlin", "Firebase", "Security"],
     category: "Security Solution",
-    liveLink: "https://sahilcodelab.github.io/PocketID/"
+    liveLink: "https://global.app.mi.com/details?lo=IN&la=en_US&id=com.sahilcodelab.pocketid"
   },
   { 
     id: 'wrapify', 
@@ -139,7 +139,7 @@ const ProjectCard = ({ project, index }) => {
                   whileTap={{ scale: 0.95 }}
                   className="inline-flex items-center gap-4 bg-primary text-surface px-8 py-4 rounded-full text-xs font-black uppercase tracking-widest shadow-2xl shadow-primary/20 hover:bg-on-surface hover:text-surface transition-all"
               >
-                  {project.liveLink ? "Explore App" : "Request Demo"}
+                  {project.id === 'pocketid' ? "Get on GetApps" : (project.liveLink ? "Explore App" : "Request Demo")}
                   <ArrowUpRight size={18} />
               </motion.a>
           </div>
