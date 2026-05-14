@@ -211,7 +211,7 @@ function App() {
                   <div className="w-full lg:w-2/3 h-[300px] md:h-[500px] relative">
                     <iframe 
                       title="SahilCodeLab Location"
-                      src="https://maps.google.com/maps?q=SahilCodeLab&t=&z=16&ie=UTF8&iwloc=B&output=embed" 
+                      src="https://maps.google.com/maps?q=SahilCodeLab&t=&z=5&ie=UTF8&iwloc=B&output=embed" 
                       className="absolute inset-0 w-full h-full border-0 transition-all duration-700"
                       allowFullScreen="" 
                       loading="lazy" 
