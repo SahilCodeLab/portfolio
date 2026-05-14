@@ -18,12 +18,12 @@ const techStack = [
   { name: "Tailwind", icon: <SiTailwindcss />, color: "text-[#06B6D4]" },
   { name: "Vite", icon: <SiVite />, color: "text-[#646CFF]" },
   { name: "React", icon: <SiReact />, color: "text-[#61DAFB]" },
-  { name: "Next.js", icon: <SiNextdotjs />, color: "text-white" },
+  { name: "Next.js", icon: <SiNextdotjs />, color: "text-[#000000]" },
   { name: "Firebase", icon: <SiFirebase />, color: "text-[#FFCA28]" },
   { name: "Figma", icon: <SiFigma />, color: "text-[#F24E1E]" },
-  { name: "Vercel", icon: <SiVercel />, color: "text-white" },
+  { name: "Vercel", icon: <SiVercel />, color: "text-[#000000]" },
   { name: "MongoDB", icon: <SiMongodb />, color: "text-[#47A248]" },
-  { name: "GitHub", icon: <SiGithub />, color: "text-white" },
+  { name: "GitHub", icon: <SiGithub />, color: "text-[#181717]" },
 ];
 
 const Skills = () => {
@@ -39,15 +39,15 @@ const Skills = () => {
 
         <div className="flex flex-col gap-4 md:gap-8">
             {/* Strip 1: Moving Left */}
-            <div className="relative flex overflow-x-hidden py-3 md:py-4 border-y border-white/5">
+            <div className="relative flex overflow-x-hidden py-3 md:py-4 border-y border-gray-100">
             <motion.div 
                 className="flex whitespace-nowrap gap-6 md:gap-12 items-center"
                 animate={{ x: ["0%", "-50%"] }}
                 transition={{ ease: "linear", duration: 20, repeat: Infinity }}
             >
                 {[...techStack, ...techStack].map((tech, idx) => (
-                <div key={idx} className="flex items-center gap-3 md:gap-4 px-6 py-3 md:px-10 md:py-6 bg-white/5 border border-white/5 hover:border-primary/50 transition-all group">
-                    <span className="text-2xl md:text-4xl text-on-surface/40 group-hover:text-primary transition-colors">{tech.icon}</span>
+                <div key={idx} className="flex items-center gap-3 md:gap-4 px-6 py-3 md:px-10 md:py-6 bg-gray-50 border border-gray-100 hover:border-primary/50 transition-all group">
+                    <span className={`text-2xl md:text-4xl ${tech.color} opacity-80 group-hover:opacity-100 transition-all`}>{tech.icon}</span>
                     <span className="text-sm md:text-xl font-bold tracking-tight text-on-surface/40 group-hover:text-on-surface">{tech.name}</span>
                 </div>
                 ))}
@@ -62,8 +62,8 @@ const Skills = () => {
                 transition={{ ease: "linear", duration: 25, repeat: Infinity }}
             >
                 {[...techStack.reverse(), ...techStack].map((tech, idx) => (
-                <div key={idx} className="flex items-center gap-3 md:gap-4 px-6 py-3 md:px-10 md:py-6 bg-white/5 border border-white/5 hover:border-primary/50 transition-all group">
-                    <span className="text-2xl md:text-4xl text-on-surface/40 group-hover:text-primary transition-colors">{tech.icon}</span>
+                <div key={idx} className="flex items-center gap-3 md:gap-4 px-6 py-3 md:px-10 md:py-6 bg-gray-50 border border-gray-100 hover:border-primary/50 transition-all group">
+                    <span className={`text-2xl md:text-4xl ${tech.color} opacity-80 group-hover:opacity-100 transition-all`}>{tech.icon}</span>
                     <span className="text-sm md:text-xl font-bold tracking-tight text-on-surface/40 group-hover:text-on-surface">{tech.name}</span>
                 </div>
                 ))}
