@@ -50,12 +50,12 @@ const Hero = () => {
           
           <div className="flex flex-col gap-1 md:gap-2">
             <div className="overflow-hidden h-[5.5rem] md:h-[13.5rem]">
-                <motion.h1 variants={textReveal} className="text-8xl md:text-[16rem] font-signature text-on-surface leading-none py-4">
+                <motion.h1 variants={textReveal} className="text-7xl md:text-[14rem] font-sans font-black tracking-tighter text-on-surface leading-none">
                 Sahil
                 </motion.h1>
             </div>
             <div className="overflow-hidden h-[5.5rem] md:h-[13.5rem]">
-                <motion.h1 variants={textReveal} className="text-7xl md:text-[14rem] font-sans font-black tracking-tighter text-primary leading-none">
+                <motion.h1 variants={textReveal} className="text-7xl md:text-[14rem] font-sans font-black tracking-tighter text-transparent leading-none" style={{ WebkitTextStroke: '3px var(--color-primary)' }}>
                 Raza.
                 </motion.h1>
             </div>
