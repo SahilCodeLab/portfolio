@@ -3,10 +3,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Epilogue:wght@300;400;600;900&family=Inter:wght@300;400;600;700&display=swap');
 
 @theme {
-  --color-primary: #f97316;
-  --color-surface: #ffffff;
-  --color-on-surface: #131313;
-  --color-outline: #e5e7eb;
+  --color-primary: #d5ff40;
+  --color-surface: #131313;
+  --color-on-surface: #ffffff;
+  --color-outline: rgba(192, 194, 184, 0.2);
+  --color-secondary: #c0c2b8;
   
   --font-sans: "Inter", "sans-serif";
   --font-display: "Epilogue", "sans-serif";
@@ -15,7 +16,7 @@
 @layer base {
   html, body {
     scroll-behavior: auto;
-    background-color: white;
+    background-color: var(--color-surface);
     margin: 0;
     padding: 0;
     width: 100%;
@@ -37,7 +38,7 @@
   }
 
   .btn-primary {
-    @apply inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-orange-600 hover:bg-orange-700 transition-colors;
+    @apply inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-bold rounded-md text-[#131313] bg-[#d5ff40] hover:bg-[#c4eb3b] transition-colors;
   }
 }
 
