@@ -12,6 +12,7 @@ import Skills from './components/Skills';
 import GithubActivity from './components/GithubActivity';
 import Testimonials from './components/Testimonials';
 import ContactForm from './components/ContactForm';
+import Features from './components/Features';
 import Loader from './components/Loader';
 import CustomCursor from './components/CustomCursor';
 import './index.css';
@@ -167,6 +168,7 @@ function App() {
         <GithubActivity />
         <TechnicalArsenal />
         <Services />
+        <Features />
 
         <section className="py-20 md:py-24 bg-surface relative">
             <div className="container-tight px-4 md:px-6">

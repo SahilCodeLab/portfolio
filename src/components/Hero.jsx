@@ -87,6 +87,27 @@ const Hero = () => {
                     Download CV
                 </a>
             </div>
+
+            {/* Adobix-Inspired Stats Counter */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 mt-24 md:mt-32 pt-12 border-t border-white/5">
+                {[
+                    { label: "Apps Published", value: "12+" },
+                    { label: "Digital Products", value: "05+" },
+                    { label: "Response Time", value: "24h" },
+                    { label: "Custom Approach", value: "100%" }
+                ].map((stat, i) => (
+                    <motion.div 
+                        key={i}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 1.2 + (i * 0.1) }}
+                        className="text-center"
+                    >
+                        <h4 className="text-3xl md:text-5xl font-black text-on-surface mb-2">{stat.value}</h4>
+                        <p className="text-[10px] md:text-xs uppercase tracking-[0.2em] text-on-surface/40 font-bold">{stat.label}</p>
+                    </motion.div>
+                ))}
+            </div>
           </motion.div>
 
         </motion.div>
