@@ -118,7 +118,7 @@ const ProjectCard = ({ project, index }) => {
                     </h3>
                 </div>
             </div>
-            <p className="text-gray-500 text-base md:text-xl leading-relaxed mx-auto md:mx-0 font-medium">
+            <p className="text-on-surface/40 text-base md:text-xl leading-relaxed mx-auto md:mx-0 font-medium">
             {project.desc}
             </p>
         </div>
@@ -140,7 +140,7 @@ const ProjectCard = ({ project, index }) => {
                     whileTap={{ scale: 0.95 }}
                     className="flex items-center gap-3 md:gap-4 group"
                 >
-                    <span className="text-[10px] md:text-xs font-black uppercase tracking-[0.3em] group-hover:text-orange-500 transition-colors">
+                    <span className="text-[10px] md:text-xs font-black uppercase tracking-[0.3em] group-hover:text-primary transition-colors">
                         {project.liveLink ? "Live App" : "Request Demo"}
                     </span>
                     <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl border-2 border-white/10 flex items-center justify-center group-hover:border-primary group-hover:bg-primary group-hover:text-surface transition-all">
@@ -161,7 +161,7 @@ const ProjectCard = ({ project, index }) => {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.05, duration: 0.5 }}
-              className="relative group rounded-xl md:rounded-3xl overflow-hidden shadow-lg md:shadow-2xl border-2 md:border-4 border-white"
+              className="relative group rounded-xl md:rounded-3xl overflow-hidden shadow-lg md:shadow-2xl border-2 md:border-4 border-surface"
             >
               <img 
                 src={img} 
@@ -200,21 +200,21 @@ const ProjectGallery = () => {
         </div>
 
         {/* Micro Projects Section */}
-        <div className="pt-24 mt-24 border-t border-gray-100">
+        <div className="pt-24 mt-24 border-t border-white/5">
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="mb-16 text-center md:text-left"
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-orange-50 rounded-full text-orange-600 font-bold text-[10px] uppercase tracking-widest mb-6">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full text-primary font-bold text-[10px] uppercase tracking-widest mb-6">
                 <Code className="w-3 h-3" />
                 <span>Open Source & Micro-Apps</span>
             </div>
             <h2 className="text-4xl md:text-6xl font-black tracking-tighter mb-4 leading-tight">
-              Utility <span className="text-gray-300 italic">Ecosystem.</span>
+              Utility <span className="text-on-surface/20 italic">Ecosystem.</span>
             </h2>
-            <p className="text-gray-400 text-base md:text-lg max-w-2xl mx-auto md:mx-0 font-medium">
+            <p className="text-on-surface/40 text-base md:text-lg max-w-2xl mx-auto md:mx-0 font-medium">
               A collection of lightweight, single-purpose web utilities and open-source tools I've built.
             </p>
           </motion.div>
@@ -233,14 +233,14 @@ const ProjectGallery = () => {
                 className="group flex flex-col justify-between p-6 md:p-8 rounded-[2rem] bg-white/[0.02] hover:bg-primary transition-colors duration-500 border border-white/5 hover:border-primary"
               >
                 <div>
-                  <span className="text-[9px] font-black tracking-widest text-gray-400 group-hover:text-orange-200 uppercase block mb-3">
+                  <span className="text-[9px] font-black tracking-widest text-on-surface/40 group-hover:text-surface uppercase block mb-3">
                     {proj.category}
                   </span>
-                  <h3 className="text-2xl font-black text-gray-900 group-hover:text-white tracking-tighter mb-8">
+                  <h3 className="text-2xl font-black text-on-surface group-hover:text-surface tracking-tighter mb-8">
                     {proj.title}
                   </h3>
                 </div>
-                <div className="flex items-center gap-2 text-orange-500 group-hover:text-white font-bold text-[10px] uppercase tracking-widest">
+                <div className="flex items-center gap-2 text-primary group-hover:text-surface font-bold text-[10px] uppercase tracking-widest">
                   View Project <ExternalLink size={12} />
                 </div>
               </motion.a>
@@ -255,9 +255,9 @@ const ProjectGallery = () => {
             viewport={{ once: true }}
             className="mt-40 p-8 md:p-20 bg-white/[0.02] border border-white/5 rounded-[3rem] md:rounded-[5rem] text-center relative overflow-hidden group"
         >
-            <div className="absolute top-0 left-0 w-full h-full bg-orange-500/10 opacity-0 group-hover:opacity-100 transition-opacity" />
+            <div className="absolute top-0 left-0 w-full h-full bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity" />
             <div className="relative z-10">
-                <h3 className="text-3xl md:text-5xl font-black text-white mb-8 tracking-tighter">Ready to Build Your <br/> <span className="text-orange-500">Next Big Idea?</span></h3>
+                <h3 className="text-3xl md:text-5xl font-black text-on-surface mb-8 tracking-tighter">Ready to Build Your <br/> <span className="text-primary">Next Big Idea?</span></h3>
                 <motion.a 
                     href="#contact"
                     whileHover={{ scale: 1.05 }}
