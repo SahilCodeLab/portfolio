@@ -39,7 +39,8 @@ const coreApps = [
     screenshots: [pocketId1, pocketId3, pocketId4, pocketId5, pocketIdCert],
     tech: ["Kotlin", "Firebase", "Security"],
     category: "Security Solution",
-    liveLink: "https://global.app.mi.com/details?lo=IN&la=en_US&id=com.sahilcodelab.pocketid"
+    liveLink: "https://global.app.mi.com/details?lo=IN&la=en_US&id=com.sahilcodelab.pocketid",
+    policyLink: "https://sahilcodelab.github.io/PocketID/"
   },
   { 
     id: 'wrapify', 
@@ -131,17 +132,32 @@ const ProjectCard = ({ project, index }) => {
                   </span>
               ))}
               </div>
-              <motion.a 
-                  href={project.liveLink || "#contact"}
-                  target={project.liveLink ? "_blank" : undefined}
-                  rel={project.liveLink ? "noopener noreferrer" : undefined}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="inline-flex items-center gap-4 bg-primary text-surface px-8 py-4 rounded-full text-xs font-black uppercase tracking-widest shadow-2xl shadow-primary/20 hover:bg-on-surface hover:text-surface transition-all"
-              >
-                  {project.id === 'pocketid' ? "Get on GetApps" : (project.liveLink ? "Explore App" : "Request Demo")}
-                  <ArrowUpRight size={18} />
-              </motion.a>
+              <div className="flex flex-wrap gap-4 justify-start lg:justify-end">
+                <motion.a 
+                    href={project.liveLink || "#contact"}
+                    target={project.liveLink ? "_blank" : undefined}
+                    rel={project.liveLink ? "noopener noreferrer" : undefined}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="inline-flex items-center gap-4 bg-primary text-surface px-8 py-4 rounded-full text-xs font-black uppercase tracking-widest shadow-2xl shadow-primary/20 hover:bg-on-surface hover:text-surface transition-all"
+                >
+                    {project.id === 'pocketid' ? "Get on GetApps" : (project.liveLink ? "Explore App" : "Request Demo")}
+                    <ArrowUpRight size={18} />
+                </motion.a>
+                {project.policyLink && (
+                  <motion.a 
+                      href={project.policyLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      className="inline-flex items-center gap-4 border-2 border-gray-100 text-on-surface/40 px-6 py-4 rounded-full text-[10px] font-black uppercase tracking-widest hover:border-primary hover:text-primary transition-all"
+                  >
+                      Privacy Policy
+                      <ExternalLink size={14} />
+                  </motion.a>
+                )}
+              </div>
           </div>
         </div>
 
