@@ -99,7 +99,7 @@ const Certifications = () => {
                </div>
                <div className="flex flex-col items-center md:items-end mt-8 md:mt-0">
                  <div className="w-full max-w-[150px] md:max-w-[200px] mb-4">
-                   <img src={undrawAwards} alt="Awards Illustration" className="w-full h-auto drop-shadow-md grayscale hover:grayscale-0 transition-all" />
+                   <img src={undrawAwards} alt="Awards Illustration" className="w-full h-auto drop-shadow-md transition-all" />
                  </div>
                  <p className="text-on-surface/40 text-base md:text-lg leading-relaxed max-w-xs md:text-right font-medium">
                     A collection of industry-standard credentials validating my technical mastery.

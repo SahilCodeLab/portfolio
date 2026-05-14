@@ -47,7 +47,7 @@ const Testimonials = () => {
             Trusted by <br/> <span className="text-on-surface/20 italic underline decoration-primary/20 underline-offset-8">Happy Clients</span>
           </h2>
           <div className="w-full max-w-[150px] md:max-w-[200px] mb-6">
-            <img src={undrawCodeReview} alt="Reviews Illustration" className="w-full h-auto drop-shadow-md grayscale hover:grayscale-0 transition-all" />
+            <img src={undrawCodeReview} alt="Reviews Illustration" className="w-full h-auto drop-shadow-md transition-all" />
           </div>
           <p className="text-on-surface/40 text-base md:text-lg max-w-2xl mx-auto font-medium px-4">
             Real reviews from professionals and entrepreneurs who trust SahilCodeLab.
