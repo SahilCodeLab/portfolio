@@ -38,7 +38,7 @@
   }
 
   .btn-primary {
-    @apply inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-bold rounded-md text-[#131313] bg-[#d5ff40] hover:bg-[#c4eb3b] transition-colors;
+    @apply inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-bold rounded-md text-surface bg-primary hover:opacity-90 transition-all;
   }
 }
 
@@ -47,14 +47,14 @@
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: white;
+  background: var(--color-surface);
 }
 ::-webkit-scrollbar-thumb {
-  background: #e5e7eb;
+  background: rgba(255, 255, 255, 0.1);
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #d1d5db;
+  background: var(--color-primary);
 }
 
 .no-scrollbar::-webkit-scrollbar {

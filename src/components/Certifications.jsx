@@ -82,7 +82,7 @@ const certifications = [
 
 const Certifications = () => {
   return (
-    <section id="certifications" className="py-24 bg-white relative overflow-hidden">
+    <section id="certifications" className="py-24 bg-surface relative overflow-hidden text-on-surface">
       <div className="container-tight px-4 md:px-6">
         <motion.div 
             initial={{ opacity: 0, y: 50 }}
@@ -92,16 +92,16 @@ const Certifications = () => {
         >
             <div className="flex flex-col md:flex-row justify-between items-center md:items-end w-full">
                <div className="max-w-xl">
-                  <span className="text-orange-500 font-black uppercase tracking-[0.3em] text-[9px] md:text-[10px] mb-4 md:mb-6 block">Expertise Verification</span>
+                  <span className="text-primary font-black uppercase tracking-[0.3em] text-[9px] md:text-[10px] mb-4 md:mb-6 block">Expertise Verification</span>
                   <h2 className="text-4xl md:text-6xl font-black mb-0 tracking-tighter leading-none">
-                    Verified <br className="hidden md:block" /> <span className="text-gray-300 italic underline decoration-orange-500/20 underline-offset-8">Professionalism</span>
+                    Verified <br className="hidden md:block" /> <span className="text-on-surface/20 italic underline decoration-primary/20 underline-offset-8">Professionalism</span>
                   </h2>
                </div>
                <div className="flex flex-col items-center md:items-end mt-8 md:mt-0">
                  <div className="w-full max-w-[150px] md:max-w-[200px] mb-4">
-                   <img src={undrawAwards} alt="Awards Illustration" className="w-full h-auto drop-shadow-md" />
+                   <img src={undrawAwards} alt="Awards Illustration" className="w-full h-auto drop-shadow-md grayscale hover:grayscale-0 transition-all" />
                  </div>
-                 <p className="text-gray-400 text-base md:text-lg leading-relaxed max-w-xs md:text-right">
+                 <p className="text-on-surface/40 text-base md:text-lg leading-relaxed max-w-xs md:text-right font-medium">
                     A collection of industry-standard credentials validating my technical mastery.
                  </p>
                </div>
@@ -119,7 +119,7 @@ const Certifications = () => {
               transition={{ delay: index * 0.05, duration: 0.6 }}
               className="group"
             >
-              <div className="relative aspect-[4/5] rounded-[1.5rem] md:rounded-[2.5rem] overflow-hidden bg-gray-50 border border-gray-100 p-2 md:p-4 transition-all duration-500 hover:shadow-xl hover:border-orange-200 group-hover:bg-white">
+              <div className="relative aspect-[4/5] rounded-[1.5rem] md:rounded-[2.5rem] overflow-hidden bg-white/[0.02] border border-white/5 p-2 md:p-4 transition-all duration-500 hover:shadow-xl hover:border-primary/30 group-hover:bg-white/[0.04]">
                 <img 
                   src={cert.image} 
                   alt={cert.title} 
@@ -132,7 +132,7 @@ const Certifications = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={(e) => e.stopPropagation()}
-                    className="absolute bottom-3 right-3 md:bottom-4 md:right-4 flex items-center gap-1 bg-orange-500 text-white text-[7px] md:text-[9px] font-black uppercase tracking-widest px-2 py-1 md:px-3 md:py-1.5 rounded-full shadow-lg hover:bg-gray-900 transition-all"
+                    className="absolute bottom-3 right-3 md:bottom-4 md:right-4 flex items-center gap-1 bg-primary text-surface text-[7px] md:text-[9px] font-black uppercase tracking-widest px-2 py-1 md:px-3 md:py-1.5 rounded-full shadow-lg hover:bg-on-surface transition-all"
                   >
                     <ExternalLink size={9} />
                     <span>Verify</span>
@@ -142,19 +142,19 @@ const Certifications = () => {
               
               <div className="mt-4 md:mt-8 px-1 md:px-4 text-center md:text-left">
                  <div className="flex items-center gap-2 mb-1 md:mb-2 justify-center md:justify-start">
-                    <div className="text-[8px] md:text-[10px] font-black text-orange-500 uppercase tracking-widest">{cert.issuer}</div>
+                    <div className="text-[8px] md:text-[10px] font-black text-primary uppercase tracking-widest">{cert.issuer}</div>
                  </div>
-                 <div className="font-black text-gray-900 uppercase text-[10px] md:text-sm leading-tight tracking-tight mb-1 md:mb-2 min-h-[30px] md:min-h-[40px] line-clamp-2 md:line-clamp-none">
+                 <div className="font-black text-on-surface uppercase text-[10px] md:text-sm leading-tight tracking-tight mb-1 md:mb-2 min-h-[30px] md:min-h-[40px] line-clamp-2 md:line-clamp-none">
                     {cert.title}
                  </div>
                  <div className="flex flex-col md:flex-row justify-between items-center gap-1 md:gap-2">
-                    <div className="text-[7px] md:text-[10px] text-gray-300 font-bold tracking-widest uppercase">{cert.date} // VALIDATED</div>
+                    <div className="text-[7px] md:text-[10px] text-on-surface/20 font-bold tracking-widest uppercase">{cert.date} // VALIDATED</div>
                     {cert.credentialUrl && (
                       <a
                         href={cert.credentialUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="hidden md:flex items-center gap-1 text-[8px] font-black text-orange-500 hover:text-gray-900 uppercase tracking-widest transition-colors"
+                        className="hidden md:flex items-center gap-1 text-[8px] font-black text-primary hover:text-on-surface uppercase tracking-widest transition-colors"
                       >
                         <ExternalLink size={9} />
                         <span>View Credential</span>

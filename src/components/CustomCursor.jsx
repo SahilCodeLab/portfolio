@@ -41,8 +41,8 @@ const CustomCursor = () => {
         translateX: cursorX,
         translateY: cursorY,
       }}
-      className={`fixed top-0 left-0 w-8 h-8 rounded-full border border-orange-500/50 pointer-events-none z-[9999] hidden md:block transition-transform duration-300 ${
-        isHovering ? 'scale-[2.5] bg-orange-500/5 border-orange-500' : 'scale-100'
+      className={`fixed top-0 left-0 w-8 h-8 rounded-full border border-primary/50 pointer-events-none z-[9999] hidden md:block transition-transform duration-300 ${
+        isHovering ? 'scale-[2.5] bg-primary/5 border-primary' : 'scale-100'
       }`}
     />
   );

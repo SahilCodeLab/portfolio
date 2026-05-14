@@ -45,12 +45,12 @@ const StatsCounter = ({ value, label, suffix = "", icon: Icon }) => {
   return (
     <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="flex flex-col items-center md:items-start group">
       {Icon && (
-        <div className="w-10 h-10 md:w-12 md:h-12 bg-orange-50 rounded-xl md:rounded-2xl flex items-center justify-center text-orange-500 mb-4 group-hover:scale-110 group-hover:bg-orange-500 group-hover:text-white transition-all duration-300 shadow-sm">
+        <div className="w-10 h-10 md:w-12 md:h-12 bg-primary/10 rounded-xl md:rounded-2xl flex items-center justify-center text-primary mb-4 group-hover:scale-110 group-hover:bg-primary group-hover:text-surface transition-all duration-300 shadow-sm">
           <Icon className="w-5 h-5 md:w-6 md:h-6" />
         </div>
       )}
-      <div className="text-4xl md:text-5xl font-black text-gray-900 mb-2">{count}{suffix}</div>
-      <div className="text-[9px] md:text-[10px] font-black uppercase tracking-[0.3em] text-orange-500">{label}</div>
+      <div className="text-4xl md:text-5xl font-black text-on-surface mb-2">{count}{suffix}</div>
+      <div className="text-[9px] md:text-[10px] font-black uppercase tracking-[0.3em] text-primary">{label}</div>
     </motion.div>
   );
 };
@@ -73,7 +73,7 @@ const BackToTop = () => {
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0 }}
           onClick={() => window.scrollTo({ top: 0, behavior: 'auto' })}
-          className="fixed bottom-6 right-6 md:bottom-10 md:right-10 z-[99] w-14 h-14 md:w-16 md:h-16 bg-orange-500 text-white rounded-2xl shadow-2xl flex items-center justify-center hover:bg-gray-900 transition-all group"
+          className="fixed bottom-6 right-6 md:bottom-10 md:right-10 z-[99] w-14 h-14 md:w-16 md:h-16 bg-primary text-surface rounded-2xl shadow-2xl flex items-center justify-center hover:bg-on-surface transition-all group"
         >
           <ArrowUp className="w-6 h-6 group-hover:-translate-y-1 transition-transform" />
         </motion.button>
@@ -93,7 +93,7 @@ function App() {
   }, []);
 
   return (
-    <div className="bg-white selection:bg-orange-100 selection:text-orange-600 font-sans relative overflow-x-hidden">
+    <div className="bg-surface selection:bg-primary/20 selection:text-primary font-sans relative overflow-x-hidden text-on-surface">
       <CustomCursor />
       <AnimatePresence>
         {loading && <Loader />}
@@ -101,7 +101,7 @@ function App() {
 
       <BackToTop />
       
-      <motion.div className="fixed top-0 left-0 right-0 h-1 bg-orange-500 z-[9999] origin-left" style={{ scaleX }} />
+      <motion.div className="fixed top-0 left-0 right-0 h-1 bg-primary z-[9999] origin-left" style={{ scaleX }} />
 
       <Navbar />
       
@@ -109,7 +109,7 @@ function App() {
         <Hero />
         
         {/* About Sahil Raza Section - Mobile Optimized */}
-        <section id="about" className="py-20 md:py-40 bg-gray-50 relative overflow-hidden">
+        <section id="about" className="py-20 md:py-40 bg-white/[0.01] relative overflow-hidden">
           <div className="container-tight px-4">
             <div className="flex flex-col lg:flex-row gap-12 md:gap-24 items-center">
               <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="w-full lg:w-1/2">
@@ -117,20 +117,20 @@ function App() {
                   <motion.div className="relative z-10 overflow-hidden rounded-[2.5rem] md:rounded-[4rem] shadow-2xl aspect-square">
                     <img src={profilePic} alt="Sahil Raza" className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000" />
                   </motion.div>
-                  <div className="absolute -bottom-10 -right-10 w-40 h-40 md:w-80 md:h-80 bg-orange-500/10 rounded-full blur-[60px] md:blur-[100px] hidden md:block"></div>
+                  <div className="absolute -bottom-10 -right-10 w-40 h-40 md:w-80 md:h-80 bg-primary/10 rounded-full blur-[60px] md:blur-[100px] hidden md:block"></div>
                   
                   <motion.div 
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
-                    className="absolute -top-4 -left-4 md:-top-10 md:-left-10 bg-white p-3 md:p-6 rounded-xl md:rounded-3xl shadow-2xl z-20 flex items-center gap-2 md:gap-4 border border-gray-50"
+                    className="absolute -top-4 -left-4 md:-top-10 md:-left-10 bg-surface p-3 md:p-6 rounded-xl md:rounded-3xl shadow-2xl z-20 flex items-center gap-2 md:gap-4 border border-white/5"
                   >
                     <div className="relative">
-                        <Activity className="w-5 h-5 md:w-8 md:h-8 text-orange-500" />
-                        <div className="absolute top-0 right-0 w-2 md:w-3 h-2 md:h-3 bg-green-500 rounded-full border-2 border-white animate-pulse" />
+                        <Activity className="w-5 h-5 md:w-8 md:h-8 text-primary" />
+                        <div className="absolute top-0 right-0 w-2 md:w-3 h-2 md:h-3 bg-green-500 rounded-full border-2 border-surface animate-pulse" />
                     </div>
                     <div>
-                        <div className="text-[8px] md:text-[10px] font-black uppercase tracking-widest text-gray-400 mb-0.5">Live Status</div>
-                        <div className="text-[9px] md:text-xs font-black text-gray-900 uppercase">Available for Hire</div>
+                        <div className="text-[8px] md:text-[10px] font-black uppercase tracking-widest text-on-surface/30 mb-0.5">Live Status</div>
+                        <div className="text-[9px] md:text-xs font-black text-on-surface uppercase">Available for Hire</div>
                     </div>
                   </motion.div>
                 </div>
@@ -138,21 +138,21 @@ function App() {
               
               <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="flex-1 text-center lg:text-left w-full">
                 <div className="inline-flex items-center gap-3 mb-4 md:mb-6">
-                    <div className="w-6 md:w-10 h-[2px] bg-orange-500" />
-                    <span className="text-orange-500 font-black tracking-widest text-[9px] md:text-[10px] uppercase">The Expert</span>
+                    <div className="w-6 md:w-10 h-[2px] bg-primary" />
+                    <span className="text-primary font-black tracking-widest text-[9px] md:text-[10px] uppercase">The Expert</span>
                 </div>
                 <h2 className="text-3xl md:text-7xl font-black tracking-tighter mb-6 md:mb-10 leading-[0.9]">
-                  Sahil Raza <br/> <span className="text-gray-300 italic">Software Engineer.</span>
+                  Sahil Raza <br/> <span className="text-on-surface/20 italic">Software Engineer.</span>
                 </h2>
-                <div className="space-y-4 md:space-y-6 text-gray-500 text-sm md:text-lg leading-relaxed mb-8 md:mb-12 font-medium max-w-2xl mx-auto lg:mx-0 text-left">
+                <div className="space-y-4 md:space-y-6 text-on-surface/40 text-sm md:text-lg leading-relaxed mb-8 md:mb-12 font-medium max-w-2xl mx-auto lg:mx-0 text-left">
                   <p>
-                    With <span className="text-gray-900 font-black">4+ years in Web</span> and <span className="text-gray-900 font-black">1+ year in Android</span> engineering, I approach software logically—architecting workflows and drawing logic before writing a single line of code.
+                    With <span className="text-on-surface font-black">4+ years in Web</span> and <span className="text-on-surface font-black">1+ year in Android</span> engineering, I approach software logically—architecting workflows and drawing logic before writing a single line of code.
                   </p>
                   <p>
-                    I don't just copy UIs; I build entirely unique products. Apps like <span className="text-orange-500 font-bold">PocketID, Wrapify</span>, and <span className="text-orange-500 font-bold">MasterDex</span> are original concepts filling untouched market gaps.
+                    I don't just copy UIs; I build entirely unique products. Apps like <span className="text-primary font-bold">PocketID, Wrapify</span>, and <span className="text-primary font-bold">MasterDex</span> are original concepts filling untouched market gaps.
                   </p>
                 </div>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 pt-8 md:pt-10 border-t border-gray-200">
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 pt-8 md:pt-10 border-t border-white/5">
                   <StatsCounter value="4" label="Web Exp" suffix="Y+" icon={Globe} />
                   <StatsCounter value="1" label="App Exp" suffix="Y+" icon={Smartphone} />
                   <StatsCounter value="20" label="Projects" suffix="+" icon={Briefcase} />
@@ -165,15 +165,13 @@ function App() {
 
         <Skills />
         <GithubActivity />
-
         <TechnicalArsenal />
-
         <Services />
 
-        <section className="py-20 md:py-24 bg-white relative">
+        <section className="py-20 md:py-24 bg-surface relative">
             <div className="container-tight px-4 md:px-6">
-                <div className="relative rounded-[2.5rem] md:rounded-[4rem] overflow-hidden shadow-[0_30px_60px_rgba(0,0,0,0.08)]">
-                    <img src={allAppsEcosystem} alt="SahilCodeLab Ecosystem" className="w-full h-auto" />
+                <div className="relative rounded-[2.5rem] md:rounded-[4rem] overflow-hidden shadow-2xl border border-white/5">
+                    <img src={allAppsEcosystem} alt="SahilCodeLab Ecosystem" className="w-full h-auto grayscale group-hover:grayscale-0 transition-all duration-1000" />
                 </div>
             </div>
         </section>
@@ -182,17 +180,17 @@ function App() {
         <Certifications />
         <Testimonials />
 
-        <section id="contact" className="py-24 md:py-32 bg-gray-900 text-white relative overflow-hidden w-full">
+        <section id="contact" className="py-24 md:py-32 bg-surface text-on-surface relative overflow-hidden w-full">
           <div className="container-tight px-4 relative z-10 w-full">
             <div className="text-center mb-12 md:mb-16 flex flex-col items-center w-full">
-              <span className="text-orange-500 font-black tracking-widest text-[9px] md:text-[10px] uppercase mb-4 block">Get in Touch</span>
+              <span className="text-primary font-black tracking-widest text-[9px] md:text-[10px] uppercase mb-4 block">Get in Touch</span>
               <h2 className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tighter mb-6 leading-tight uppercase max-w-full break-words">
-                Let's <br className="block sm:hidden" /><span className="text-orange-500 italic">Create.</span>
+                Let's <br className="block sm:hidden" /><span className="text-primary italic">Create.</span>
               </h2>
               <div className="w-full max-w-[200px] md:max-w-[250px] mb-8">
-                <img src={undrawContactUs} alt="Contact Us Illustration" className="w-full h-auto drop-shadow-md opacity-90" />
+                <img src={undrawContactUs} alt="Contact Us Illustration" className="w-full h-auto drop-shadow-md opacity-90 grayscale hover:grayscale-0 transition-all" />
               </div>
-              <p className="text-white/40 text-base md:text-lg font-medium max-w-xl mx-auto">
+              <p className="text-on-surface/40 text-base md:text-lg font-medium max-w-xl mx-auto">
                 Have a project in mind? Let's build something exceptional together.
               </p>
             </div>
@@ -201,31 +199,31 @@ function App() {
         </section>
       </main>
 
-      <footer className="py-20 md:py-24 bg-white border-t border-gray-100">
+      <footer className="py-20 md:py-24 bg-surface border-t border-white/5">
         <div className="container-tight px-4 md:px-6 text-center md:text-left">
           <div className="flex flex-col md:flex-row justify-between items-start gap-12 md:gap-16 mb-16 md:mb-20">
             <div className="max-w-sm mx-auto md:mx-0">
               <div className="flex items-center gap-4 mb-6 md:mb-8 justify-center md:justify-start">
                 <img src={brandLogo} alt="SahilCodeLab Logo" className="w-12 h-12 md:w-14 md:h-14 object-contain rounded-xl" />
-                <div className="text-xl md:text-2xl font-black tracking-tighter uppercase">Sahil<span className="text-orange-500">CodeLab</span></div>
+                <div className="text-xl md:text-2xl font-black tracking-tighter uppercase text-on-surface">Sahil<span className="text-primary">CodeLab</span></div>
               </div>
-              <p className="text-gray-400 text-xs md:text-sm leading-relaxed font-medium mb-8">Precision engineered in India for a global developer community.</p>
+              <p className="text-on-surface/40 text-xs md:text-sm leading-relaxed font-medium mb-8">Precision engineered in India for a global developer community.</p>
               {/* Social Links */}
               <div className="flex items-center gap-4 justify-center md:justify-start">
                 <a href="https://www.linkedin.com/in/sahil-razaofficial" target="_blank" rel="noopener noreferrer"
-                  className="w-12 h-12 rounded-2xl bg-gray-100 flex items-center justify-center text-gray-400 hover:bg-[#0077B5] hover:text-white transition-all duration-300 group shadow-sm hover:shadow-lg hover:-translate-y-1">
+                  className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center text-on-surface/40 hover:bg-primary hover:text-surface transition-all duration-300 group shadow-sm hover:shadow-lg hover:-translate-y-1">
                   <FaLinkedin size={20} />
                 </a>
                 <a href="https://github.com/SahilCodeLab" target="_blank" rel="noopener noreferrer"
-                  className="w-12 h-12 rounded-2xl bg-gray-100 flex items-center justify-center text-gray-400 hover:bg-gray-900 hover:text-white transition-all duration-300 shadow-sm hover:shadow-lg hover:-translate-y-1">
+                  className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center text-on-surface/40 hover:bg-on-surface hover:text-surface transition-all duration-300 shadow-sm hover:shadow-lg hover:-translate-y-1">
                   <FaGithub size={20} />
                 </a>
                 <a href="https://www.instagram.com/clipztar" target="_blank" rel="noopener noreferrer"
-                  className="w-12 h-12 rounded-2xl bg-gray-100 flex items-center justify-center text-gray-400 hover:bg-gradient-to-br hover:from-[#f09433] hover:via-[#e6683c] hover:to-[#dc2743] hover:text-white transition-all duration-300 shadow-sm hover:shadow-lg hover:-translate-y-1">
+                  className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center text-on-surface/40 hover:bg-gradient-to-br hover:from-[#f09433] hover:via-[#e6683c] hover:to-[#dc2743] hover:text-white transition-all duration-300 shadow-sm hover:shadow-lg hover:-translate-y-1">
                   <FaInstagram size={20} />
                 </a>
                 <a href="mailto:contact.sahilraza@gmail.com"
-                  className="w-12 h-12 rounded-2xl bg-gray-100 flex items-center justify-center text-gray-400 hover:bg-orange-500 hover:text-white transition-all duration-300 shadow-sm hover:shadow-lg hover:-translate-y-1">
+                  className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center text-on-surface/40 hover:bg-primary hover:text-surface transition-all duration-300 shadow-sm hover:shadow-lg hover:-translate-y-1">
                   <Mail className="w-5 h-5" />
                 </a>
               </div>
@@ -233,40 +231,40 @@ function App() {
               {/* Verified on Google Badge */}
               <motion.div 
                 whileHover={{ scale: 1.05 }}
-                className="mt-10 p-6 bg-white border border-gray-100 rounded-[2rem] shadow-xl max-w-[200px] mx-auto md:mx-0 group cursor-pointer overflow-hidden relative"
+                className="mt-10 p-6 bg-white/[0.02] border border-white/5 rounded-[2rem] shadow-xl max-w-[200px] mx-auto md:mx-0 group cursor-pointer overflow-hidden relative"
               >
-                <div className="absolute top-0 right-0 p-2 bg-orange-500/5 rounded-bl-2xl">
+                <div className="absolute top-0 right-0 p-2 bg-primary/5 rounded-bl-2xl">
                     <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
                 </div>
                 <a href="https://share.google/T7XulMOxTsOuHCC5M" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center gap-3">
                     <img src={googleQr} alt="Verified on Google" className="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-110" />
-                    <div className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-900 group-hover:text-orange-500 transition-colors">Verified Presence</div>
-                    <div className="text-[8px] font-bold text-gray-400 uppercase tracking-widest text-center">Check us out on Google</div>
+                    <div className="text-[10px] font-black uppercase tracking-[0.2em] text-on-surface group-hover:text-primary transition-colors">Verified Presence</div>
+                    <div className="text-[8px] font-bold text-on-surface/20 uppercase tracking-widest text-center">Check us out on Google</div>
                 </a>
               </motion.div>
             </div>
 
             {/* Quick Links */}
             <div className="text-center md:text-left">
-              <div className="text-[10px] font-black uppercase tracking-[0.4em] text-gray-300 mb-6">Quick Links</div>
+              <div className="text-[10px] font-black uppercase tracking-[0.4em] text-on-surface/20 mb-6">Quick Links</div>
               <div className="flex flex-col gap-3">
                 {['Projects', 'About', 'Certifications', 'Contact'].map(link => (
-                  <a key={link} href={`#${link.toLowerCase()}`} className="text-sm font-bold text-gray-400 hover:text-orange-500 transition-colors">{link}</a>
+                  <a key={link} href={`#${link.toLowerCase()}`} className="text-sm font-bold text-on-surface/40 hover:text-primary transition-colors">{link}</a>
                 ))}
               </div>
             </div>
 
             {/* Contact Info */}
             <div className="text-center md:text-left">
-              <div className="text-[10px] font-black uppercase tracking-[0.4em] text-gray-300 mb-6">Contact</div>
-              <a href="mailto:contact.sahilraza@gmail.com" className="text-sm font-bold text-gray-400 hover:text-orange-500 transition-colors block mb-3">contact.sahilraza@gmail.com</a>
-              <a href="https://www.linkedin.com/in/sahil-razaofficial" target="_blank" rel="noopener noreferrer" className="text-sm font-bold text-gray-400 hover:text-orange-500 transition-colors block">LinkedIn Profile</a>
+              <div className="text-[10px] font-black uppercase tracking-[0.4em] text-on-surface/20 mb-6">Contact</div>
+              <a href="mailto:contact.sahilraza@gmail.com" className="text-sm font-bold text-on-surface/40 hover:text-primary transition-colors block mb-3">contact.sahilraza@gmail.com</a>
+              <a href="https://www.linkedin.com/in/sahil-razaofficial" target="_blank" rel="noopener noreferrer" className="text-sm font-bold text-on-surface/40 hover:text-primary transition-colors block">LinkedIn Profile</a>
             </div>
           </div>
 
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4 pt-10 md:pt-12 border-t border-gray-100">
-            <div className="text-[9px] md:text-[10px] font-black uppercase tracking-[0.4em] md:tracking-[0.5em] text-gray-300">© 2026 SAHIL RAZA // SOFTWARE ENGINEER</div>
-            <div className="text-[9px] md:text-[10px] font-black uppercase tracking-[0.4em] text-gray-300">SahilCodeLab // India</div>
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4 pt-10 md:pt-12 border-t border-white/5">
+            <div className="text-[9px] md:text-[10px] font-black uppercase tracking-[0.4em] md:tracking-[0.5em] text-on-surface/20">© 2026 SAHIL RAZA // SOFTWARE ENGINEER</div>
+            <div className="text-[9px] md:text-[10px] font-black uppercase tracking-[0.4em] text-on-surface/20">SahilCodeLab // India</div>
           </div>
         </div>
       </footer>
