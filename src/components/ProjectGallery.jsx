@@ -2,6 +2,14 @@ import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ExternalLink, Smartphone, Code, ArrowUpRight } from 'lucide-react';
 
+// Swiper Imports
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { EffectCoverflow, Pagination, Autoplay } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/effect-coverflow';
+import 'swiper/css/pagination';
+
+
 // Import Logos
 import pocketIdLogo from '../assets/pocketid_logo.png';
 import masterDexLogo from '../assets/masterdex_logo.png';
@@ -161,27 +169,38 @@ const ProjectCard = ({ project, index }) => {
           </div>
         </div>
 
-        {/* Dynamic Screenshot Grid */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
-          {project.screenshots.slice(0, 4).map((img, i) => (
-            <motion.div 
-              key={i}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-              className={`relative rounded-2xl md:rounded-3xl overflow-hidden border border-white/10 shadow-2xl ${i === 0 ? 'col-span-2 row-span-2' : ''}`}
-            >
-              <img 
-                src={img} 
-                className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
-                alt={`${project.title} ss ${i}`}
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-surface/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
-                <span className="text-[10px] font-black uppercase tracking-widest text-primary">View Full Screen</span>
-              </div>
-            </motion.div>
-          ))}
+        {/* Swiper 3D Screenshot Showcase */}
+        <div className="w-full mt-10 md:mt-16 pb-10">
+          <Swiper
+            effect={'coverflow'}
+            grabCursor={true}
+            centeredSlides={true}
+            slidesPerView={'auto'}
+            loop={true}
+            coverflowEffect={{
+              rotate: 50,
+              stretch: 0,
+              depth: 100,
+              modifier: 1,
+              slideShadows: true,
+            }}
+            autoplay={{
+              delay: 3000,
+              disableOnInteraction: false,
+            }}
+            pagination={{ clickable: true, dynamicBullets: true }}
+            modules={[EffectCoverflow, Pagination, Autoplay]}
+            className="w-full py-10 project-swiper"
+          >
+            {project.screenshots.map((img, index) => (
+              <SwiperSlide key={index} className="!w-[140px] sm:!w-[160px] md:!w-[220px]">
+                <div className="relative rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl border border-black/5 aspect-[9/19.5] bg-white group">
+                  <img src={img} alt={`${project.title} ss ${index + 1}`} className="w-full h-full object-contain pointer-events-none" />
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors duration-300"></div>
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
         </div>
       </div>
     </motion.div>
@@ -288,6 +307,29 @@ const ProjectGallery = () => {
             </div>
         </motion.div>
       </div>
+
+      <style>{`
+        /* Swiper Custom Styles for Project Cards */
+        .project-swiper .swiper-slide {
+          transition: filter 0.5s ease, opacity 0.5s ease;
+        }
+        .project-swiper .swiper-slide:not(.swiper-slide-active) {
+          filter: blur(3px) grayscale(30%);
+          opacity: 0.6;
+        }
+        .project-swiper .swiper-pagination-bullet {
+          background-color: var(--color-on-surface);
+          opacity: 0.2;
+        }
+        .project-swiper .swiper-pagination-bullet-active {
+          background-color: var(--color-primary);
+          opacity: 1;
+        }
+        .project-swiper .swiper-3d .swiper-slide-shadow-left,
+        .project-swiper .swiper-3d .swiper-slide-shadow-right {
+          background-image: none !important;
+        }
+      `}</style>
     </section>
   );
 };
