@@ -42,7 +42,7 @@ const ThreeDAppShowcase = () => {
     startX: 0,
     rotateY: 0,
     targetRotateY: 0,
-    autoSpinSpeed: 0.1, // Auto rotation speed
+    autoSpinSpeed: -0.3, // Match 20s for 360deg. Negative makes it spin leftwards naturally
   });
 
   const totalQuantity = APP_SHOWCASE_CONFIG.screenshots.length;
@@ -57,17 +57,20 @@ const ThreeDAppShowcase = () => {
       stateRef.current.isDragging = true;
       stateRef.current.startX = clientX;
       stateRef.current.targetRotateY = stateRef.current.rotateY;
+      slider.style.cursor = 'grabbing';
     };
 
     const handleMove = (clientX) => {
       if (!stateRef.current.isDragging) return;
       const deltaX = clientX - stateRef.current.startX;
-      stateRef.current.targetRotateY += deltaX * -0.25; // Drag sensitivity
+      // FIX: Drag direction corrected so it follows the mouse (positive multiplier)
+      stateRef.current.targetRotateY += deltaX * 0.2; 
       stateRef.current.startX = clientX;
     };
 
     const handleEnd = () => {
       stateRef.current.isDragging = false;
+      slider.style.cursor = 'grab';
     };
 
     const onMouseDown = (e) => handleStart(e.clientX);
@@ -84,15 +87,15 @@ const ThreeDAppShowcase = () => {
 
     // Hover pauses auto spin
     const onMouseEnter = () => { stateRef.current.autoSpinSpeed = 0; };
-    const onMouseLeave = () => { if (!stateRef.current.isDragging) stateRef.current.autoSpinSpeed = 0.1; };
+    const onMouseLeave = () => { if (!stateRef.current.isDragging) stateRef.current.autoSpinSpeed = -0.3; };
 
     slider.addEventListener('mouseenter', onMouseEnter);
     slider.addEventListener('mouseleave', onMouseLeave);
 
-    // 120fps Lerp Render Engine
+    // Smooth Lerp Engine
     const updateSlider = () => {
       const state = stateRef.current;
-      if (!state.isDragging && state.autoSpinSpeed > 0) {
+      if (!state.isDragging && state.autoSpinSpeed !== 0) {
         state.targetRotateY += state.autoSpinSpeed;
       }
       state.rotateY += (state.targetRotateY - state.rotateY) * 0.1; // Smooth easing
@@ -116,20 +119,8 @@ const ThreeDAppShowcase = () => {
   }, []);
 
   return (
-    <section className="banner-3d-showcase relative py-20 border-b border-gray-100 bg-surface overflow-hidden">
-      <div className="absolute inset-0 bg-primary/5 blur-[100px] rounded-full w-[600px] h-[600px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
+    <section className="banner-3d-showcase bg-surface border-b border-gray-100">
       
-      {/* Section Title */}
-      <div className="absolute top-10 md:top-20 left-4 md:left-20 z-20">
-        <div className="inline-flex items-center gap-3 mb-4">
-            <div className="w-6 md:w-10 h-[2px] bg-primary" />
-            <span className="text-primary font-black tracking-widest text-[9px] md:text-[10px] uppercase">Interactive</span>
-        </div>
-        <h2 className="text-2xl md:text-5xl font-black tracking-tighter uppercase">
-          App <span className="text-primary italic">Showcase.</span>
-        </h2>
-      </div>
-
       {/* 3D Rotating Cylinder */}
       <div 
         className="slider-3d-box" 
@@ -149,111 +140,81 @@ const ThreeDAppShowcase = () => {
 
       {/* Dynamic Texts & Layout Overlays */}
       <div className="showcase-content-layer">
-        <h1 data-content={APP_SHOWCASE_CONFIG.showcaseText} className="hidden md:block">{APP_SHOWCASE_CONFIG.showcaseText}</h1>
-        <div className="showcase-author-credits hidden md:block">
-          <h2 className="text-primary font-black uppercase tracking-tighter text-5xl mb-2">{APP_SHOWCASE_CONFIG.authorName}</h2>
-          <p className="text-on-surface uppercase tracking-widest text-sm font-black"><b>{APP_SHOWCASE_CONFIG.authorSubtitle}</b></p>
-          <p className="text-on-surface/40 uppercase tracking-widest text-[10px] mt-2 font-bold">{APP_SHOWCASE_CONFIG.projectType}</p>
+        <div className="showcase-author-credits text-on-surface">
+          <h2 className="text-primary font-black uppercase tracking-tighter text-4xl mb-2">{APP_SHOWCASE_CONFIG.authorName}</h2>
+          <p className="font-bold tracking-widest text-sm uppercase">{APP_SHOWCASE_CONFIG.authorSubtitle}</p>
+          <p className="text-on-surface/50 text-[10px] tracking-widest uppercase font-bold mt-1">{APP_SHOWCASE_CONFIG.projectType}</p>
         </div>
       </div>
-      
-      {/* Mobile Title Backdrop */}
-      <div className="absolute inset-x-0 bottom-10 flex justify-center md:hidden pointer-events-none z-0">
-          <h1 className="text-6xl font-black text-on-surface/5 uppercase tracking-tighter" style={{ WebkitTextStroke: '1px var(--color-primary)'}}>{APP_SHOWCASE_CONFIG.showcaseText}</h1>
-      </div>
 
-      {/* Styled Inline CSS */}
+      {/* Styled Inline CSS Matching User's Clone Request Exactly */}
       <style>{`
         .banner-3d-showcase {
           width: 100%;
           height: 100vh;
-          min-height: 700px;
           text-align: center;
+          overflow: hidden;
           position: relative;
         }
+
         .banner-3d-showcase .slider-3d-box {
           position: absolute;
-          width: 260px;
-          height: 520px;
-          top: 20%;
-          left: calc(50% - 130px);
+          width: 200px;
+          height: 250px;
+          top: 10%;
+          left: calc(50% - 100px);
           transform-style: preserve-3d;
-          transform: perspective(2500px) rotateX(-8deg) rotateY(var(--rotateY, 0deg));
-          z-index: 10;
+          transform: perspective(3000px) rotateX(-16deg) rotateY(var(--rotateY, 0deg));
+          z-index: 2;
           cursor: grab;
           will-change: transform;
         }
-        @media (max-width: 768px) {
-            .banner-3d-showcase .slider-3d-box {
-                width: 180px;
-                height: 380px;
-                left: calc(50% - 90px);
-                top: 25%;
-                transform: perspective(2000px) rotateX(-10deg) rotateY(var(--rotateY, 0deg));
-            }
-        }
+
         .banner-3d-showcase .slider-3d-box:active {
           cursor: grabbing;
         }
+
         .banner-3d-showcase .slider-3d-item {
           position: absolute;
-          inset: 0;
-          transform: rotateY(calc((var(--position) - 1) * (360 / var(--quantity)) * 1deg)) translateZ(480px);
+          inset: 0 0 0 0;
+          transform: rotateY(calc((var(--position) - 1) * (360 / var(--quantity)) * 1deg)) translateZ(550px);
         }
-        @media (max-width: 768px) {
-            .banner-3d-showcase .slider-3d-item {
-                transform: rotateY(calc((var(--position) - 1) * (360 / var(--quantity)) * 1deg)) translateZ(280px);
-            }
-        }
+
         .banner-3d-showcase .slider-3d-item img {
           width: 100%;
           height: 100%;
           object-fit: cover;
-          border-radius: 20px;
-          box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-          border: 1px solid rgba(0,0,0,0.05);
-          pointer-events: none; /* Prevent image dragging issues */
-          background: white;
+          border-radius: 10px;
+          pointer-events: none;
         }
+
         .showcase-content-layer {
           position: absolute;
           bottom: 0;
           left: 50%;
           transform: translateX(-50%);
-          width: 100%;
-          max-width: 1400px;
-          height: 100%;
-          padding: 0 40px;
-          padding-bottom: 80px;
+          width: 1400px;
+          max-width: 100%;
+          height: max-content;
+          padding-bottom: 100px;
           display: flex;
           flex-wrap: wrap;
-          justify-content: space-between;
-          align-items: flex-end;
+          justify-content: flex-end; /* Align right side info */
+          align-items: center;
           z-index: 1;
-          pointer-events: none;
+          pointer-events: none; /* Allows interacting with slider through the gap */
         }
-        .showcase-content-layer h1 {
-          font-family: var(--font-sans);
-          font-size: 11vw;
-          font-weight: 900;
-          line-height: 0.8em;
-          position: relative;
-          color: rgba(0,0,0,0.02);
-          margin: 0;
-          letter-spacing: -0.05em;
-        }
-        .showcase-content-layer h1::after {
-          position: absolute;
-          inset: 0;
-          content: attr(data-content);
-          color: transparent;
-          -webkit-text-stroke: 1.5px var(--color-primary);
-          opacity: 0.2;
-          z-index: 3;
-        }
+
         .showcase-author-credits {
           text-align: right;
-          max-width: 250px;
+          max-width: 200px;
+          padding-right: 40px; /* Add padding for mobile view */
+        }
+        
+        /* Mobile Scaling */
+        @media (max-width: 1024px) {
+            .showcase-content-layer { padding-left: 20px; padding-right: 20px; }
+            .banner-3d-showcase .slider-3d-item { transform: rotateY(calc((var(--position) - 1) * (360 / var(--quantity)) * 1deg)) translateZ(350px); }
         }
       `}</style>
     </section>
