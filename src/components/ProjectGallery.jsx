@@ -185,9 +185,10 @@ const ProjectCard = ({ project, index }) => {
               slideShadows: true,
             }}
             autoplay={{
-              delay: 3000,
+              delay: 0,
               disableOnInteraction: false,
             }}
+            speed={4000}
             pagination={{ clickable: true, dynamicBullets: true }}
             modules={[EffectCoverflow, Pagination, Autoplay]}
             className="w-full py-10 project-swiper"
@@ -310,13 +311,21 @@ const ProjectGallery = () => {
 
       <style>{`
         /* Swiper Custom Styles for Project Cards */
+        
+        /* Enable continuous linear sliding */
+        .project-swiper .swiper-wrapper {
+          transition-timing-function: linear !important;
+        }
+
         .project-swiper .swiper-slide {
-          transition: filter 0.5s ease, opacity 0.5s ease;
+          transition: opacity 0.5s ease;
         }
+        
+        /* Remove blur, just slightly fade inactive slides so they are still clear */
         .project-swiper .swiper-slide:not(.swiper-slide-active) {
-          filter: blur(3px) grayscale(30%);
-          opacity: 0.6;
+          opacity: 0.8;
         }
+
         .project-swiper .swiper-pagination-bullet {
           background-color: var(--color-on-surface);
           opacity: 0.2;
