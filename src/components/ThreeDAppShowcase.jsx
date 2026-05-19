@@ -159,10 +159,10 @@ const ThreeDAppShowcase = () => {
 
         .banner-3d-showcase .slider-3d-box {
           position: absolute;
-          width: 200px;
-          height: 250px;
-          top: 10%;
-          left: calc(50% - 100px);
+          width: 220px;
+          height: 450px;
+          top: calc(50% - 225px);
+          left: calc(50% - 110px);
           transform-style: preserve-3d;
           transform: perspective(3000px) rotateX(-16deg) rotateY(var(--rotateY, 0deg));
           z-index: 2;
@@ -177,13 +177,13 @@ const ThreeDAppShowcase = () => {
         .banner-3d-showcase .slider-3d-item {
           position: absolute;
           inset: 0 0 0 0;
-          transform: rotateY(calc((var(--position) - 1) * (360 / var(--quantity)) * 1deg)) translateZ(550px);
+          transform: rotateY(calc((var(--position) - 1) * (360 / var(--quantity)) * 1deg)) translateZ(600px);
         }
 
         .banner-3d-showcase .slider-3d-item img {
           width: 100%;
           height: 100%;
-          object-fit: cover;
+          object-fit: contain;
           border-radius: 10px;
           pointer-events: none;
         }
@@ -214,6 +214,12 @@ const ThreeDAppShowcase = () => {
         /* Mobile Scaling */
         @media (max-width: 1024px) {
             .showcase-content-layer { padding-left: 20px; padding-right: 20px; }
+            .banner-3d-showcase .slider-3d-box {
+                width: 160px;
+                height: 330px;
+                top: calc(50% - 165px);
+                left: calc(50% - 80px);
+            }
             .banner-3d-showcase .slider-3d-item { transform: rotateY(calc((var(--position) - 1) * (360 / var(--quantity)) * 1deg)) translateZ(350px); }
         }
       `}</style>
