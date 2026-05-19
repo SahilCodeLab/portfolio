@@ -185,10 +185,10 @@ const ProjectCard = ({ project, index }) => {
               slideShadows: true,
             }}
             autoplay={{
-              delay: 0,
+              delay: 2500,
               disableOnInteraction: false,
             }}
-            speed={4000}
+            speed={800}
             pagination={{ clickable: true, dynamicBullets: true }}
             modules={[EffectCoverflow, Pagination, Autoplay]}
             className="w-full py-10 project-swiper"
@@ -312,11 +312,6 @@ const ProjectGallery = () => {
       <style>{`
         /* Swiper Custom Styles for Project Cards */
         
-        /* Enable continuous linear sliding */
-        .project-swiper .swiper-wrapper {
-          transition-timing-function: linear !important;
-        }
-
         .project-swiper .swiper-slide {
           transition: opacity 0.5s ease;
         }
