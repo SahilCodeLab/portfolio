@@ -76,7 +76,7 @@ const ThreeDAppShowcase = () => {
           className="w-full py-10"
         >
           {APP_SHOWCASE_CONFIG.screenshots.map((imgUrl, index) => (
-            <SwiperSlide key={index} className="w-[140px] sm:w-[160px] md:w-[220px]">
+            <SwiperSlide key={index} className="!w-[140px] sm:!w-[160px] md:!w-[220px]">
               <div className="relative rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl border border-black/5 aspect-[9/19.5] bg-white group">                <img src={imgUrl} alt={`App Screen ${index + 1}`} className="w-full h-full object-contain pointer-events-none" />
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors duration-300"></div>
               </div>
