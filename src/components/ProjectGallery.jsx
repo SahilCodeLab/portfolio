@@ -193,7 +193,8 @@ const ProjectCard = ({ project, index }) => {
             modules={[EffectCoverflow, Pagination, Autoplay]}
             className="w-full py-10 project-swiper"
           >
-            {project.screenshots.map((img, index) => (
+            {/* Tripling the array to ensure Swiper always has enough slides to maintain an infinite loop */}
+            {[...project.screenshots, ...project.screenshots, ...project.screenshots].map((img, index) => (
               <SwiperSlide key={index} className="!w-[140px] sm:!w-[160px] md:!w-[220px]">
                 <div className="relative rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl border border-black/5 aspect-[9/19.5] bg-white group">
                   <img src={img} alt={`${project.title} ss ${index + 1}`} className="w-full h-full object-contain pointer-events-none" />
