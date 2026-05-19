@@ -15,6 +15,7 @@ import ContactForm from './components/ContactForm';
 import Features from './components/Features';
 import Loader from './components/Loader';
 import CustomCursor from './components/CustomCursor';
+import ThreeDAppShowcase from './components/ThreeDAppShowcase';
 import './index.css';
 
 // Import Assets
@@ -177,6 +178,8 @@ function App() {
                 </div>
             </div>
         </section>
+        
+        <ThreeDAppShowcase />
         
         <ProjectGallery />
         <Certifications />
