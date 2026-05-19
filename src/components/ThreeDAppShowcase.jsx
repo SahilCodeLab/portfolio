@@ -61,10 +61,10 @@ const ThreeDAppShowcase = () => {
           slidesPerView={'auto'}
           loop={true}
           coverflowEffect={{
-            rotate: 0,
+            rotate: 50,
             stretch: 0,
-            depth: 200,
-            modifier: 2,
+            depth: 100,
+            modifier: 1,
             slideShadows: true,
           }}
           autoplay={{
@@ -76,8 +76,8 @@ const ThreeDAppShowcase = () => {
           className="w-full py-10"
         >
           {APP_SHOWCASE_CONFIG.screenshots.map((imgUrl, index) => (
-            <SwiperSlide key={index} className="w-[200px] md:w-[280px]">
-              <div className="relative rounded-[2rem] overflow-hidden shadow-2xl border border-black/5 aspect-[9/19.5] bg-white group">
+            <SwiperSlide key={index} className="w-[180px] sm:w-[220px] md:w-[300px]">
+              <div className="relative rounded-[1.5rem] md:rounded-[2rem] overflow-hidden shadow-2xl border border-black/5 aspect-[9/19.5] bg-white group">
                 <img src={imgUrl} alt={`App Screen ${index + 1}`} className="w-full h-full object-contain pointer-events-none" />
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors duration-300"></div>
               </div>
