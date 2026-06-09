@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
-import brandLogo from '../assets/brand_logo.jpg';
+const brandLogo = '/sahilcodelab-brand.ico';
 import resume from '../assets/Resume.pdf';
 
 const Navbar = () => {

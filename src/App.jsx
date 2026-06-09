@@ -20,10 +20,11 @@ import './index.css';
 // Import Assets
 import profilePic from './assets/profile_pic.jpg';
 import allAppsEcosystem from './assets/all_apps_ecosystem.jpg';
-import brandLogo from './assets/brand_logo.jpg';
 import undrawCoding from './assets/undraw_coding.svg';
 import undrawContactUs from './assets/undraw_contact_us.svg';
 import googleQr from './assets/google_qr.png';
+
+const brandLogo = '/sahilcodelab-brand.ico';
 
 const StatsCounter = ({ value, label, suffix = "", icon: Icon }) => {
   const [count, setCount] = useState(0);
