@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence, useScroll, useSpring } from 'framer-motion';
-import { ArrowUp, Activity, Mail, Globe, Smartphone, Briefcase, Code, ArrowUpRight } from 'lucide-react';
+import { ArrowUp, Activity, Mail, Globe, Smartphone, Briefcase, Code, ArrowUpRight, AlertCircle } from 'lucide-react';
 import { FaLinkedin, FaGithub, FaInstagram } from 'react-icons/fa';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
@@ -86,8 +86,22 @@ const BackToTop = () => {
 
 function App() {
   const [loading, setLoading] = useState(true);
+  const [instagramError, setInstagramError] = useState(false);
+  const [errorTimeoutId, setErrorTimeoutId] = useState(null);
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, { stiffness: 100, damping: 30, restDelta: 0.001 });
+
+  const handleInstagramClick = (e) => {
+    e.preventDefault();
+    setInstagramError(true);
+    if (errorTimeoutId) {
+      clearTimeout(errorTimeoutId);
+    }
+    const id = setTimeout(() => {
+      setInstagramError(false);
+    }, 4000);
+    setErrorTimeoutId(id);
+  };
 
   useEffect(() => {
     const timer = setTimeout(() => setLoading(false), 1500);
@@ -265,8 +279,10 @@ function App() {
                   className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center text-on-surface/40 hover:bg-on-surface hover:text-surface transition-all duration-300 shadow-sm hover:shadow-lg hover:-translate-y-1">
                   <FaGithub size={20} />
                 </a>
-                <a href="https://www.instagram.com/clipztar" target="_blank" rel="noopener noreferrer"
-                  className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center text-on-surface/40 hover:bg-gradient-to-br hover:from-[#f09433] hover:via-[#e6683c] hover:to-[#dc2743] hover:text-white transition-all duration-300 shadow-sm hover:shadow-lg hover:-translate-y-1">
+                {/* Instagram Link */}
+                <a href="#instagram" onClick={handleInstagramClick}
+                  className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center text-on-surface/40 hover:bg-gradient-to-br hover:from-[#f09433] hover:via-[#e6683c] hover:to-[#dc2743] hover:text-white transition-all duration-300 shadow-sm hover:shadow-lg hover:-translate-y-1"
+                  title="Instagram">
                   <FaInstagram size={20} />
                 </a>
                 <a href="mailto:contact.sahilraza@gmail.com"
@@ -315,6 +331,34 @@ function App() {
           </div>
         </div>
       </footer>
+
+      {/* Connection Issue Toast for Instagram Links */}
+      <AnimatePresence>
+        {instagramError && (
+          <motion.div
+            initial={{ opacity: 0, y: 50, scale: 0.9 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 20, scale: 0.9 }}
+            className="fixed bottom-6 left-6 right-6 md:left-auto md:right-24 z-[999] flex items-center gap-4 bg-red-600/90 text-white px-5 py-4 rounded-2xl shadow-2xl backdrop-blur-md border border-white/10 max-w-sm"
+          >
+            <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center shrink-0">
+              <AlertCircle className="w-5 h-5 text-white" />
+            </div>
+            <div className="flex-1">
+              <h4 className="text-xs font-black uppercase tracking-wider mb-0.5">Connection Error</h4>
+              <p className="text-[11px] text-white/90 font-medium leading-relaxed">
+                Instagram servers are currently down or experiencing connection issues. Please try again later.
+              </p>
+            </div>
+            <button 
+              onClick={() => setInstagramError(false)} 
+              className="text-white/70 hover:text-white text-[10px] font-bold px-2 py-1 uppercase tracking-wider transition-colors"
+            >
+              Close
+            </button>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
