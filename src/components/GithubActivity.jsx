@@ -7,28 +7,42 @@ const GithubActivity = () => {
   const [realData, setRealData] = useState([]);
   const [total, setTotal] = useState(0);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
 
   useEffect(() => {
-    fetch('https://github-contributions-api.deno.dev/SahilCodeLab.json')
-      .then(res => res.json())
-      .then(data => {
-        const flattened = data.contributions.flat();
-        setRealData(flattened);
-        setTotal(data.totalContributions);
+    const loadContributions = async () => {
+      try {
+        setLoading(true);
+        setError('');
+
+        const res = await fetch('/api/github-contributions');
+        const data = await res.json();
+
+        if (!res.ok) {
+          throw new Error(data.error || 'Failed to load GitHub contributions');
+        }
+
+        setRealData(Array.isArray(data.contributions) ? data.contributions : []);
+        setTotal(Number(data.totalContributions) || 0);
+      } catch (err) {
+        console.error('GitHub Fetch Error:', err);
+        setError('GitHub data unavailable');
+        setRealData([]);
+        setTotal(0);
+      } finally {
         setLoading(false);
-      })
-      .catch(err => {
-        console.error("GitHub Fetch Error:", err);
-        setLoading(false);
-      });
+      }
+    };
+
+    loadContributions();
   }, []);
 
   const getLevelColor = (level) => {
     switch (level) {
-      case "FOURTH_QUARTILE": return 'bg-primary';
-      case "THIRD_QUARTILE": return 'bg-primary/80';
-      case "SECOND_QUARTILE": return 'bg-primary/60';
-      case "FIRST_QUARTILE": return 'bg-primary/30';
+      case 'FOURTH_QUARTILE': return 'bg-primary';
+      case 'THIRD_QUARTILE': return 'bg-primary/80';
+      case 'SECOND_QUARTILE': return 'bg-primary/60';
+      case 'FIRST_QUARTILE': return 'bg-primary/30';
       default: return 'bg-gray-100';
     }
   };
@@ -38,15 +52,15 @@ const GithubActivity = () => {
   return (
     <section className="py-24 bg-surface border-t border-gray-100 overflow-hidden relative text-on-surface">
       <div className="container-tight px-4 md:px-6">
-        <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 rounded-full text-on-surface font-bold text-[10px] uppercase tracking-widest mb-6">
-              <FaGithub className="w-3 h-3" />
-              <span>Real-Time Contributions</span>
+            <FaGithub className="w-3 h-3" />
+            <span>Real-Time Contributions</span>
           </div>
           <h2 className="text-4xl md:text-6xl font-black tracking-tighter mb-4 leading-tight">
             Code <span className="text-on-surface/20 italic">Consistency.</span>
@@ -56,13 +70,12 @@ const GithubActivity = () => {
           </p>
         </motion.div>
 
-        <motion.div 
-            initial={{ opacity: 0, scale: 0.98 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            className="bg-gray-50 border border-gray-100 rounded-[2.5rem] p-6 md:p-12 shadow-sm"
+        <motion.div
+          initial={{ opacity: 0, scale: 0.98 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          className="bg-gray-50 border border-gray-100 rounded-[2.5rem] p-6 md:p-12 shadow-sm"
         >
-          {/* Calendar Header */}
           <div className="flex flex-col md:flex-row justify-between items-center mb-10 gap-6">
             <div className="flex items-center gap-4">
               <div className="w-12 h-12 bg-gray-100 rounded-xl flex items-center justify-center shadow-sm border border-gray-200">
@@ -73,54 +86,63 @@ const GithubActivity = () => {
                 <div className="text-[10px] font-bold text-on-surface/40 uppercase tracking-widest">Verified Developer Journey</div>
               </div>
             </div>
-            
+
             <div className="flex flex-col items-center md:items-end">
-                <div className="text-3xl font-black text-on-surface leading-none mb-1">{loading ? "..." : total.toLocaleString()}</div>
-                <div className="text-[10px] font-bold text-primary uppercase tracking-widest">Total Contributions</div>
+              <div className="text-3xl font-black text-on-surface leading-none mb-1">
+                {loading ? '...' : total.toLocaleString()}
+              </div>
+              <div className="text-[10px] font-bold text-primary uppercase tracking-widest">
+                Total Contributions
+              </div>
             </div>
           </div>
 
-          {/* Custom Grid */}
+          {error && (
+            <div className="mb-6 text-center text-xs font-bold text-red-500 uppercase tracking-widest">
+              {error}
+            </div>
+          )}
+
           <div className="overflow-x-auto custom-scrollbar pb-6">
             <div className="min-w-[800px]">
               <div className="grid grid-flow-col grid-rows-7 gap-1.5 md:gap-2">
                 {(loading ? skeletonData : realData).map((day, i) => (
                   <motion.div
-                    key={i}
+                    key={`${day.date || 'skeleton'}-${i}`}
                     initial={{ opacity: 0, scale: 0.5 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
                     transition={{ delay: (i % 52) * 0.005 }}
-                    title={day.date ? `${day.date}: ${day.contributionCount} commits` : ""}
+                    title={day.date ? `${day.date}: ${day.contributionCount} contributions` : ''}
                     className={`w-3 h-3 md:w-3.5 md:h-3.5 rounded-sm ${day === 0 ? 'bg-gray-100' : getLevelColor(day.contributionLevel)} transition-colors duration-500 hover:ring-2 hover:ring-primary/20`}
                   />
                 ))}
               </div>
-              
+
               <div className="flex flex-col items-center mt-10 gap-6">
                 <div className="flex gap-8 text-[11px] font-bold text-on-surface/40 uppercase tracking-[0.2em] w-full justify-between px-2">
-                    <span>Jan</span><span>Feb</span><span>Mar</span><span>Apr</span><span>May</span><span>Jun</span><span>Jul</span><span>Aug</span><span>Sep</span><span>Oct</span><span>Nov</span><span>Dec</span>
+                  <span>Jan</span><span>Feb</span><span>Mar</span><span>Apr</span><span>May</span><span>Jun</span><span>Jul</span><span>Aug</span><span>Sep</span><span>Oct</span><span>Nov</span><span>Dec</span>
                 </div>
-                
+
                 <div className="flex items-center gap-4 bg-gray-100/50 px-6 py-3 rounded-full border border-gray-200">
-                    <span className="text-[10px] font-bold text-on-surface/60 uppercase tracking-widest">Less</span>
-                    <div className="flex gap-1.5">
-                        <div className="w-3.5 h-3.5 rounded-sm bg-gray-100" />
-                        <div className="w-3.5 h-3.5 rounded-sm bg-primary/30" />
-                        <div className="w-3.5 h-3.5 rounded-sm bg-primary/60" />
-                        <div className="w-3.5 h-3.5 rounded-sm bg-primary/80" />
-                        <div className="w-3.5 h-3.5 rounded-sm bg-primary" />
-                    </div>
-                    <span className="text-[10px] font-bold text-on-surface/60 uppercase tracking-widest">More</span>
+                  <span className="text-[10px] font-bold text-on-surface/60 uppercase tracking-widest">Less</span>
+                  <div className="flex gap-1.5">
+                    <div className="w-3.5 h-3.5 rounded-sm bg-gray-100" />
+                    <div className="w-3.5 h-3.5 rounded-sm bg-primary/30" />
+                    <div className="w-3.5 h-3.5 rounded-sm bg-primary/60" />
+                    <div className="w-3.5 h-3.5 rounded-sm bg-primary/80" />
+                    <div className="w-3.5 h-3.5 rounded-sm bg-primary" />
+                  </div>
+                  <span className="text-[10px] font-bold text-on-surface/60 uppercase tracking-widest">More</span>
                 </div>
               </div>
             </div>
           </div>
 
           <div className="mt-10 pt-8 border-t border-gray-200 flex justify-center">
-            <a 
-              href="https://github.com/SahilCodeLab" 
-              target="_blank" 
+            <a
+              href="https://github.com/SahilCodeLab"
+              target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-6 py-3 bg-on-surface text-surface rounded-full text-xs font-bold uppercase tracking-widest hover:bg-primary transition-all shadow-lg hover:shadow-primary/20"
             >
