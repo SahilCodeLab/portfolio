@@ -1,7 +1,8 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { FaGithub } from 'react-icons/fa';
 import { ExternalLink } from 'lucide-react';
+import BuyMeACoffee from './BuyMeACoffee';
 
 const GithubActivity = () => {
   const [realData, setRealData] = useState([]);
@@ -139,7 +140,7 @@ const GithubActivity = () => {
             </div>
           </div>
 
-          <div className="mt-10 pt-8 border-t border-gray-200 flex justify-center">
+          <div className="mt-10 pt-8 border-t border-gray-200 flex flex-wrap items-center justify-center gap-4">
             <a
               href="https://github.com/SahilCodeLab"
               target="_blank"
@@ -148,6 +149,7 @@ const GithubActivity = () => {
             >
               Verify on GitHub <ExternalLink className="w-3 h-3" />
             </a>
+            <BuyMeACoffee />
           </div>
         </motion.div>
       </div>

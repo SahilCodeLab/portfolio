@@ -1,6 +1,5 @@
-import React from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { ExternalLink, Smartphone, Code, ArrowUpRight } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { ExternalLink, Code, ArrowUpRight } from 'lucide-react';
 
 // Swiper Imports
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -94,7 +93,7 @@ const microProjects = [
   { title: "Bill Boutique", category: "Finance", link: "https://sahilcodelab.github.io/bill-boutique/" },
 ];
 
-const ProjectCard = ({ project, index }) => {
+const ProjectCard = ({ project }) => {
   return (
     <motion.div 
       initial={{ opacity: 0, y: 100 }}

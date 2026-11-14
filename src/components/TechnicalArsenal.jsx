@@ -1,6 +1,5 @@
-import React from 'react';
 import { motion } from 'framer-motion';
-import { Code, Smartphone, Globe, Cpu, Database, Shield } from 'lucide-react';
+import { Code, Smartphone, Globe, Database, Shield } from 'lucide-react';
 
 const skills = [
   {

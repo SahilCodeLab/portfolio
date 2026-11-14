@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence, useScroll, useSpring } from 'framer-motion';
 import { ArrowUp, Activity, Mail, Globe, Smartphone, Briefcase, Code, ArrowUpRight, AlertCircle } from 'lucide-react';
 import { FaLinkedin, FaGithub, FaInstagram } from 'react-icons/fa';
@@ -15,12 +15,12 @@ import ContactForm from './components/ContactForm';
 import Features from './components/Features';
 import Loader from './components/Loader';
 import CustomCursor from './components/CustomCursor';
+import BuyMeACoffee from './components/BuyMeACoffee';
 import './index.css';
 
 // Import Assets
 import profilePic from './assets/profile_pic.jpg';
 import allAppsEcosystem from './assets/all_apps_ecosystem.jpg';
-import undrawCoding from './assets/undraw_coding.svg';
 import undrawContactUs from './assets/undraw_contact_us.svg';
 import googleQr from './assets/google_qr.png';
 
@@ -31,8 +31,7 @@ const StatsCounter = ({ value, label, suffix = "", icon: Icon }) => {
   useEffect(() => {
     let start = 0;
     const end = parseInt(value);
-    if (start === end) {
-      setCount(end);
+    if (start >= end) {
       return;
     }
     let totalMiliseconds = 2000;
@@ -317,11 +316,13 @@ function App() {
               </div>
             </div>
 
-            {/* Contact Info */}
-            <div className="text-center md:text-left">
+            {/* Contact Info & Support */}
+            <div className="text-center md:text-left mx-auto md:mx-0">
               <div className="text-[10px] font-black uppercase tracking-[0.4em] text-on-surface/20 mb-6">Contact</div>
               <a href="mailto:contact.sahilraza@gmail.com" className="text-sm font-bold text-on-surface/40 hover:text-primary transition-colors block mb-3">contact.sahilraza@gmail.com</a>
-              <a href="https://www.linkedin.com/in/sahil-razaofficial" target="_blank" rel="noopener noreferrer" className="text-sm font-bold text-on-surface/40 hover:text-primary transition-colors block">LinkedIn Profile</a>
+              <a href="https://www.linkedin.com/in/sahil-razaofficial" target="_blank" rel="noopener noreferrer" className="text-sm font-bold text-on-surface/40 hover:text-primary transition-colors block mb-8">LinkedIn Profile</a>
+              <div className="text-[10px] font-black uppercase tracking-[0.4em] text-on-surface/20 mb-4">Support My Work</div>
+              <BuyMeACoffee />
             </div>
           </div>
 
